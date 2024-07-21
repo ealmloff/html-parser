@@ -23,10 +23,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut out = std::io::BufWriter::new(out_file);
 
     writeln!(out, "#![allow(clippy::enum_variant_names)]")?;
+    writeln!(out, "#![allow(clippy::module_inception)]")?;
+    writeln!(out, "#![allow(unused_imports)]")?;
     writeln!(out, "#![allow(dead_code)]")?;
     writeln!(out, "use kalosm_sample::*;")?;
 
     contents.write_value_set(&mut out)?;
+    contents.write_global_attributes(&mut out)?;
     contents.write_elements(&mut out)?;
 
     Ok(())
@@ -69,6 +72,55 @@ impl Response {
         value
     }
 
+    fn write_global_attributes(
+        &mut self,
+        out: &mut impl std::io::Write,
+    ) -> Result<(), Box<dyn std::error::Error>> {
+        write_attribute_name_enum(out, "GlobalAttributeName", &self.global_attributes)?;
+        // Create an attributes enum for the element
+        writeln!(out, "#[derive(Debug, Clone)]")?;
+        writeln!(out, "pub enum GlobalAttribute {{")?;
+        for attribute in &self.global_attributes {
+            let attribute_rust_name = to_upper_camel_case(&attribute.name);
+            let mut value = self.get_value(&attribute.value_set);
+            if value != "String" {
+                value = format!("crate::{value}");
+            }
+            writeln!(out, "    {attribute_rust_name}({value}),")?;
+        }
+        writeln!(out, "}}")?;
+        writeln!(out)?;
+        writeln!(out, "impl kalosm_sample::Parse for GlobalAttribute {{")?;
+        writeln!(
+            out,
+            "    fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {{"
+        )?;
+        writeln!(out, "        use kalosm_sample::*;")?;
+        writeln!(out, "        GlobalAttributeName::new_parser()")?;
+        writeln!(out, "        .then_lazy(|name| match name {{")?;
+        for attribute in &self.global_attributes {
+            let name = &attribute.name;
+            let attribute_rust_name = to_upper_camel_case(name);
+            let mut value = self.get_value(&attribute.value_set);
+            if value != "String" {
+                value = format!("crate::{value}");
+            }
+            writeln!(
+                out,
+                "        GlobalAttributeName::{attribute_rust_name} => {{"
+            )?;
+            writeln!(
+                out,
+                "            {value}::new_parser().map_output(Self::{attribute_rust_name}).boxed()",
+            )?;
+            writeln!(out, "        }}")?;
+        }
+        writeln!(out, "        }}).map_output(|(_, attribute)| attribute)")?;
+        writeln!(out, "    }}")?;
+        writeln!(out, "}}")?;
+        Ok(())
+    }
+
     fn write_elements(
         &mut self,
         out: &mut impl std::io::Write,
@@ -93,34 +145,20 @@ impl Response {
             writeln!(element_out, "use kalosm_sample::*;")?;
 
             let element_rust_name = to_upper_camel_case(&element.name);
-            let mut merged_attributes = element.attributes.clone();
-            merged_attributes.extend(self.global_attributes.clone());
-            merged_attributes.sort_by_key(|attribute| attribute.name.clone());
-            merged_attributes.dedup_by_key(|attribute| attribute.name.clone());
+            let mut attributes = element.attributes.clone();
+            attributes.sort_by_key(|attribute| attribute.name.clone());
+            attributes.dedup_by_key(|attribute| attribute.name.clone());
 
-            // Create an attributes name enum for the element
-            writeln!(element_out, "#[derive(Debug, Clone, Parse)]")?;
-            writeln!(element_out, "#[parse(unquoted)]")?;
-            writeln!(
-                element_out,
-                "pub enum {}AttributesName {{",
-                element_rust_name
+            write_attribute_name_enum(
+                &mut element_out,
+                &format!("{}AttributesName", element_rust_name),
+                &attributes,
             )?;
-            for attribute in &merged_attributes {
-                let attribute_rust_name = to_upper_camel_case(&attribute.name);
-                writeln!(
-                    element_out,
-                    "    #[parse(rename = \" {}=\")]",
-                    attribute.name
-                )?;
-                writeln!(element_out, "    {attribute_rust_name},")?;
-            }
-            writeln!(element_out, "}}")?;
 
             // Create an attributes enum for the element
             writeln!(element_out, "#[derive(Debug, Clone)]")?;
             writeln!(element_out, "pub enum {}Attributes {{", element_rust_name)?;
-            for attribute in &merged_attributes {
+            for attribute in &attributes {
                 let attribute_rust_name = to_upper_camel_case(&attribute.name);
                 let mut value = self.get_value(&attribute.value_set);
                 if value != "String" {
@@ -128,6 +166,7 @@ impl Response {
                 }
                 writeln!(element_out, "    {attribute_rust_name}({value}),")?;
             }
+            writeln!(element_out, "    GlobalAttribute(crate::GlobalAttribute),")?;
             writeln!(element_out, "}}")?;
             writeln!(out)?;
             writeln!(
@@ -135,30 +174,35 @@ impl Response {
                 "impl kalosm_sample::Parse for {element_rust_name}Attributes {{"
             )?;
             writeln!(element_out, "    fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {{")?;
-            writeln!(element_out, "        use kalosm_sample::*;")?;
             writeln!(
                 element_out,
-                "        {element_rust_name}AttributesName::new_parser()"
+                "        crate::GlobalAttribute::new_parser().map_output(Self::GlobalAttribute)"
             )?;
-            writeln!(element_out, "        .then_lazy(|name| match name {{")?;
-            for attribute in merged_attributes.iter() {
-                let name = &attribute.name;
-                let attribute_rust_name = to_upper_camel_case(name);
-                let mut value = self.get_value(&attribute.value_set);
-                if value != "String" {
-                    value = format!("crate::{value}");
+            if !attributes.is_empty() {
+                writeln!(
+                    element_out,
+                    "        .boxed().or({element_rust_name}AttributesName::new_parser()"
+                )?;
+                writeln!(element_out, "        .then_lazy(|name| match name {{")?;
+                for attribute in attributes.iter() {
+                    let name = &attribute.name;
+                    let attribute_rust_name = to_upper_camel_case(name);
+                    let mut value = self.get_value(&attribute.value_set);
+                    if value != "String" {
+                        value = format!("crate::{value}");
+                    }
+                    writeln!(
+                        element_out,
+                        "        {element_rust_name}AttributesName::{attribute_rust_name} => {{"
+                    )?;
+                    writeln!(element_out, "            {value}::new_parser().map_output(Self::{attribute_rust_name}).boxed()",)?;
+                    writeln!(element_out, "        }}")?;
                 }
                 writeln!(
                     element_out,
-                    "        {element_rust_name}AttributesName::{attribute_rust_name} => {{"
+                    "        }}).map_output(|(_, attribute)| attribute).boxed())"
                 )?;
-                writeln!(element_out, "            {value}::new_parser().map_output(Self::{attribute_rust_name}).boxed()",)?;
-                writeln!(element_out, "        }}")?;
             }
-            writeln!(
-                element_out,
-                "        }}).map_output(|(_, attribute)| attribute)"
-            )?;
             writeln!(element_out, "    }}")?;
             writeln!(element_out, "}}")?;
 
@@ -176,7 +220,7 @@ impl Response {
             writeln!(element_out, "}}")?;
 
             // Implement the Parse trait for the element
-            writeln!(out)?;
+            writeln!(element_out)?;
             writeln!(
                 element_out,
                 "impl kalosm_sample::Parse for {element_rust_name} {{"
@@ -243,6 +287,28 @@ impl Response {
 
         Ok(())
     }
+}
+
+fn write_attribute_name_enum(
+    out: &mut impl std::io::Write,
+    name: &str,
+    attributes: &[Attribute],
+) -> std::io::Result<()> {
+    if attributes.is_empty() {
+        return Ok(());
+    }
+
+    // Create an attributes name enum for the element
+    writeln!(out, "#[derive(Debug, Clone, Parse)]")?;
+    writeln!(out, "#[parse(unquoted)]")?;
+    writeln!(out, "pub enum {name} {{",)?;
+    for attribute in attributes {
+        let attribute_rust_name = to_upper_camel_case(&attribute.name);
+        writeln!(out, "    #[parse(rename = \" {}=\")]", attribute.name)?;
+        writeln!(out, "    {attribute_rust_name},")?;
+    }
+    writeln!(out, "}}")?;
+    Ok(())
 }
 
 fn to_upper_camel_case(s: &str) -> String {

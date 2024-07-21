@@ -17,7 +17,7 @@ fn main() {
         println!("parsing: {}", line);
         let result = parser.parse(&state, line.as_bytes());
         match result {
-            Ok(ParseStatus::Finished { result, remaining }) => {
+            Ok(ParseStatus::Finished { result, .. }) => {
                 println!("result: {:?}", result);
             }
             Ok(ParseStatus::Incomplete { new_state, .. }) => {
