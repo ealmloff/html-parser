@@ -195,18 +195,21 @@ impl Response {
         writeln!(out, "}}")?;
 
         // Implement Parse for the element enum
+        writeln!(out, "impl kalosm_sample::Parse for Element {{")?;
         writeln!(
             out,
-            "impl kalosm_sample::Parse for Element {{"
+            "    fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {{"
         )?;
-        writeln!(out, "    fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {{")?;
         writeln!(out, "        use kalosm_sample::*;")?;
         for (i, element) in self.tags.iter().enumerate() {
             let element_rust_name = to_upper_camel_case(&element.name);
             if i > 0 {
                 writeln!(out, "        .or(")?;
             }
-            writeln!(out, "        {element_rust_name}::new_parser().map_output(Self::{element_rust_name})")?;
+            writeln!(
+                out,
+                "        {element_rust_name}::new_parser().map_output(Self::{element_rust_name})"
+            )?;
             if i > 0 {
                 writeln!(out, "        )")?;
             }
