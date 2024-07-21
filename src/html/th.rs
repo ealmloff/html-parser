@@ -1,159 +1,157 @@
 use kalosm_sample::*;
 #[derive(Debug, Clone)]
 pub enum ThAttributes {
-    Abbr(crate::String),
-    Accesskey(crate::String),
-    Align(crate::String),
-    AriaActivedescendant(crate::String),
+    Abbr(String),
+    Accesskey(String),
+    Align(String),
+    AriaActivedescendant(String),
     AriaAtomic(crate::BValues),
     AriaAutocomplete(crate::AutocompleteValues),
     AriaBusy(crate::BValues),
     AriaChecked(crate::TristateValues),
-    AriaColcount(crate::String),
-    AriaColindex(crate::String),
-    AriaColspan(crate::String),
-    AriaControls(crate::String),
+    AriaColcount(String),
+    AriaColindex(String),
+    AriaColspan(String),
+    AriaControls(String),
     AriaCurrent(crate::CurrentValues),
-    AriaDescribedby(crate::String),
-    AriaDetails(crate::String),
+    AriaDescribedby(String),
+    AriaDetails(String),
     AriaDisabled(crate::BValues),
     AriaDropeffect(crate::DropeffectValues),
-    AriaErrormessage(crate::String),
+    AriaErrormessage(String),
     AriaExpanded(crate::UValues),
-    AriaFlowto(crate::String),
+    AriaFlowto(String),
     AriaGrabbed(crate::UValues),
     AriaHaspopup(crate::HaspopupValues),
     AriaHidden(crate::BValues),
     AriaInvalid(crate::InvalidValues),
-    AriaKeyshortcuts(crate::String),
-    AriaLabel(crate::String),
-    AriaLabelledby(crate::String),
-    AriaLevel(crate::String),
+    AriaKeyshortcuts(String),
+    AriaLabel(String),
+    AriaLabelledby(String),
+    AriaLevel(String),
     AriaLive(crate::LiveValues),
     AriaModal(crate::BValues),
     AriaMultiline(crate::BValues),
     AriaMultiselectable(crate::BValues),
     AriaOrientation(crate::OrientationValues),
-    AriaOwns(crate::String),
-    AriaPlaceholder(crate::String),
-    AriaPosinset(crate::String),
+    AriaOwns(String),
+    AriaPlaceholder(String),
+    AriaPosinset(String),
     AriaPressed(crate::TristateValues),
     AriaReadonly(crate::BValues),
     AriaRelevant(crate::RelevantValues),
     AriaRequired(crate::BValues),
-    AriaRoledescription(crate::String),
-    AriaRowcount(crate::String),
-    AriaRowindex(crate::String),
-    AriaRowspan(crate::String),
+    AriaRoledescription(String),
+    AriaRowcount(String),
+    AriaRowindex(String),
+    AriaRowspan(String),
     AriaSelected(crate::UValues),
-    AriaSetsize(crate::String),
+    AriaSetsize(String),
     AriaSort(crate::SortValues),
-    AriaValuemax(crate::String),
-    AriaValuemin(crate::String),
-    AriaValuenow(crate::String),
-    AriaValuetext(crate::String),
-    Autocapitalize(crate::String),
-    Axis(crate::String),
-    Bgcolor(crate::String),
-    Class(crate::String),
-    Colspan(crate::String),
-    Contenteditable(crate::String),
-    Contextmenu(crate::String),
+    AriaValuemax(String),
+    AriaValuemin(String),
+    AriaValuenow(String),
+    AriaValuetext(String),
+    Autocapitalize(String),
+    Axis(String),
+    Bgcolor(String),
+    Class(String),
+    Colspan(String),
+    Contenteditable(String),
+    Contextmenu(String),
     Dir(crate::DValues),
     Draggable(crate::BValues),
-    Dropzone(crate::String),
-    Exportparts(crate::String),
-    Headers(crate::String),
-    Hidden(crate::// Could not find value set
-String),
-    Id(crate::String),
-    Inputmode(crate::String),
-    Is(crate::String),
-    Itemid(crate::String),
-    Itemprop(crate::String),
-    Itemref(crate::String),
-    Itemscope(crate::// Could not find value set
-String),
-    Itemtype(crate::String),
-    Lang(crate::String),
-    Onabort(crate::String),
-    Onblur(crate::String),
-    Oncanplay(crate::String),
-    Oncanplaythrough(crate::String),
-    Onchange(crate::String),
-    Onclick(crate::String),
-    Oncontextmenu(crate::String),
-    Ondblclick(crate::String),
-    Ondrag(crate::String),
-    Ondragend(crate::String),
-    Ondragenter(crate::String),
-    Ondragleave(crate::String),
-    Ondragover(crate::String),
-    Ondragstart(crate::String),
-    Ondrop(crate::String),
-    Ondurationchange(crate::String),
-    Onemptied(crate::String),
-    Onended(crate::String),
-    Onerror(crate::String),
-    Onfocus(crate::String),
-    Onformchange(crate::String),
-    Onforminput(crate::String),
-    Oninput(crate::String),
-    Oninvalid(crate::String),
-    Onkeydown(crate::String),
-    Onkeypress(crate::String),
-    Onkeyup(crate::String),
-    Onload(crate::String),
-    Onloadeddata(crate::String),
-    Onloadedmetadata(crate::String),
-    Onloadstart(crate::String),
-    Onmousedown(crate::String),
-    Onmouseenter(crate::String),
-    Onmouseleave(crate::String),
-    Onmousemove(crate::String),
-    Onmouseout(crate::String),
-    Onmouseover(crate::String),
-    Onmouseup(crate::String),
-    Onmousewheel(crate::String),
-    Onpause(crate::String),
-    Onplay(crate::String),
-    Onplaying(crate::String),
-    Onpointercancel(crate::String),
-    Onpointerdown(crate::String),
-    Onpointerenter(crate::String),
-    Onpointerleave(crate::String),
-    Onpointerlockchange(crate::String),
-    Onpointerlockerror(crate::String),
-    Onpointermove(crate::String),
-    Onpointerout(crate::String),
-    Onpointerover(crate::String),
-    Onpointerup(crate::String),
-    Onprogress(crate::String),
-    Onratechange(crate::String),
-    Onreadystatechange(crate::String),
-    Onreset(crate::String),
-    Onresize(crate::String),
-    Onscroll(crate::String),
-    Onseeked(crate::String),
-    Onseeking(crate::String),
-    Onselect(crate::String),
-    Onshow(crate::String),
-    Onstalled(crate::String),
-    Onsubmit(crate::String),
-    Onsuspend(crate::String),
-    Ontimeupdate(crate::String),
-    Onvolumechange(crate::String),
-    Onwaiting(crate::String),
-    Part(crate::String),
+    Dropzone(String),
+    Exportparts(String),
+    Headers(String),
+    Hidden(String),
+    Id(String),
+    Inputmode(String),
+    Is(String),
+    Itemid(String),
+    Itemprop(String),
+    Itemref(String),
+    Itemscope(String),
+    Itemtype(String),
+    Lang(String),
+    Onabort(String),
+    Onblur(String),
+    Oncanplay(String),
+    Oncanplaythrough(String),
+    Onchange(String),
+    Onclick(String),
+    Oncontextmenu(String),
+    Ondblclick(String),
+    Ondrag(String),
+    Ondragend(String),
+    Ondragenter(String),
+    Ondragleave(String),
+    Ondragover(String),
+    Ondragstart(String),
+    Ondrop(String),
+    Ondurationchange(String),
+    Onemptied(String),
+    Onended(String),
+    Onerror(String),
+    Onfocus(String),
+    Onformchange(String),
+    Onforminput(String),
+    Oninput(String),
+    Oninvalid(String),
+    Onkeydown(String),
+    Onkeypress(String),
+    Onkeyup(String),
+    Onload(String),
+    Onloadeddata(String),
+    Onloadedmetadata(String),
+    Onloadstart(String),
+    Onmousedown(String),
+    Onmouseenter(String),
+    Onmouseleave(String),
+    Onmousemove(String),
+    Onmouseout(String),
+    Onmouseover(String),
+    Onmouseup(String),
+    Onmousewheel(String),
+    Onpause(String),
+    Onplay(String),
+    Onplaying(String),
+    Onpointercancel(String),
+    Onpointerdown(String),
+    Onpointerenter(String),
+    Onpointerleave(String),
+    Onpointerlockchange(String),
+    Onpointerlockerror(String),
+    Onpointermove(String),
+    Onpointerout(String),
+    Onpointerover(String),
+    Onpointerup(String),
+    Onprogress(String),
+    Onratechange(String),
+    Onreadystatechange(String),
+    Onreset(String),
+    Onresize(String),
+    Onscroll(String),
+    Onseeked(String),
+    Onseeking(String),
+    Onselect(String),
+    Onshow(String),
+    Onstalled(String),
+    Onsubmit(String),
+    Onsuspend(String),
+    Ontimeupdate(String),
+    Onvolumechange(String),
+    Onwaiting(String),
+    Part(String),
     Role(crate::RolesValues),
-    Rowspan(crate::String),
+    Rowspan(String),
     Scope(crate::SValues),
-    Slot(crate::String),
-    Sorted(crate::String),
+    Slot(String),
+    Sorted(String),
     Spellcheck(crate::BValues),
-    Style(crate::String),
-    Tabindex(crate::String),
-    Title(crate::String),
+    Style(String),
+    Tabindex(String),
+    Title(String),
     Translate(crate::YValues),
 }
 impl kalosm_sample::Parse for ThAttributes {
@@ -179,22 +177,22 @@ impl kalosm_sample::Parse for ThAttributes {
         )
         .or(
         LiteralParser::new("\"aria-atomic\"=")
-            .ignore_output_then(BValues::new_parser())
+            .ignore_output_then(crate::BValues::new_parser())
             .map_output(|value| Self::AriaAtomic(value))
         )
         .or(
         LiteralParser::new("\"aria-autocomplete\"=")
-            .ignore_output_then(AutocompleteValues::new_parser())
+            .ignore_output_then(crate::AutocompleteValues::new_parser())
             .map_output(|value| Self::AriaAutocomplete(value))
         )
         .or(
         LiteralParser::new("\"aria-busy\"=")
-            .ignore_output_then(BValues::new_parser())
+            .ignore_output_then(crate::BValues::new_parser())
             .map_output(|value| Self::AriaBusy(value))
         )
         .or(
         LiteralParser::new("\"aria-checked\"=")
-            .ignore_output_then(TristateValues::new_parser())
+            .ignore_output_then(crate::TristateValues::new_parser())
             .map_output(|value| Self::AriaChecked(value))
         )
         .or(
@@ -219,7 +217,7 @@ impl kalosm_sample::Parse for ThAttributes {
         )
         .or(
         LiteralParser::new("\"aria-current\"=")
-            .ignore_output_then(CurrentValues::new_parser())
+            .ignore_output_then(crate::CurrentValues::new_parser())
             .map_output(|value| Self::AriaCurrent(value))
         )
         .or(
@@ -234,12 +232,12 @@ impl kalosm_sample::Parse for ThAttributes {
         )
         .or(
         LiteralParser::new("\"aria-disabled\"=")
-            .ignore_output_then(BValues::new_parser())
+            .ignore_output_then(crate::BValues::new_parser())
             .map_output(|value| Self::AriaDisabled(value))
         )
         .or(
         LiteralParser::new("\"aria-dropeffect\"=")
-            .ignore_output_then(DropeffectValues::new_parser())
+            .ignore_output_then(crate::DropeffectValues::new_parser())
             .map_output(|value| Self::AriaDropeffect(value))
         )
         .or(
@@ -249,7 +247,7 @@ impl kalosm_sample::Parse for ThAttributes {
         )
         .or(
         LiteralParser::new("\"aria-expanded\"=")
-            .ignore_output_then(UValues::new_parser())
+            .ignore_output_then(crate::UValues::new_parser())
             .map_output(|value| Self::AriaExpanded(value))
         )
         .or(
@@ -259,22 +257,22 @@ impl kalosm_sample::Parse for ThAttributes {
         )
         .or(
         LiteralParser::new("\"aria-grabbed\"=")
-            .ignore_output_then(UValues::new_parser())
+            .ignore_output_then(crate::UValues::new_parser())
             .map_output(|value| Self::AriaGrabbed(value))
         )
         .or(
         LiteralParser::new("\"aria-haspopup\"=")
-            .ignore_output_then(HaspopupValues::new_parser())
+            .ignore_output_then(crate::HaspopupValues::new_parser())
             .map_output(|value| Self::AriaHaspopup(value))
         )
         .or(
         LiteralParser::new("\"aria-hidden\"=")
-            .ignore_output_then(BValues::new_parser())
+            .ignore_output_then(crate::BValues::new_parser())
             .map_output(|value| Self::AriaHidden(value))
         )
         .or(
         LiteralParser::new("\"aria-invalid\"=")
-            .ignore_output_then(InvalidValues::new_parser())
+            .ignore_output_then(crate::InvalidValues::new_parser())
             .map_output(|value| Self::AriaInvalid(value))
         )
         .or(
@@ -299,27 +297,27 @@ impl kalosm_sample::Parse for ThAttributes {
         )
         .or(
         LiteralParser::new("\"aria-live\"=")
-            .ignore_output_then(LiveValues::new_parser())
+            .ignore_output_then(crate::LiveValues::new_parser())
             .map_output(|value| Self::AriaLive(value))
         )
         .or(
         LiteralParser::new("\"aria-modal\"=")
-            .ignore_output_then(BValues::new_parser())
+            .ignore_output_then(crate::BValues::new_parser())
             .map_output(|value| Self::AriaModal(value))
         )
         .or(
         LiteralParser::new("\"aria-multiline\"=")
-            .ignore_output_then(BValues::new_parser())
+            .ignore_output_then(crate::BValues::new_parser())
             .map_output(|value| Self::AriaMultiline(value))
         )
         .or(
         LiteralParser::new("\"aria-multiselectable\"=")
-            .ignore_output_then(BValues::new_parser())
+            .ignore_output_then(crate::BValues::new_parser())
             .map_output(|value| Self::AriaMultiselectable(value))
         )
         .or(
         LiteralParser::new("\"aria-orientation\"=")
-            .ignore_output_then(OrientationValues::new_parser())
+            .ignore_output_then(crate::OrientationValues::new_parser())
             .map_output(|value| Self::AriaOrientation(value))
         )
         .or(
@@ -339,22 +337,22 @@ impl kalosm_sample::Parse for ThAttributes {
         )
         .or(
         LiteralParser::new("\"aria-pressed\"=")
-            .ignore_output_then(TristateValues::new_parser())
+            .ignore_output_then(crate::TristateValues::new_parser())
             .map_output(|value| Self::AriaPressed(value))
         )
         .or(
         LiteralParser::new("\"aria-readonly\"=")
-            .ignore_output_then(BValues::new_parser())
+            .ignore_output_then(crate::BValues::new_parser())
             .map_output(|value| Self::AriaReadonly(value))
         )
         .or(
         LiteralParser::new("\"aria-relevant\"=")
-            .ignore_output_then(RelevantValues::new_parser())
+            .ignore_output_then(crate::RelevantValues::new_parser())
             .map_output(|value| Self::AriaRelevant(value))
         )
         .or(
         LiteralParser::new("\"aria-required\"=")
-            .ignore_output_then(BValues::new_parser())
+            .ignore_output_then(crate::BValues::new_parser())
             .map_output(|value| Self::AriaRequired(value))
         )
         .or(
@@ -379,7 +377,7 @@ impl kalosm_sample::Parse for ThAttributes {
         )
         .or(
         LiteralParser::new("\"aria-selected\"=")
-            .ignore_output_then(UValues::new_parser())
+            .ignore_output_then(crate::UValues::new_parser())
             .map_output(|value| Self::AriaSelected(value))
         )
         .or(
@@ -389,7 +387,7 @@ impl kalosm_sample::Parse for ThAttributes {
         )
         .or(
         LiteralParser::new("\"aria-sort\"=")
-            .ignore_output_then(SortValues::new_parser())
+            .ignore_output_then(crate::SortValues::new_parser())
             .map_output(|value| Self::AriaSort(value))
         )
         .or(
@@ -449,12 +447,12 @@ impl kalosm_sample::Parse for ThAttributes {
         )
         .or(
         LiteralParser::new("\"dir\"=")
-            .ignore_output_then(DValues::new_parser())
+            .ignore_output_then(crate::DValues::new_parser())
             .map_output(|value| Self::Dir(value))
         )
         .or(
         LiteralParser::new("\"draggable\"=")
-            .ignore_output_then(BValues::new_parser())
+            .ignore_output_then(crate::BValues::new_parser())
             .map_output(|value| Self::Draggable(value))
         )
         .or(
@@ -474,8 +472,7 @@ impl kalosm_sample::Parse for ThAttributes {
         )
         .or(
         LiteralParser::new("\"hidden\"=")
-            .ignore_output_then(// Could not find value set
-String::new_parser())
+            .ignore_output_then(String::new_parser())
             .map_output(|value| Self::Hidden(value))
         )
         .or(
@@ -510,8 +507,7 @@ String::new_parser())
         )
         .or(
         LiteralParser::new("\"itemscope\"=")
-            .ignore_output_then(// Could not find value set
-String::new_parser())
+            .ignore_output_then(String::new_parser())
             .map_output(|value| Self::Itemscope(value))
         )
         .or(
@@ -871,7 +867,7 @@ String::new_parser())
         )
         .or(
         LiteralParser::new("\"role\"=")
-            .ignore_output_then(RolesValues::new_parser())
+            .ignore_output_then(crate::RolesValues::new_parser())
             .map_output(|value| Self::Role(value))
         )
         .or(
@@ -881,7 +877,7 @@ String::new_parser())
         )
         .or(
         LiteralParser::new("\"scope\"=")
-            .ignore_output_then(SValues::new_parser())
+            .ignore_output_then(crate::SValues::new_parser())
             .map_output(|value| Self::Scope(value))
         )
         .or(
@@ -896,7 +892,7 @@ String::new_parser())
         )
         .or(
         LiteralParser::new("\"spellcheck\"=")
-            .ignore_output_then(BValues::new_parser())
+            .ignore_output_then(crate::BValues::new_parser())
             .map_output(|value| Self::Spellcheck(value))
         )
         .or(
@@ -916,7 +912,7 @@ String::new_parser())
         )
         .or(
         LiteralParser::new("\"translate\"=")
-            .ignore_output_then(YValues::new_parser())
+            .ignore_output_then(crate::YValues::new_parser())
             .map_output(|value| Self::Translate(value))
         )
     }
@@ -924,7 +920,7 @@ String::new_parser())
 #[derive(Debug, Clone)]
 pub struct Th{
     attributes: Vec<ThAttributes>,
-    body: Vec<Element>,
+    body: Vec<crate::Element>,
 }
 impl kalosm_sample::Parse for Th {
     fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {
@@ -932,11 +928,11 @@ impl kalosm_sample::Parse for Th {
         LiteralParser::new("<th")
             .ignore_output_then(
                 LiteralParser::new(" ")
-                    .then(ThAttributes::new_parser())
-                    .repeat(0..)
+                    .ignore_output_then(ThAttributes::new_parser())
+                    .repeat(0..=10000)
             )
             .then_literal(">")
-            .then(Element::new_parser().repeat(0..))
+            .then(crate::Element::new_parser().boxed().repeat(0..=10000))
             .then_literal("</th>")
             .map_output(|(attributes, body)| Th { attributes, body })
     }

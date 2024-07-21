@@ -61,7 +61,7 @@ impl Response {
             {
                 value.rust_name.clone()
             } else {
-                "// Could not find value set\nString".to_string()
+                "String".to_string()
             }
         } else {
             "String".to_string()
@@ -101,8 +101,11 @@ impl Response {
             writeln!(element_out, "pub enum {}Attributes {{", element_rust_name)?;
             for attribute in &merged_attributes {
                 let attribute_rust_name = to_upper_camel_case(&attribute.name);
-                let value = self.get_value(&attribute.value_set);
-                writeln!(element_out, "    {attribute_rust_name}(crate::{value}),")?;
+                let mut value = self.get_value(&attribute.value_set);
+                if value != "String" {
+                    value = format!("crate::{value}");
+                }
+                writeln!(element_out, "    {attribute_rust_name}({value}),")?;
             }
             writeln!(element_out, "}}")?;
 
@@ -118,7 +121,10 @@ impl Response {
             for (i, attribute) in merged_attributes.iter().enumerate() {
                 let name = &attribute.name;
                 let attribute_rust_name = to_upper_camel_case(name);
-                let value = self.get_value(&attribute.value_set);
+                let mut value = self.get_value(&attribute.value_set);
+                if value != "String" {
+                    value = format!("crate::{value}");
+                }
                 if i > 0 {
                     writeln!(element_out, "        .or(")?;
                 }
@@ -149,7 +155,7 @@ impl Response {
                 element_out,
                 "    attributes: Vec<{element_rust_name}Attributes>,"
             )?;
-            writeln!(element_out, "    body: Vec<Element>,")?;
+            writeln!(element_out, "    body: Vec<crate::Element>,")?;
             writeln!(element_out, "}}")?;
             // Implement the Parse trait for the element
             writeln!(out)?;
@@ -164,14 +170,14 @@ impl Response {
             writeln!(element_out, "                LiteralParser::new(\" \")")?;
             writeln!(
                 element_out,
-                "                    .then({element_rust_name}Attributes::new_parser())"
+                "                    .ignore_output_then({element_rust_name}Attributes::new_parser())"
             )?;
-            writeln!(element_out, "                    .repeat(0..)")?;
+            writeln!(element_out, "                    .repeat(0..=10000)")?;
             writeln!(element_out, "            )")?;
             writeln!(element_out, "            .then_literal(\">\")")?;
             writeln!(
                 element_out,
-                "            .then(Element::new_parser().repeat(0..))"
+                "            .then(crate::Element::new_parser().boxed().repeat(0..=10000))"
             )?;
             writeln!(element_out, "            .then_literal(\"</{name}>\")")?;
             writeln!(element_out, "            .map_output(|(attributes, body)| {element_rust_name} {{ attributes, body }})")?;
@@ -186,6 +192,26 @@ impl Response {
             let element_rust_name = to_upper_camel_case(&element.name);
             writeln!(out, "    {element_rust_name}({element_rust_name}),")?;
         }
+        writeln!(out, "}}")?;
+
+        // Implement Parse for the element enum
+        writeln!(
+            out,
+            "impl kalosm_sample::Parse for Element {{"
+        )?;
+        writeln!(out, "    fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {{")?;
+        writeln!(out, "        use kalosm_sample::*;")?;
+        for (i, element) in self.tags.iter().enumerate() {
+            let element_rust_name = to_upper_camel_case(&element.name);
+            if i > 0 {
+                writeln!(out, "        .or(")?;
+            }
+            writeln!(out, "        {element_rust_name}::new_parser().map_output(Self::{element_rust_name})")?;
+            if i > 0 {
+                writeln!(out, "        )")?;
+            }
+        }
+        writeln!(out, "    }}")?;
         writeln!(out, "}}")?;
 
         Ok(())
