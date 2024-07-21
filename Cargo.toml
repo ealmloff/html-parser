@@ -1,0 +1,12 @@
+[package]
+name = "html-parser"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+kalosm-sample = { git = "https://github.com/floneum/floneum", version = "0.2.1" }
+
+[build-dependencies]
+reqwest = { version = "0.12.5", features = ["blocking", "json"] }
+serde = { version = "1.0.204", features = ["derive"] }
+convert_case = "0.6.0"
