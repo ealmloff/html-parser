@@ -86,13 +86,11 @@ impl Response {
             let element_rust_name = to_upper_camel_case(&element.name);
             let mut merged_attributes = element.attributes.clone();
             merged_attributes.extend(self.global_attributes.clone());
-            let mut attributes = HashSet::new();
+            merged_attributes.sort_by_key(|attribute| attribute.name.clone());
+            merged_attributes.dedup_by_key(|attribute| attribute.name.clone());
             writeln!(out, "#[derive(Debug, Clone)]")?;
             writeln!(out, "pub enum {}Attributes {{", element_rust_name)?;
             for attribute in &merged_attributes {
-                if !attributes.insert(attribute.name.clone()) {
-                    continue;
-                }
                 let attribute_rust_name = to_upper_camel_case(&attribute.name);
                 let value = self.get_value(&attribute.value_set);
                 writeln!(out, "    {attribute_rust_name}({value}),")?;
