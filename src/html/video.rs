@@ -918,7 +918,7 @@ impl kalosm_sample::Parse for VideoAttributes {
 #[derive(Debug, Clone)]
 pub struct Video {
     attributes: Vec<VideoAttributes>,
-    body: Vec<crate::Element>,
+    body: Vec<crate::Node>,
 }
 impl kalosm_sample::Parse for Video {
     fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {
@@ -927,7 +927,7 @@ impl kalosm_sample::Parse for Video {
             .repeat(0..=10000)
             .then_literal(">")
             .then(
-                kalosm_sample::LazyParser::new(|| crate::Element::new_parser().boxed())
+                kalosm_sample::LazyParser::new(|| crate::Node::new_parser().boxed())
                     .repeat(0..=10000),
             )
             .then_literal("</video>")

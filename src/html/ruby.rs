@@ -844,7 +844,7 @@ impl kalosm_sample::Parse for RubyAttributes {
 #[derive(Debug, Clone)]
 pub struct Ruby {
     attributes: Vec<RubyAttributes>,
-    body: Vec<crate::Element>,
+    body: Vec<crate::Node>,
 }
 impl kalosm_sample::Parse for Ruby {
     fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {
@@ -853,7 +853,7 @@ impl kalosm_sample::Parse for Ruby {
             .repeat(0..=10000)
             .then_literal(">")
             .then(
-                kalosm_sample::LazyParser::new(|| crate::Element::new_parser().boxed())
+                kalosm_sample::LazyParser::new(|| crate::Node::new_parser().boxed())
                     .repeat(0..=10000),
             )
             .then_literal("</ruby>")

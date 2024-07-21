@@ -171,7 +171,7 @@ impl Response {
                 "    attributes: Vec<{element_rust_name}Attributes>,"
             )?;
             if !SELF_CLOSING_ELEMENTS.contains(&element.name.as_str()) {
-                writeln!(element_out, "    body: Vec<crate::Element>,")?;
+                writeln!(element_out, "    body: Vec<crate::Node>,")?;
             }
             writeln!(element_out, "}}")?;
 
@@ -195,7 +195,7 @@ impl Response {
                 writeln!(element_out, "                .then_literal(\">\")")?;
                 writeln!(
                     element_out,
-                    "                .then(kalosm_sample::LazyParser::new(|| crate::Element::new_parser().boxed()).repeat(0..=10000))"
+                    "                .then(kalosm_sample::LazyParser::new(|| crate::Node::new_parser().boxed()).repeat(0..=10000))"
                 )?;
                 writeln!(element_out, "                .then_literal(\"</{name}>\")")?;
                 writeln!(element_out, "                .map_output(|(attributes, body)| {element_rust_name} {{ attributes, body }})")?;

@@ -860,7 +860,7 @@ impl kalosm_sample::Parse for HgroupAttributes {
 #[derive(Debug, Clone)]
 pub struct Hgroup {
     attributes: Vec<HgroupAttributes>,
-    body: Vec<crate::Element>,
+    body: Vec<crate::Node>,
 }
 impl kalosm_sample::Parse for Hgroup {
     fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {
@@ -869,7 +869,7 @@ impl kalosm_sample::Parse for Hgroup {
             .repeat(0..=10000)
             .then_literal(">")
             .then(
-                kalosm_sample::LazyParser::new(|| crate::Element::new_parser().boxed())
+                kalosm_sample::LazyParser::new(|| crate::Node::new_parser().boxed())
                     .repeat(0..=10000),
             )
             .then_literal("</hgroup>")
