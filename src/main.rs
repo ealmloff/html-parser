@@ -1,13 +1,9 @@
+#![recursion_limit = "512"]
+
 use kalosm_sample::*;
 
 use html::*;
 mod html;
-
-#[derive(Debug, Clone)]
-struct ElementBody<Attribute> {
-    attributes: Vec<Attribute>,
-    children: Vec<html::Element>,
-}
 
 fn main() {
     let parser = InputautocompleteValues::new_parser();
