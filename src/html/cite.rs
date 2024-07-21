@@ -1,13 +1,5 @@
 use kalosm_sample::*;
-#[derive(Debug, Clone)]
-pub enum CiteAttributes {
-    GlobalAttribute(crate::GlobalAttribute),
-}
-impl kalosm_sample::Parse for CiteAttributes {
-    fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {
-        crate::GlobalAttribute::new_parser().map_output(Self::GlobalAttribute)
-    }
-}
+type CiteAttributes = crate::GlobalAttribute;
 #[derive(Debug, Clone)]
 pub struct Cite {
     attributes: Vec<CiteAttributes>,

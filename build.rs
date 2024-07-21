@@ -149,39 +149,43 @@ impl Response {
             attributes.sort_by_key(|attribute| attribute.name.clone());
             attributes.dedup_by_key(|attribute| attribute.name.clone());
 
-            write_attribute_name_enum(
-                &mut element_out,
-                &format!("{}AttributesName", element_rust_name),
-                &attributes,
-            )?;
-
-            // Create an attributes enum for the element
-            writeln!(element_out, "#[derive(Debug, Clone)]")?;
-            writeln!(element_out, "pub enum {}Attributes {{", element_rust_name)?;
-            for attribute in &attributes {
-                let attribute_rust_name = to_upper_camel_case(&attribute.name);
-                let mut value = self.get_value(&attribute.value_set);
-                if value != "String" {
-                    value = format!("crate::{value}");
-                }
-                writeln!(element_out, "    {attribute_rust_name}({value}),")?;
-            }
-            writeln!(element_out, "    GlobalAttribute(crate::GlobalAttribute),")?;
-            writeln!(element_out, "}}")?;
-            writeln!(out)?;
-            writeln!(
-                element_out,
-                "impl kalosm_sample::Parse for {element_rust_name}Attributes {{"
-            )?;
-            writeln!(element_out, "    fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {{")?;
-            writeln!(
-                element_out,
-                "        crate::GlobalAttribute::new_parser().map_output(Self::GlobalAttribute)"
-            )?;
-            if !attributes.is_empty() {
+            if attributes.is_empty() {
                 writeln!(
                     element_out,
-                    "        .boxed().or({element_rust_name}AttributesName::new_parser()"
+                    "type {element_rust_name}Attributes = crate::GlobalAttribute;"
+                )?;
+            } else {
+                write_attribute_name_enum(
+                    &mut element_out,
+                    &format!("{}AttributesName", element_rust_name),
+                    &attributes,
+                )?;
+                // Create an attributes enum for the element
+                writeln!(element_out, "#[derive(Debug, Clone)]")?;
+                writeln!(element_out, "pub enum {}Attributes {{", element_rust_name)?;
+                for attribute in &attributes {
+                    let attribute_rust_name = to_upper_camel_case(&attribute.name);
+                    let mut value = self.get_value(&attribute.value_set);
+                    if value != "String" {
+                        value = format!("crate::{value}");
+                    }
+                    writeln!(element_out, "    {attribute_rust_name}({value}),")?;
+                }
+                writeln!(element_out, "    GlobalAttribute(crate::GlobalAttribute),")?;
+                writeln!(element_out, "}}")?;
+                writeln!(out)?;
+                writeln!(
+                    element_out,
+                    "impl kalosm_sample::Parse for {element_rust_name}Attributes {{"
+                )?;
+                writeln!(element_out, "    fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {{")?;
+                writeln!(
+                    element_out,
+                    "        crate::GlobalAttribute::new_parser().map_output(Self::GlobalAttribute).boxed().or("
+                )?;
+                writeln!(
+                    element_out,
+                    "        {element_rust_name}AttributesName::new_parser()"
                 )?;
                 writeln!(element_out, "        .then_lazy(|name| match name {{")?;
                 for attribute in attributes.iter() {
@@ -202,9 +206,9 @@ impl Response {
                     element_out,
                     "        }}).map_output(|(_, attribute)| attribute).boxed())"
                 )?;
+                writeln!(element_out, "    }}")?;
+                writeln!(element_out, "}}")?;
             }
-            writeln!(element_out, "    }}")?;
-            writeln!(element_out, "}}")?;
 
             let name = &element.name;
             let element_rust_name = to_upper_camel_case(name);

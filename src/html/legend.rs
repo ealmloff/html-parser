@@ -1,13 +1,5 @@
 use kalosm_sample::*;
-#[derive(Debug, Clone)]
-pub enum LegendAttributes {
-    GlobalAttribute(crate::GlobalAttribute),
-}
-impl kalosm_sample::Parse for LegendAttributes {
-    fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {
-        crate::GlobalAttribute::new_parser().map_output(Self::GlobalAttribute)
-    }
-}
+type LegendAttributes = crate::GlobalAttribute;
 #[derive(Debug, Clone)]
 pub struct Legend {
     attributes: Vec<LegendAttributes>,

@@ -1,13 +1,5 @@
 use kalosm_sample::*;
-#[derive(Debug, Clone)]
-pub enum H5Attributes {
-    GlobalAttribute(crate::GlobalAttribute),
-}
-impl kalosm_sample::Parse for H5Attributes {
-    fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {
-        crate::GlobalAttribute::new_parser().map_output(Self::GlobalAttribute)
-    }
-}
+type H5Attributes = crate::GlobalAttribute;
 #[derive(Debug, Clone)]
 pub struct H5 {
     attributes: Vec<H5Attributes>,

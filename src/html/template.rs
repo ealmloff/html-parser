@@ -1,13 +1,5 @@
 use kalosm_sample::*;
-#[derive(Debug, Clone)]
-pub enum TemplateAttributes {
-    GlobalAttribute(crate::GlobalAttribute),
-}
-impl kalosm_sample::Parse for TemplateAttributes {
-    fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {
-        crate::GlobalAttribute::new_parser().map_output(Self::GlobalAttribute)
-    }
-}
+type TemplateAttributes = crate::GlobalAttribute;
 #[derive(Debug, Clone)]
 pub struct Template {
     attributes: Vec<TemplateAttributes>,

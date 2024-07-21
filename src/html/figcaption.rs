@@ -1,13 +1,5 @@
 use kalosm_sample::*;
-#[derive(Debug, Clone)]
-pub enum FigcaptionAttributes {
-    GlobalAttribute(crate::GlobalAttribute),
-}
-impl kalosm_sample::Parse for FigcaptionAttributes {
-    fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {
-        crate::GlobalAttribute::new_parser().map_output(Self::GlobalAttribute)
-    }
-}
+type FigcaptionAttributes = crate::GlobalAttribute;
 #[derive(Debug, Clone)]
 pub struct Figcaption {
     attributes: Vec<FigcaptionAttributes>,

@@ -1667,31 +1667,25 @@ pub use a::*;
 
 mod abbr;
 pub use abbr::*;
-
 mod address;
 pub use address::*;
-
 mod area;
 pub use area::*;
 
 mod article;
 pub use article::*;
-
 mod aside;
 pub use aside::*;
-
 mod audio;
 pub use audio::*;
 
 mod b;
 pub use b::*;
-
 mod base;
 pub use base::*;
 
 mod bdi;
 pub use bdi::*;
-
 mod bdo;
 pub use bdo::*;
 
@@ -1715,10 +1709,8 @@ pub use caption::*;
 
 mod cite;
 pub use cite::*;
-
 mod code;
 pub use code::*;
-
 mod col;
 pub use col::*;
 
@@ -1730,7 +1722,6 @@ pub use data::*;
 
 mod datalist;
 pub use datalist::*;
-
 mod dd;
 pub use dd::*;
 
@@ -1742,22 +1733,17 @@ pub use details::*;
 
 mod dfn;
 pub use dfn::*;
-
 mod dialog;
 pub use dialog::*;
 
 mod div;
 pub use div::*;
-
 mod dl;
 pub use dl::*;
-
 mod dt;
 pub use dt::*;
-
 mod em;
 pub use em::*;
-
 mod embed;
 pub use embed::*;
 
@@ -1766,43 +1752,32 @@ pub use fieldset::*;
 
 mod figcaption;
 pub use figcaption::*;
-
 mod figure;
 pub use figure::*;
-
 mod footer;
 pub use footer::*;
-
 mod form;
 pub use form::*;
 
 mod h1;
 pub use h1::*;
-
 mod h2;
 pub use h2::*;
-
 mod h3;
 pub use h3::*;
-
 mod h4;
 pub use h4::*;
-
 mod h5;
 pub use h5::*;
-
 mod h6;
 pub use h6::*;
-
 mod head;
 pub use head::*;
 
 mod header;
 pub use header::*;
-
 mod hgroup;
 pub use hgroup::*;
-
 mod hr;
 pub use hr::*;
 
@@ -1811,7 +1786,6 @@ pub use html::*;
 
 mod i;
 pub use i::*;
-
 mod iframe;
 pub use iframe::*;
 
@@ -1826,13 +1800,11 @@ pub use ins::*;
 
 mod kbd;
 pub use kbd::*;
-
 mod label;
 pub use label::*;
 
 mod legend;
 pub use legend::*;
-
 mod li;
 pub use li::*;
 
@@ -1841,16 +1813,13 @@ pub use link::*;
 
 mod main;
 pub use main::*;
-
 mod map;
 pub use map::*;
 
 mod mark;
 pub use mark::*;
-
 mod menu;
 pub use menu::*;
-
 mod meta;
 pub use meta::*;
 
@@ -1859,10 +1828,8 @@ pub use meter::*;
 
 mod nav;
 pub use nav::*;
-
 mod noscript;
 pub use noscript::*;
-
 mod object;
 pub use object::*;
 
@@ -1880,13 +1847,11 @@ pub use output::*;
 
 mod p;
 pub use p::*;
-
 mod param;
 pub use param::*;
 
 mod picture;
 pub use picture::*;
-
 mod pre;
 pub use pre::*;
 
@@ -1898,28 +1863,21 @@ pub use q::*;
 
 mod rb;
 pub use rb::*;
-
 mod rp;
 pub use rp::*;
-
 mod rt;
 pub use rt::*;
-
 mod ruby;
 pub use ruby::*;
-
 mod s;
 pub use s::*;
-
 mod samp;
 pub use samp::*;
-
 mod script;
 pub use script::*;
 
 mod section;
 pub use section::*;
-
 mod select;
 pub use select::*;
 
@@ -1928,28 +1886,22 @@ pub use slot::*;
 
 mod small;
 pub use small::*;
-
 mod source;
 pub use source::*;
 
 mod span;
 pub use span::*;
-
 mod strong;
 pub use strong::*;
-
 mod style;
 pub use style::*;
 
 mod sub;
 pub use sub::*;
-
 mod summary;
 pub use summary::*;
-
 mod sup;
 pub use sup::*;
-
 mod table;
 pub use table::*;
 
@@ -1961,7 +1913,6 @@ pub use td::*;
 
 mod template;
 pub use template::*;
-
 mod textarea;
 pub use textarea::*;
 
@@ -1979,7 +1930,6 @@ pub use time::*;
 
 mod title;
 pub use title::*;
-
 mod tr;
 pub use tr::*;
 
@@ -1988,19 +1938,16 @@ pub use track::*;
 
 mod u;
 pub use u::*;
-
 mod ul;
 pub use ul::*;
 
 mod var;
 pub use var::*;
-
 mod video;
 pub use video::*;
 
 mod wbr;
 pub use wbr::*;
-
 #[derive(Debug, Clone, Parse)]
 #[parse(unquoted)]
 pub enum ElementName {
