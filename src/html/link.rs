@@ -898,19 +898,13 @@ impl kalosm_sample::Parse for LinkAttributes {
 #[derive(Debug, Clone)]
 pub struct Link {
     attributes: Vec<LinkAttributes>,
-    body: Vec<crate::Element>,
 }
 impl kalosm_sample::Parse for Link {
     fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {
         use kalosm_sample::*;
         LinkAttributes::new_parser()
             .repeat(0..=10000)
-            .then_literal(">")
-            .then(
-                kalosm_sample::LazyParser::new(|| crate::Element::new_parser().boxed())
-                    .repeat(0..=10000),
-            )
-            .then_literal("</link>")
-            .map_output(|(attributes, body)| Link { attributes, body })
+            .then_literal("/>")
+            .map_output(|attributes| Link { attributes })
     }
 }

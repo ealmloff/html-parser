@@ -170,7 +170,9 @@ impl Response {
                 element_out,
                 "    attributes: Vec<{element_rust_name}Attributes>,"
             )?;
-            writeln!(element_out, "    body: Vec<crate::Element>,")?;
+            if !SELF_CLOSING_ELEMENTS.contains(&element.name.as_str()) {
+                writeln!(element_out, "    body: Vec<crate::Element>,")?;
+            }
             writeln!(element_out, "}}")?;
 
             // Implement the Parse trait for the element
@@ -186,13 +188,18 @@ impl Response {
                 "                {element_rust_name}Attributes::new_parser()"
             )?;
             writeln!(element_out, "                .repeat(0..=10000)")?;
-            writeln!(element_out, "                .then_literal(\">\")")?;
-            writeln!(
-                element_out,
-                "                .then(kalosm_sample::LazyParser::new(|| crate::Element::new_parser().boxed()).repeat(0..=10000))"
-            )?;
-            writeln!(element_out, "                .then_literal(\"</{name}>\")")?;
-            writeln!(element_out, "                .map_output(|(attributes, body)| {element_rust_name} {{ attributes, body }})")?;
+            if SELF_CLOSING_ELEMENTS.contains(&element.name.as_str()) {
+                writeln!(element_out, "                .then_literal(\"/>\")")?;
+                writeln!(element_out, "                .map_output(|attributes| {element_rust_name} {{ attributes }})")?;
+            } else {
+                writeln!(element_out, "                .then_literal(\">\")")?;
+                writeln!(
+                    element_out,
+                    "                .then(kalosm_sample::LazyParser::new(|| crate::Element::new_parser().boxed()).repeat(0..=10000))"
+                )?;
+                writeln!(element_out, "                .then_literal(\"</{name}>\")")?;
+                writeln!(element_out, "                .map_output(|(attributes, body)| {element_rust_name} {{ attributes, body }})")?;
+            }
             writeln!(element_out, "    }}")?;
             writeln!(element_out, "}}")?;
         }
@@ -342,3 +349,8 @@ struct Value {
     name: String,
     description: Option<Description>,
 }
+
+const SELF_CLOSING_ELEMENTS: &[&str] = &[
+    "area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source",
+    "track", "wbr",
+];

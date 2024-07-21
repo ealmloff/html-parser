@@ -826,19 +826,13 @@ impl kalosm_sample::Parse for BrAttributes {
 #[derive(Debug, Clone)]
 pub struct Br {
     attributes: Vec<BrAttributes>,
-    body: Vec<crate::Element>,
 }
 impl kalosm_sample::Parse for Br {
     fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {
         use kalosm_sample::*;
         BrAttributes::new_parser()
             .repeat(0..=10000)
-            .then_literal(">")
-            .then(
-                kalosm_sample::LazyParser::new(|| crate::Element::new_parser().boxed())
-                    .repeat(0..=10000),
-            )
-            .then_literal("</br>")
-            .map_output(|(attributes, body)| Br { attributes, body })
+            .then_literal("/>")
+            .map_output(|attributes| Br { attributes })
     }
 }

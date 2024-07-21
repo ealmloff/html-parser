@@ -1,9 +1,5 @@
-#![recursion_limit = "512"]
-
+use html_parser::*;
 use kalosm_sample::*;
-
-use html::*;
-mod html;
 
 fn main() {
     let parser = Element::new_parser();

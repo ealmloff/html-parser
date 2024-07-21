@@ -882,19 +882,13 @@ impl kalosm_sample::Parse for SourceAttributes {
 #[derive(Debug, Clone)]
 pub struct Source {
     attributes: Vec<SourceAttributes>,
-    body: Vec<crate::Element>,
 }
 impl kalosm_sample::Parse for Source {
     fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {
         use kalosm_sample::*;
         SourceAttributes::new_parser()
             .repeat(0..=10000)
-            .then_literal(">")
-            .then(
-                kalosm_sample::LazyParser::new(|| crate::Element::new_parser().boxed())
-                    .repeat(0..=10000),
-            )
-            .then_literal("</source>")
-            .map_output(|(attributes, body)| Source { attributes, body })
+            .then_literal("/>")
+            .map_output(|attributes| Source { attributes })
     }
 }

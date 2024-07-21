@@ -892,19 +892,13 @@ impl kalosm_sample::Parse for AreaAttributes {
 #[derive(Debug, Clone)]
 pub struct Area {
     attributes: Vec<AreaAttributes>,
-    body: Vec<crate::Element>,
 }
 impl kalosm_sample::Parse for Area {
     fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {
         use kalosm_sample::*;
         AreaAttributes::new_parser()
             .repeat(0..=10000)
-            .then_literal(">")
-            .then(
-                kalosm_sample::LazyParser::new(|| crate::Element::new_parser().boxed())
-                    .repeat(0..=10000),
-            )
-            .then_literal("</area>")
-            .map_output(|(attributes, body)| Area { attributes, body })
+            .then_literal("/>")
+            .map_output(|attributes| Area { attributes })
     }
 }
