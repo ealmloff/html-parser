@@ -1140,6 +1140,236 @@ pub use video::*;
 mod wbr;
 pub use wbr::*;
 
+#[derive(Debug, Clone, Parse)]
+#[parse(unquoted)]
+pub enum ElementName {
+    #[parse(rename = "<a")]
+    A,
+    #[parse(rename = "<abbr")]
+    Abbr,
+    #[parse(rename = "<address")]
+    Address,
+    #[parse(rename = "<area")]
+    Area,
+    #[parse(rename = "<article")]
+    Article,
+    #[parse(rename = "<aside")]
+    Aside,
+    #[parse(rename = "<audio")]
+    Audio,
+    #[parse(rename = "<b")]
+    B,
+    #[parse(rename = "<base")]
+    Base,
+    #[parse(rename = "<bdi")]
+    Bdi,
+    #[parse(rename = "<bdo")]
+    Bdo,
+    #[parse(rename = "<blockquote")]
+    Blockquote,
+    #[parse(rename = "<body")]
+    Body,
+    #[parse(rename = "<br")]
+    Br,
+    #[parse(rename = "<button")]
+    Button,
+    #[parse(rename = "<canvas")]
+    Canvas,
+    #[parse(rename = "<caption")]
+    Caption,
+    #[parse(rename = "<cite")]
+    Cite,
+    #[parse(rename = "<code")]
+    Code,
+    #[parse(rename = "<col")]
+    Col,
+    #[parse(rename = "<colgroup")]
+    Colgroup,
+    #[parse(rename = "<data")]
+    Data,
+    #[parse(rename = "<datalist")]
+    Datalist,
+    #[parse(rename = "<dd")]
+    Dd,
+    #[parse(rename = "<del")]
+    Del,
+    #[parse(rename = "<details")]
+    Details,
+    #[parse(rename = "<dfn")]
+    Dfn,
+    #[parse(rename = "<dialog")]
+    Dialog,
+    #[parse(rename = "<div")]
+    Div,
+    #[parse(rename = "<dl")]
+    Dl,
+    #[parse(rename = "<dt")]
+    Dt,
+    #[parse(rename = "<em")]
+    Em,
+    #[parse(rename = "<embed")]
+    Embed,
+    #[parse(rename = "<fieldset")]
+    Fieldset,
+    #[parse(rename = "<figcaption")]
+    Figcaption,
+    #[parse(rename = "<figure")]
+    Figure,
+    #[parse(rename = "<footer")]
+    Footer,
+    #[parse(rename = "<form")]
+    Form,
+    #[parse(rename = "<h1")]
+    H1,
+    #[parse(rename = "<h2")]
+    H2,
+    #[parse(rename = "<h3")]
+    H3,
+    #[parse(rename = "<h4")]
+    H4,
+    #[parse(rename = "<h5")]
+    H5,
+    #[parse(rename = "<h6")]
+    H6,
+    #[parse(rename = "<head")]
+    Head,
+    #[parse(rename = "<header")]
+    Header,
+    #[parse(rename = "<hgroup")]
+    Hgroup,
+    #[parse(rename = "<hr")]
+    Hr,
+    #[parse(rename = "<html")]
+    Html,
+    #[parse(rename = "<i")]
+    I,
+    #[parse(rename = "<iframe")]
+    Iframe,
+    #[parse(rename = "<img")]
+    Img,
+    #[parse(rename = "<input")]
+    Input,
+    #[parse(rename = "<ins")]
+    Ins,
+    #[parse(rename = "<kbd")]
+    Kbd,
+    #[parse(rename = "<label")]
+    Label,
+    #[parse(rename = "<legend")]
+    Legend,
+    #[parse(rename = "<li")]
+    Li,
+    #[parse(rename = "<link")]
+    Link,
+    #[parse(rename = "<main")]
+    Main,
+    #[parse(rename = "<map")]
+    Map,
+    #[parse(rename = "<mark")]
+    Mark,
+    #[parse(rename = "<menu")]
+    Menu,
+    #[parse(rename = "<meta")]
+    Meta,
+    #[parse(rename = "<meter")]
+    Meter,
+    #[parse(rename = "<nav")]
+    Nav,
+    #[parse(rename = "<noscript")]
+    Noscript,
+    #[parse(rename = "<object")]
+    Object,
+    #[parse(rename = "<ol")]
+    Ol,
+    #[parse(rename = "<optgroup")]
+    Optgroup,
+    #[parse(rename = "<option")]
+    Option,
+    #[parse(rename = "<output")]
+    Output,
+    #[parse(rename = "<p")]
+    P,
+    #[parse(rename = "<param")]
+    Param,
+    #[parse(rename = "<picture")]
+    Picture,
+    #[parse(rename = "<pre")]
+    Pre,
+    #[parse(rename = "<progress")]
+    Progress,
+    #[parse(rename = "<q")]
+    Q,
+    #[parse(rename = "<rb")]
+    Rb,
+    #[parse(rename = "<rp")]
+    Rp,
+    #[parse(rename = "<rt")]
+    Rt,
+    #[parse(rename = "<ruby")]
+    Ruby,
+    #[parse(rename = "<s")]
+    S,
+    #[parse(rename = "<samp")]
+    Samp,
+    #[parse(rename = "<script")]
+    Script,
+    #[parse(rename = "<section")]
+    Section,
+    #[parse(rename = "<select")]
+    Select,
+    #[parse(rename = "<slot")]
+    Slot,
+    #[parse(rename = "<small")]
+    Small,
+    #[parse(rename = "<source")]
+    Source,
+    #[parse(rename = "<span")]
+    Span,
+    #[parse(rename = "<strong")]
+    Strong,
+    #[parse(rename = "<style")]
+    Style,
+    #[parse(rename = "<sub")]
+    Sub,
+    #[parse(rename = "<summary")]
+    Summary,
+    #[parse(rename = "<sup")]
+    Sup,
+    #[parse(rename = "<table")]
+    Table,
+    #[parse(rename = "<tbody")]
+    Tbody,
+    #[parse(rename = "<td")]
+    Td,
+    #[parse(rename = "<template")]
+    Template,
+    #[parse(rename = "<textarea")]
+    Textarea,
+    #[parse(rename = "<tfoot")]
+    Tfoot,
+    #[parse(rename = "<th")]
+    Th,
+    #[parse(rename = "<thead")]
+    Thead,
+    #[parse(rename = "<time")]
+    Time,
+    #[parse(rename = "<title")]
+    Title,
+    #[parse(rename = "<tr")]
+    Tr,
+    #[parse(rename = "<track")]
+    Track,
+    #[parse(rename = "<u")]
+    U,
+    #[parse(rename = "<ul")]
+    Ul,
+    #[parse(rename = "<var")]
+    Var,
+    #[parse(rename = "<video")]
+    Video,
+    #[parse(rename = "<wbr")]
+    Wbr,
+}
 #[derive(Debug, Clone)]
 pub enum Element {
     A(A),
@@ -1259,119 +1489,126 @@ pub enum Element {
 impl kalosm_sample::Parse for Element {
     fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {
         use kalosm_sample::*;
-        A::new_parser()
-            .map_output(Self::A)
-            .or(Abbr::new_parser().map_output(Self::Abbr))
-            .or(Address::new_parser().map_output(Self::Address))
-            .or(Area::new_parser().map_output(Self::Area))
-            .or(Article::new_parser().map_output(Self::Article))
-            .or(Aside::new_parser().map_output(Self::Aside))
-            .or(Audio::new_parser().map_output(Self::Audio))
-            .or(B::new_parser().map_output(Self::B))
-            .or(Base::new_parser().map_output(Self::Base))
-            .or(Bdi::new_parser().map_output(Self::Bdi))
-            .or(Bdo::new_parser().map_output(Self::Bdo))
-            .or(Blockquote::new_parser().map_output(Self::Blockquote))
-            .or(Body::new_parser().map_output(Self::Body))
-            .or(Br::new_parser().map_output(Self::Br))
-            .or(Button::new_parser().map_output(Self::Button))
-            .or(Canvas::new_parser().map_output(Self::Canvas))
-            .or(Caption::new_parser().map_output(Self::Caption))
-            .or(Cite::new_parser().map_output(Self::Cite))
-            .or(Code::new_parser().map_output(Self::Code))
-            .or(Col::new_parser().map_output(Self::Col))
-            .or(Colgroup::new_parser().map_output(Self::Colgroup))
-            .or(Data::new_parser().map_output(Self::Data))
-            .or(Datalist::new_parser().map_output(Self::Datalist))
-            .or(Dd::new_parser().map_output(Self::Dd))
-            .or(Del::new_parser().map_output(Self::Del))
-            .or(Details::new_parser().map_output(Self::Details))
-            .or(Dfn::new_parser().map_output(Self::Dfn))
-            .or(Dialog::new_parser().map_output(Self::Dialog))
-            .or(Div::new_parser().map_output(Self::Div))
-            .or(Dl::new_parser().map_output(Self::Dl))
-            .or(Dt::new_parser().map_output(Self::Dt))
-            .or(Em::new_parser().map_output(Self::Em))
-            .or(Embed::new_parser().map_output(Self::Embed))
-            .or(Fieldset::new_parser().map_output(Self::Fieldset))
-            .or(Figcaption::new_parser().map_output(Self::Figcaption))
-            .or(Figure::new_parser().map_output(Self::Figure))
-            .or(Footer::new_parser().map_output(Self::Footer))
-            .or(Form::new_parser().map_output(Self::Form))
-            .or(H1::new_parser().map_output(Self::H1))
-            .or(H2::new_parser().map_output(Self::H2))
-            .or(H3::new_parser().map_output(Self::H3))
-            .or(H4::new_parser().map_output(Self::H4))
-            .or(H5::new_parser().map_output(Self::H5))
-            .or(H6::new_parser().map_output(Self::H6))
-            .or(Head::new_parser().map_output(Self::Head))
-            .or(Header::new_parser().map_output(Self::Header))
-            .or(Hgroup::new_parser().map_output(Self::Hgroup))
-            .or(Hr::new_parser().map_output(Self::Hr))
-            .or(Html::new_parser().map_output(Self::Html))
-            .or(I::new_parser().map_output(Self::I))
-            .or(Iframe::new_parser().map_output(Self::Iframe))
-            .or(Img::new_parser().map_output(Self::Img))
-            .or(Input::new_parser().map_output(Self::Input))
-            .or(Ins::new_parser().map_output(Self::Ins))
-            .or(Kbd::new_parser().map_output(Self::Kbd))
-            .or(Label::new_parser().map_output(Self::Label))
-            .or(Legend::new_parser().map_output(Self::Legend))
-            .or(Li::new_parser().map_output(Self::Li))
-            .or(Link::new_parser().map_output(Self::Link))
-            .or(Main::new_parser().map_output(Self::Main))
-            .or(Map::new_parser().map_output(Self::Map))
-            .or(Mark::new_parser().map_output(Self::Mark))
-            .or(Menu::new_parser().map_output(Self::Menu))
-            .or(Meta::new_parser().map_output(Self::Meta))
-            .or(Meter::new_parser().map_output(Self::Meter))
-            .or(Nav::new_parser().map_output(Self::Nav))
-            .or(Noscript::new_parser().map_output(Self::Noscript))
-            .or(Object::new_parser().map_output(Self::Object))
-            .or(Ol::new_parser().map_output(Self::Ol))
-            .or(Optgroup::new_parser().map_output(Self::Optgroup))
-            .or(Option::new_parser().map_output(Self::Option))
-            .or(Output::new_parser().map_output(Self::Output))
-            .or(P::new_parser().map_output(Self::P))
-            .or(Param::new_parser().map_output(Self::Param))
-            .or(Picture::new_parser().map_output(Self::Picture))
-            .or(Pre::new_parser().map_output(Self::Pre))
-            .or(Progress::new_parser().map_output(Self::Progress))
-            .or(Q::new_parser().map_output(Self::Q))
-            .or(Rb::new_parser().map_output(Self::Rb))
-            .or(Rp::new_parser().map_output(Self::Rp))
-            .or(Rt::new_parser().map_output(Self::Rt))
-            .or(Ruby::new_parser().map_output(Self::Ruby))
-            .or(S::new_parser().map_output(Self::S))
-            .or(Samp::new_parser().map_output(Self::Samp))
-            .or(Script::new_parser().map_output(Self::Script))
-            .or(Section::new_parser().map_output(Self::Section))
-            .or(Select::new_parser().map_output(Self::Select))
-            .or(Slot::new_parser().map_output(Self::Slot))
-            .or(Small::new_parser().map_output(Self::Small))
-            .or(Source::new_parser().map_output(Self::Source))
-            .or(Span::new_parser().map_output(Self::Span))
-            .or(Strong::new_parser().map_output(Self::Strong))
-            .or(Style::new_parser().map_output(Self::Style))
-            .or(Sub::new_parser().map_output(Self::Sub))
-            .or(Summary::new_parser().map_output(Self::Summary))
-            .or(Sup::new_parser().map_output(Self::Sup))
-            .or(Table::new_parser().map_output(Self::Table))
-            .or(Tbody::new_parser().map_output(Self::Tbody))
-            .or(Td::new_parser().map_output(Self::Td))
-            .or(Template::new_parser().map_output(Self::Template))
-            .or(Textarea::new_parser().map_output(Self::Textarea))
-            .or(Tfoot::new_parser().map_output(Self::Tfoot))
-            .or(Th::new_parser().map_output(Self::Th))
-            .or(Thead::new_parser().map_output(Self::Thead))
-            .or(Time::new_parser().map_output(Self::Time))
-            .or(Title::new_parser().map_output(Self::Title))
-            .or(Tr::new_parser().map_output(Self::Tr))
-            .or(Track::new_parser().map_output(Self::Track))
-            .or(U::new_parser().map_output(Self::U))
-            .or(Ul::new_parser().map_output(Self::Ul))
-            .or(Var::new_parser().map_output(Self::Var))
-            .or(Video::new_parser().map_output(Self::Video))
-            .or(Wbr::new_parser().map_output(Self::Wbr))
+        ElementName::new_parser()
+            .then_lazy(|name| match name {
+                ElementName::A => A::new_parser().map_output(Self::A).boxed(),
+                ElementName::Abbr => Abbr::new_parser().map_output(Self::Abbr).boxed(),
+                ElementName::Address => Address::new_parser().map_output(Self::Address).boxed(),
+                ElementName::Area => Area::new_parser().map_output(Self::Area).boxed(),
+                ElementName::Article => Article::new_parser().map_output(Self::Article).boxed(),
+                ElementName::Aside => Aside::new_parser().map_output(Self::Aside).boxed(),
+                ElementName::Audio => Audio::new_parser().map_output(Self::Audio).boxed(),
+                ElementName::B => B::new_parser().map_output(Self::B).boxed(),
+                ElementName::Base => Base::new_parser().map_output(Self::Base).boxed(),
+                ElementName::Bdi => Bdi::new_parser().map_output(Self::Bdi).boxed(),
+                ElementName::Bdo => Bdo::new_parser().map_output(Self::Bdo).boxed(),
+                ElementName::Blockquote => Blockquote::new_parser()
+                    .map_output(Self::Blockquote)
+                    .boxed(),
+                ElementName::Body => Body::new_parser().map_output(Self::Body).boxed(),
+                ElementName::Br => Br::new_parser().map_output(Self::Br).boxed(),
+                ElementName::Button => Button::new_parser().map_output(Self::Button).boxed(),
+                ElementName::Canvas => Canvas::new_parser().map_output(Self::Canvas).boxed(),
+                ElementName::Caption => Caption::new_parser().map_output(Self::Caption).boxed(),
+                ElementName::Cite => Cite::new_parser().map_output(Self::Cite).boxed(),
+                ElementName::Code => Code::new_parser().map_output(Self::Code).boxed(),
+                ElementName::Col => Col::new_parser().map_output(Self::Col).boxed(),
+                ElementName::Colgroup => Colgroup::new_parser().map_output(Self::Colgroup).boxed(),
+                ElementName::Data => Data::new_parser().map_output(Self::Data).boxed(),
+                ElementName::Datalist => Datalist::new_parser().map_output(Self::Datalist).boxed(),
+                ElementName::Dd => Dd::new_parser().map_output(Self::Dd).boxed(),
+                ElementName::Del => Del::new_parser().map_output(Self::Del).boxed(),
+                ElementName::Details => Details::new_parser().map_output(Self::Details).boxed(),
+                ElementName::Dfn => Dfn::new_parser().map_output(Self::Dfn).boxed(),
+                ElementName::Dialog => Dialog::new_parser().map_output(Self::Dialog).boxed(),
+                ElementName::Div => Div::new_parser().map_output(Self::Div).boxed(),
+                ElementName::Dl => Dl::new_parser().map_output(Self::Dl).boxed(),
+                ElementName::Dt => Dt::new_parser().map_output(Self::Dt).boxed(),
+                ElementName::Em => Em::new_parser().map_output(Self::Em).boxed(),
+                ElementName::Embed => Embed::new_parser().map_output(Self::Embed).boxed(),
+                ElementName::Fieldset => Fieldset::new_parser().map_output(Self::Fieldset).boxed(),
+                ElementName::Figcaption => Figcaption::new_parser()
+                    .map_output(Self::Figcaption)
+                    .boxed(),
+                ElementName::Figure => Figure::new_parser().map_output(Self::Figure).boxed(),
+                ElementName::Footer => Footer::new_parser().map_output(Self::Footer).boxed(),
+                ElementName::Form => Form::new_parser().map_output(Self::Form).boxed(),
+                ElementName::H1 => H1::new_parser().map_output(Self::H1).boxed(),
+                ElementName::H2 => H2::new_parser().map_output(Self::H2).boxed(),
+                ElementName::H3 => H3::new_parser().map_output(Self::H3).boxed(),
+                ElementName::H4 => H4::new_parser().map_output(Self::H4).boxed(),
+                ElementName::H5 => H5::new_parser().map_output(Self::H5).boxed(),
+                ElementName::H6 => H6::new_parser().map_output(Self::H6).boxed(),
+                ElementName::Head => Head::new_parser().map_output(Self::Head).boxed(),
+                ElementName::Header => Header::new_parser().map_output(Self::Header).boxed(),
+                ElementName::Hgroup => Hgroup::new_parser().map_output(Self::Hgroup).boxed(),
+                ElementName::Hr => Hr::new_parser().map_output(Self::Hr).boxed(),
+                ElementName::Html => Html::new_parser().map_output(Self::Html).boxed(),
+                ElementName::I => I::new_parser().map_output(Self::I).boxed(),
+                ElementName::Iframe => Iframe::new_parser().map_output(Self::Iframe).boxed(),
+                ElementName::Img => Img::new_parser().map_output(Self::Img).boxed(),
+                ElementName::Input => Input::new_parser().map_output(Self::Input).boxed(),
+                ElementName::Ins => Ins::new_parser().map_output(Self::Ins).boxed(),
+                ElementName::Kbd => Kbd::new_parser().map_output(Self::Kbd).boxed(),
+                ElementName::Label => Label::new_parser().map_output(Self::Label).boxed(),
+                ElementName::Legend => Legend::new_parser().map_output(Self::Legend).boxed(),
+                ElementName::Li => Li::new_parser().map_output(Self::Li).boxed(),
+                ElementName::Link => Link::new_parser().map_output(Self::Link).boxed(),
+                ElementName::Main => Main::new_parser().map_output(Self::Main).boxed(),
+                ElementName::Map => Map::new_parser().map_output(Self::Map).boxed(),
+                ElementName::Mark => Mark::new_parser().map_output(Self::Mark).boxed(),
+                ElementName::Menu => Menu::new_parser().map_output(Self::Menu).boxed(),
+                ElementName::Meta => Meta::new_parser().map_output(Self::Meta).boxed(),
+                ElementName::Meter => Meter::new_parser().map_output(Self::Meter).boxed(),
+                ElementName::Nav => Nav::new_parser().map_output(Self::Nav).boxed(),
+                ElementName::Noscript => Noscript::new_parser().map_output(Self::Noscript).boxed(),
+                ElementName::Object => Object::new_parser().map_output(Self::Object).boxed(),
+                ElementName::Ol => Ol::new_parser().map_output(Self::Ol).boxed(),
+                ElementName::Optgroup => Optgroup::new_parser().map_output(Self::Optgroup).boxed(),
+                ElementName::Option => Option::new_parser().map_output(Self::Option).boxed(),
+                ElementName::Output => Output::new_parser().map_output(Self::Output).boxed(),
+                ElementName::P => P::new_parser().map_output(Self::P).boxed(),
+                ElementName::Param => Param::new_parser().map_output(Self::Param).boxed(),
+                ElementName::Picture => Picture::new_parser().map_output(Self::Picture).boxed(),
+                ElementName::Pre => Pre::new_parser().map_output(Self::Pre).boxed(),
+                ElementName::Progress => Progress::new_parser().map_output(Self::Progress).boxed(),
+                ElementName::Q => Q::new_parser().map_output(Self::Q).boxed(),
+                ElementName::Rb => Rb::new_parser().map_output(Self::Rb).boxed(),
+                ElementName::Rp => Rp::new_parser().map_output(Self::Rp).boxed(),
+                ElementName::Rt => Rt::new_parser().map_output(Self::Rt).boxed(),
+                ElementName::Ruby => Ruby::new_parser().map_output(Self::Ruby).boxed(),
+                ElementName::S => S::new_parser().map_output(Self::S).boxed(),
+                ElementName::Samp => Samp::new_parser().map_output(Self::Samp).boxed(),
+                ElementName::Script => Script::new_parser().map_output(Self::Script).boxed(),
+                ElementName::Section => Section::new_parser().map_output(Self::Section).boxed(),
+                ElementName::Select => Select::new_parser().map_output(Self::Select).boxed(),
+                ElementName::Slot => Slot::new_parser().map_output(Self::Slot).boxed(),
+                ElementName::Small => Small::new_parser().map_output(Self::Small).boxed(),
+                ElementName::Source => Source::new_parser().map_output(Self::Source).boxed(),
+                ElementName::Span => Span::new_parser().map_output(Self::Span).boxed(),
+                ElementName::Strong => Strong::new_parser().map_output(Self::Strong).boxed(),
+                ElementName::Style => Style::new_parser().map_output(Self::Style).boxed(),
+                ElementName::Sub => Sub::new_parser().map_output(Self::Sub).boxed(),
+                ElementName::Summary => Summary::new_parser().map_output(Self::Summary).boxed(),
+                ElementName::Sup => Sup::new_parser().map_output(Self::Sup).boxed(),
+                ElementName::Table => Table::new_parser().map_output(Self::Table).boxed(),
+                ElementName::Tbody => Tbody::new_parser().map_output(Self::Tbody).boxed(),
+                ElementName::Td => Td::new_parser().map_output(Self::Td).boxed(),
+                ElementName::Template => Template::new_parser().map_output(Self::Template).boxed(),
+                ElementName::Textarea => Textarea::new_parser().map_output(Self::Textarea).boxed(),
+                ElementName::Tfoot => Tfoot::new_parser().map_output(Self::Tfoot).boxed(),
+                ElementName::Th => Th::new_parser().map_output(Self::Th).boxed(),
+                ElementName::Thead => Thead::new_parser().map_output(Self::Thead).boxed(),
+                ElementName::Time => Time::new_parser().map_output(Self::Time).boxed(),
+                ElementName::Title => Title::new_parser().map_output(Self::Title).boxed(),
+                ElementName::Tr => Tr::new_parser().map_output(Self::Tr).boxed(),
+                ElementName::Track => Track::new_parser().map_output(Self::Track).boxed(),
+                ElementName::U => U::new_parser().map_output(Self::U).boxed(),
+                ElementName::Ul => Ul::new_parser().map_output(Self::Ul).boxed(),
+                ElementName::Var => Var::new_parser().map_output(Self::Var).boxed(),
+                ElementName::Video => Video::new_parser().map_output(Self::Video).boxed(),
+                ElementName::Wbr => Wbr::new_parser().map_output(Self::Wbr).boxed(),
+            })
+            .map_output(|(_, element)| element)
     }
 }

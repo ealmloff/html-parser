@@ -1,4 +1,304 @@
 use kalosm_sample::*;
+#[derive(Debug, Clone, Parse)]
+#[parse(unquoted)]
+pub enum MetaAttributesName {
+    #[parse(rename = " accesskey=")]
+    Accesskey,
+    #[parse(rename = " aria-activedescendant=")]
+    AriaActivedescendant,
+    #[parse(rename = " aria-atomic=")]
+    AriaAtomic,
+    #[parse(rename = " aria-autocomplete=")]
+    AriaAutocomplete,
+    #[parse(rename = " aria-busy=")]
+    AriaBusy,
+    #[parse(rename = " aria-checked=")]
+    AriaChecked,
+    #[parse(rename = " aria-colcount=")]
+    AriaColcount,
+    #[parse(rename = " aria-colindex=")]
+    AriaColindex,
+    #[parse(rename = " aria-colspan=")]
+    AriaColspan,
+    #[parse(rename = " aria-controls=")]
+    AriaControls,
+    #[parse(rename = " aria-current=")]
+    AriaCurrent,
+    #[parse(rename = " aria-describedby=")]
+    AriaDescribedby,
+    #[parse(rename = " aria-details=")]
+    AriaDetails,
+    #[parse(rename = " aria-disabled=")]
+    AriaDisabled,
+    #[parse(rename = " aria-dropeffect=")]
+    AriaDropeffect,
+    #[parse(rename = " aria-errormessage=")]
+    AriaErrormessage,
+    #[parse(rename = " aria-expanded=")]
+    AriaExpanded,
+    #[parse(rename = " aria-flowto=")]
+    AriaFlowto,
+    #[parse(rename = " aria-grabbed=")]
+    AriaGrabbed,
+    #[parse(rename = " aria-haspopup=")]
+    AriaHaspopup,
+    #[parse(rename = " aria-hidden=")]
+    AriaHidden,
+    #[parse(rename = " aria-invalid=")]
+    AriaInvalid,
+    #[parse(rename = " aria-keyshortcuts=")]
+    AriaKeyshortcuts,
+    #[parse(rename = " aria-label=")]
+    AriaLabel,
+    #[parse(rename = " aria-labelledby=")]
+    AriaLabelledby,
+    #[parse(rename = " aria-level=")]
+    AriaLevel,
+    #[parse(rename = " aria-live=")]
+    AriaLive,
+    #[parse(rename = " aria-modal=")]
+    AriaModal,
+    #[parse(rename = " aria-multiline=")]
+    AriaMultiline,
+    #[parse(rename = " aria-multiselectable=")]
+    AriaMultiselectable,
+    #[parse(rename = " aria-orientation=")]
+    AriaOrientation,
+    #[parse(rename = " aria-owns=")]
+    AriaOwns,
+    #[parse(rename = " aria-placeholder=")]
+    AriaPlaceholder,
+    #[parse(rename = " aria-posinset=")]
+    AriaPosinset,
+    #[parse(rename = " aria-pressed=")]
+    AriaPressed,
+    #[parse(rename = " aria-readonly=")]
+    AriaReadonly,
+    #[parse(rename = " aria-relevant=")]
+    AriaRelevant,
+    #[parse(rename = " aria-required=")]
+    AriaRequired,
+    #[parse(rename = " aria-roledescription=")]
+    AriaRoledescription,
+    #[parse(rename = " aria-rowcount=")]
+    AriaRowcount,
+    #[parse(rename = " aria-rowindex=")]
+    AriaRowindex,
+    #[parse(rename = " aria-rowspan=")]
+    AriaRowspan,
+    #[parse(rename = " aria-selected=")]
+    AriaSelected,
+    #[parse(rename = " aria-setsize=")]
+    AriaSetsize,
+    #[parse(rename = " aria-sort=")]
+    AriaSort,
+    #[parse(rename = " aria-valuemax=")]
+    AriaValuemax,
+    #[parse(rename = " aria-valuemin=")]
+    AriaValuemin,
+    #[parse(rename = " aria-valuenow=")]
+    AriaValuenow,
+    #[parse(rename = " aria-valuetext=")]
+    AriaValuetext,
+    #[parse(rename = " autocapitalize=")]
+    Autocapitalize,
+    #[parse(rename = " charset=")]
+    Charset,
+    #[parse(rename = " class=")]
+    Class,
+    #[parse(rename = " content=")]
+    Content,
+    #[parse(rename = " contenteditable=")]
+    Contenteditable,
+    #[parse(rename = " contextmenu=")]
+    Contextmenu,
+    #[parse(rename = " dir=")]
+    Dir,
+    #[parse(rename = " draggable=")]
+    Draggable,
+    #[parse(rename = " dropzone=")]
+    Dropzone,
+    #[parse(rename = " exportparts=")]
+    Exportparts,
+    #[parse(rename = " hidden=")]
+    Hidden,
+    #[parse(rename = " http-equiv=")]
+    HttpEquiv,
+    #[parse(rename = " id=")]
+    Id,
+    #[parse(rename = " inputmode=")]
+    Inputmode,
+    #[parse(rename = " is=")]
+    Is,
+    #[parse(rename = " itemid=")]
+    Itemid,
+    #[parse(rename = " itemprop=")]
+    Itemprop,
+    #[parse(rename = " itemref=")]
+    Itemref,
+    #[parse(rename = " itemscope=")]
+    Itemscope,
+    #[parse(rename = " itemtype=")]
+    Itemtype,
+    #[parse(rename = " lang=")]
+    Lang,
+    #[parse(rename = " name=")]
+    Name,
+    #[parse(rename = " onabort=")]
+    Onabort,
+    #[parse(rename = " onblur=")]
+    Onblur,
+    #[parse(rename = " oncanplay=")]
+    Oncanplay,
+    #[parse(rename = " oncanplaythrough=")]
+    Oncanplaythrough,
+    #[parse(rename = " onchange=")]
+    Onchange,
+    #[parse(rename = " onclick=")]
+    Onclick,
+    #[parse(rename = " oncontextmenu=")]
+    Oncontextmenu,
+    #[parse(rename = " ondblclick=")]
+    Ondblclick,
+    #[parse(rename = " ondrag=")]
+    Ondrag,
+    #[parse(rename = " ondragend=")]
+    Ondragend,
+    #[parse(rename = " ondragenter=")]
+    Ondragenter,
+    #[parse(rename = " ondragleave=")]
+    Ondragleave,
+    #[parse(rename = " ondragover=")]
+    Ondragover,
+    #[parse(rename = " ondragstart=")]
+    Ondragstart,
+    #[parse(rename = " ondrop=")]
+    Ondrop,
+    #[parse(rename = " ondurationchange=")]
+    Ondurationchange,
+    #[parse(rename = " onemptied=")]
+    Onemptied,
+    #[parse(rename = " onended=")]
+    Onended,
+    #[parse(rename = " onerror=")]
+    Onerror,
+    #[parse(rename = " onfocus=")]
+    Onfocus,
+    #[parse(rename = " onformchange=")]
+    Onformchange,
+    #[parse(rename = " onforminput=")]
+    Onforminput,
+    #[parse(rename = " oninput=")]
+    Oninput,
+    #[parse(rename = " oninvalid=")]
+    Oninvalid,
+    #[parse(rename = " onkeydown=")]
+    Onkeydown,
+    #[parse(rename = " onkeypress=")]
+    Onkeypress,
+    #[parse(rename = " onkeyup=")]
+    Onkeyup,
+    #[parse(rename = " onload=")]
+    Onload,
+    #[parse(rename = " onloadeddata=")]
+    Onloadeddata,
+    #[parse(rename = " onloadedmetadata=")]
+    Onloadedmetadata,
+    #[parse(rename = " onloadstart=")]
+    Onloadstart,
+    #[parse(rename = " onmousedown=")]
+    Onmousedown,
+    #[parse(rename = " onmouseenter=")]
+    Onmouseenter,
+    #[parse(rename = " onmouseleave=")]
+    Onmouseleave,
+    #[parse(rename = " onmousemove=")]
+    Onmousemove,
+    #[parse(rename = " onmouseout=")]
+    Onmouseout,
+    #[parse(rename = " onmouseover=")]
+    Onmouseover,
+    #[parse(rename = " onmouseup=")]
+    Onmouseup,
+    #[parse(rename = " onmousewheel=")]
+    Onmousewheel,
+    #[parse(rename = " onpause=")]
+    Onpause,
+    #[parse(rename = " onplay=")]
+    Onplay,
+    #[parse(rename = " onplaying=")]
+    Onplaying,
+    #[parse(rename = " onpointercancel=")]
+    Onpointercancel,
+    #[parse(rename = " onpointerdown=")]
+    Onpointerdown,
+    #[parse(rename = " onpointerenter=")]
+    Onpointerenter,
+    #[parse(rename = " onpointerleave=")]
+    Onpointerleave,
+    #[parse(rename = " onpointerlockchange=")]
+    Onpointerlockchange,
+    #[parse(rename = " onpointerlockerror=")]
+    Onpointerlockerror,
+    #[parse(rename = " onpointermove=")]
+    Onpointermove,
+    #[parse(rename = " onpointerout=")]
+    Onpointerout,
+    #[parse(rename = " onpointerover=")]
+    Onpointerover,
+    #[parse(rename = " onpointerup=")]
+    Onpointerup,
+    #[parse(rename = " onprogress=")]
+    Onprogress,
+    #[parse(rename = " onratechange=")]
+    Onratechange,
+    #[parse(rename = " onreadystatechange=")]
+    Onreadystatechange,
+    #[parse(rename = " onreset=")]
+    Onreset,
+    #[parse(rename = " onresize=")]
+    Onresize,
+    #[parse(rename = " onscroll=")]
+    Onscroll,
+    #[parse(rename = " onseeked=")]
+    Onseeked,
+    #[parse(rename = " onseeking=")]
+    Onseeking,
+    #[parse(rename = " onselect=")]
+    Onselect,
+    #[parse(rename = " onshow=")]
+    Onshow,
+    #[parse(rename = " onstalled=")]
+    Onstalled,
+    #[parse(rename = " onsubmit=")]
+    Onsubmit,
+    #[parse(rename = " onsuspend=")]
+    Onsuspend,
+    #[parse(rename = " ontimeupdate=")]
+    Ontimeupdate,
+    #[parse(rename = " onvolumechange=")]
+    Onvolumechange,
+    #[parse(rename = " onwaiting=")]
+    Onwaiting,
+    #[parse(rename = " part=")]
+    Part,
+    #[parse(rename = " role=")]
+    Role,
+    #[parse(rename = " scheme=")]
+    Scheme,
+    #[parse(rename = " slot=")]
+    Slot,
+    #[parse(rename = " spellcheck=")]
+    Spellcheck,
+    #[parse(rename = " style=")]
+    Style,
+    #[parse(rename = " tabindex=")]
+    Tabindex,
+    #[parse(rename = " title=")]
+    Title,
+    #[parse(rename = " translate=")]
+    Translate,
+}
 #[derive(Debug, Clone)]
 pub enum MetaAttributes {
     Accesskey(String),
@@ -153,450 +453,418 @@ pub enum MetaAttributes {
 impl kalosm_sample::Parse for MetaAttributes {
     fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {
         use kalosm_sample::*;
-        LiteralParser::new("\"accesskey\"=")
-            .ignore_output_then(String::new_parser())
-            .map_output(|value| Self::Accesskey(value))
-            .or(LiteralParser::new("\"aria-activedescendant\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaActivedescendant(value)))
-            .or(LiteralParser::new("\"aria-atomic\"=")
-                .ignore_output_then(crate::BValues::new_parser())
-                .map_output(|value| Self::AriaAtomic(value)))
-            .or(LiteralParser::new("\"aria-autocomplete\"=")
-                .ignore_output_then(crate::AutocompleteValues::new_parser())
-                .map_output(|value| Self::AriaAutocomplete(value)))
-            .or(LiteralParser::new("\"aria-busy\"=")
-                .ignore_output_then(crate::BValues::new_parser())
-                .map_output(|value| Self::AriaBusy(value)))
-            .or(LiteralParser::new("\"aria-checked\"=")
-                .ignore_output_then(crate::TristateValues::new_parser())
-                .map_output(|value| Self::AriaChecked(value)))
-            .or(LiteralParser::new("\"aria-colcount\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaColcount(value)))
-            .or(LiteralParser::new("\"aria-colindex\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaColindex(value)))
-            .or(LiteralParser::new("\"aria-colspan\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaColspan(value)))
-            .or(LiteralParser::new("\"aria-controls\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaControls(value)))
-            .or(LiteralParser::new("\"aria-current\"=")
-                .ignore_output_then(crate::CurrentValues::new_parser())
-                .map_output(|value| Self::AriaCurrent(value)))
-            .or(LiteralParser::new("\"aria-describedby\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaDescribedby(value)))
-            .or(LiteralParser::new("\"aria-details\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaDetails(value)))
-            .or(LiteralParser::new("\"aria-disabled\"=")
-                .ignore_output_then(crate::BValues::new_parser())
-                .map_output(|value| Self::AriaDisabled(value)))
-            .or(LiteralParser::new("\"aria-dropeffect\"=")
-                .ignore_output_then(crate::DropeffectValues::new_parser())
-                .map_output(|value| Self::AriaDropeffect(value)))
-            .or(LiteralParser::new("\"aria-errormessage\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaErrormessage(value)))
-            .or(LiteralParser::new("\"aria-expanded\"=")
-                .ignore_output_then(crate::UValues::new_parser())
-                .map_output(|value| Self::AriaExpanded(value)))
-            .or(LiteralParser::new("\"aria-flowto\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaFlowto(value)))
-            .or(LiteralParser::new("\"aria-grabbed\"=")
-                .ignore_output_then(crate::UValues::new_parser())
-                .map_output(|value| Self::AriaGrabbed(value)))
-            .or(LiteralParser::new("\"aria-haspopup\"=")
-                .ignore_output_then(crate::HaspopupValues::new_parser())
-                .map_output(|value| Self::AriaHaspopup(value)))
-            .or(LiteralParser::new("\"aria-hidden\"=")
-                .ignore_output_then(crate::BValues::new_parser())
-                .map_output(|value| Self::AriaHidden(value)))
-            .or(LiteralParser::new("\"aria-invalid\"=")
-                .ignore_output_then(crate::InvalidValues::new_parser())
-                .map_output(|value| Self::AriaInvalid(value)))
-            .or(LiteralParser::new("\"aria-keyshortcuts\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaKeyshortcuts(value)))
-            .or(LiteralParser::new("\"aria-label\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaLabel(value)))
-            .or(LiteralParser::new("\"aria-labelledby\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaLabelledby(value)))
-            .or(LiteralParser::new("\"aria-level\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaLevel(value)))
-            .or(LiteralParser::new("\"aria-live\"=")
-                .ignore_output_then(crate::LiveValues::new_parser())
-                .map_output(|value| Self::AriaLive(value)))
-            .or(LiteralParser::new("\"aria-modal\"=")
-                .ignore_output_then(crate::BValues::new_parser())
-                .map_output(|value| Self::AriaModal(value)))
-            .or(LiteralParser::new("\"aria-multiline\"=")
-                .ignore_output_then(crate::BValues::new_parser())
-                .map_output(|value| Self::AriaMultiline(value)))
-            .or(LiteralParser::new("\"aria-multiselectable\"=")
-                .ignore_output_then(crate::BValues::new_parser())
-                .map_output(|value| Self::AriaMultiselectable(value)))
-            .or(LiteralParser::new("\"aria-orientation\"=")
-                .ignore_output_then(crate::OrientationValues::new_parser())
-                .map_output(|value| Self::AriaOrientation(value)))
-            .or(LiteralParser::new("\"aria-owns\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaOwns(value)))
-            .or(LiteralParser::new("\"aria-placeholder\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaPlaceholder(value)))
-            .or(LiteralParser::new("\"aria-posinset\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaPosinset(value)))
-            .or(LiteralParser::new("\"aria-pressed\"=")
-                .ignore_output_then(crate::TristateValues::new_parser())
-                .map_output(|value| Self::AriaPressed(value)))
-            .or(LiteralParser::new("\"aria-readonly\"=")
-                .ignore_output_then(crate::BValues::new_parser())
-                .map_output(|value| Self::AriaReadonly(value)))
-            .or(LiteralParser::new("\"aria-relevant\"=")
-                .ignore_output_then(crate::RelevantValues::new_parser())
-                .map_output(|value| Self::AriaRelevant(value)))
-            .or(LiteralParser::new("\"aria-required\"=")
-                .ignore_output_then(crate::BValues::new_parser())
-                .map_output(|value| Self::AriaRequired(value)))
-            .or(LiteralParser::new("\"aria-roledescription\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaRoledescription(value)))
-            .or(LiteralParser::new("\"aria-rowcount\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaRowcount(value)))
-            .or(LiteralParser::new("\"aria-rowindex\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaRowindex(value)))
-            .or(LiteralParser::new("\"aria-rowspan\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaRowspan(value)))
-            .or(LiteralParser::new("\"aria-selected\"=")
-                .ignore_output_then(crate::UValues::new_parser())
-                .map_output(|value| Self::AriaSelected(value)))
-            .or(LiteralParser::new("\"aria-setsize\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaSetsize(value)))
-            .or(LiteralParser::new("\"aria-sort\"=")
-                .ignore_output_then(crate::SortValues::new_parser())
-                .map_output(|value| Self::AriaSort(value)))
-            .or(LiteralParser::new("\"aria-valuemax\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaValuemax(value)))
-            .or(LiteralParser::new("\"aria-valuemin\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaValuemin(value)))
-            .or(LiteralParser::new("\"aria-valuenow\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaValuenow(value)))
-            .or(LiteralParser::new("\"aria-valuetext\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::AriaValuetext(value)))
-            .or(LiteralParser::new("\"autocapitalize\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Autocapitalize(value)))
-            .or(LiteralParser::new("\"charset\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Charset(value)))
-            .or(LiteralParser::new("\"class\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Class(value)))
-            .or(LiteralParser::new("\"content\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Content(value)))
-            .or(LiteralParser::new("\"contenteditable\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Contenteditable(value)))
-            .or(LiteralParser::new("\"contextmenu\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Contextmenu(value)))
-            .or(LiteralParser::new("\"dir\"=")
-                .ignore_output_then(crate::DValues::new_parser())
-                .map_output(|value| Self::Dir(value)))
-            .or(LiteralParser::new("\"draggable\"=")
-                .ignore_output_then(crate::BValues::new_parser())
-                .map_output(|value| Self::Draggable(value)))
-            .or(LiteralParser::new("\"dropzone\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Dropzone(value)))
-            .or(LiteralParser::new("\"exportparts\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Exportparts(value)))
-            .or(LiteralParser::new("\"hidden\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Hidden(value)))
-            .or(LiteralParser::new("\"http-equiv\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::HttpEquiv(value)))
-            .or(LiteralParser::new("\"id\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Id(value)))
-            .or(LiteralParser::new("\"inputmode\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Inputmode(value)))
-            .or(LiteralParser::new("\"is\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Is(value)))
-            .or(LiteralParser::new("\"itemid\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Itemid(value)))
-            .or(LiteralParser::new("\"itemprop\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Itemprop(value)))
-            .or(LiteralParser::new("\"itemref\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Itemref(value)))
-            .or(LiteralParser::new("\"itemscope\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Itemscope(value)))
-            .or(LiteralParser::new("\"itemtype\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Itemtype(value)))
-            .or(LiteralParser::new("\"lang\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Lang(value)))
-            .or(LiteralParser::new("\"name\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Name(value)))
-            .or(LiteralParser::new("\"onabort\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onabort(value)))
-            .or(LiteralParser::new("\"onblur\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onblur(value)))
-            .or(LiteralParser::new("\"oncanplay\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Oncanplay(value)))
-            .or(LiteralParser::new("\"oncanplaythrough\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Oncanplaythrough(value)))
-            .or(LiteralParser::new("\"onchange\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onchange(value)))
-            .or(LiteralParser::new("\"onclick\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onclick(value)))
-            .or(LiteralParser::new("\"oncontextmenu\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Oncontextmenu(value)))
-            .or(LiteralParser::new("\"ondblclick\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Ondblclick(value)))
-            .or(LiteralParser::new("\"ondrag\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Ondrag(value)))
-            .or(LiteralParser::new("\"ondragend\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Ondragend(value)))
-            .or(LiteralParser::new("\"ondragenter\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Ondragenter(value)))
-            .or(LiteralParser::new("\"ondragleave\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Ondragleave(value)))
-            .or(LiteralParser::new("\"ondragover\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Ondragover(value)))
-            .or(LiteralParser::new("\"ondragstart\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Ondragstart(value)))
-            .or(LiteralParser::new("\"ondrop\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Ondrop(value)))
-            .or(LiteralParser::new("\"ondurationchange\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Ondurationchange(value)))
-            .or(LiteralParser::new("\"onemptied\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onemptied(value)))
-            .or(LiteralParser::new("\"onended\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onended(value)))
-            .or(LiteralParser::new("\"onerror\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onerror(value)))
-            .or(LiteralParser::new("\"onfocus\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onfocus(value)))
-            .or(LiteralParser::new("\"onformchange\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onformchange(value)))
-            .or(LiteralParser::new("\"onforminput\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onforminput(value)))
-            .or(LiteralParser::new("\"oninput\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Oninput(value)))
-            .or(LiteralParser::new("\"oninvalid\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Oninvalid(value)))
-            .or(LiteralParser::new("\"onkeydown\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onkeydown(value)))
-            .or(LiteralParser::new("\"onkeypress\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onkeypress(value)))
-            .or(LiteralParser::new("\"onkeyup\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onkeyup(value)))
-            .or(LiteralParser::new("\"onload\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onload(value)))
-            .or(LiteralParser::new("\"onloadeddata\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onloadeddata(value)))
-            .or(LiteralParser::new("\"onloadedmetadata\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onloadedmetadata(value)))
-            .or(LiteralParser::new("\"onloadstart\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onloadstart(value)))
-            .or(LiteralParser::new("\"onmousedown\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onmousedown(value)))
-            .or(LiteralParser::new("\"onmouseenter\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onmouseenter(value)))
-            .or(LiteralParser::new("\"onmouseleave\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onmouseleave(value)))
-            .or(LiteralParser::new("\"onmousemove\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onmousemove(value)))
-            .or(LiteralParser::new("\"onmouseout\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onmouseout(value)))
-            .or(LiteralParser::new("\"onmouseover\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onmouseover(value)))
-            .or(LiteralParser::new("\"onmouseup\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onmouseup(value)))
-            .or(LiteralParser::new("\"onmousewheel\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onmousewheel(value)))
-            .or(LiteralParser::new("\"onpause\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onpause(value)))
-            .or(LiteralParser::new("\"onplay\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onplay(value)))
-            .or(LiteralParser::new("\"onplaying\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onplaying(value)))
-            .or(LiteralParser::new("\"onpointercancel\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onpointercancel(value)))
-            .or(LiteralParser::new("\"onpointerdown\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onpointerdown(value)))
-            .or(LiteralParser::new("\"onpointerenter\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onpointerenter(value)))
-            .or(LiteralParser::new("\"onpointerleave\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onpointerleave(value)))
-            .or(LiteralParser::new("\"onpointerlockchange\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onpointerlockchange(value)))
-            .or(LiteralParser::new("\"onpointerlockerror\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onpointerlockerror(value)))
-            .or(LiteralParser::new("\"onpointermove\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onpointermove(value)))
-            .or(LiteralParser::new("\"onpointerout\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onpointerout(value)))
-            .or(LiteralParser::new("\"onpointerover\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onpointerover(value)))
-            .or(LiteralParser::new("\"onpointerup\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onpointerup(value)))
-            .or(LiteralParser::new("\"onprogress\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onprogress(value)))
-            .or(LiteralParser::new("\"onratechange\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onratechange(value)))
-            .or(LiteralParser::new("\"onreadystatechange\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onreadystatechange(value)))
-            .or(LiteralParser::new("\"onreset\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onreset(value)))
-            .or(LiteralParser::new("\"onresize\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onresize(value)))
-            .or(LiteralParser::new("\"onscroll\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onscroll(value)))
-            .or(LiteralParser::new("\"onseeked\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onseeked(value)))
-            .or(LiteralParser::new("\"onseeking\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onseeking(value)))
-            .or(LiteralParser::new("\"onselect\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onselect(value)))
-            .or(LiteralParser::new("\"onshow\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onshow(value)))
-            .or(LiteralParser::new("\"onstalled\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onstalled(value)))
-            .or(LiteralParser::new("\"onsubmit\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onsubmit(value)))
-            .or(LiteralParser::new("\"onsuspend\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onsuspend(value)))
-            .or(LiteralParser::new("\"ontimeupdate\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Ontimeupdate(value)))
-            .or(LiteralParser::new("\"onvolumechange\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onvolumechange(value)))
-            .or(LiteralParser::new("\"onwaiting\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Onwaiting(value)))
-            .or(LiteralParser::new("\"part\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Part(value)))
-            .or(LiteralParser::new("\"role\"=")
-                .ignore_output_then(crate::RolesValues::new_parser())
-                .map_output(|value| Self::Role(value)))
-            .or(LiteralParser::new("\"scheme\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Scheme(value)))
-            .or(LiteralParser::new("\"slot\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Slot(value)))
-            .or(LiteralParser::new("\"spellcheck\"=")
-                .ignore_output_then(crate::BValues::new_parser())
-                .map_output(|value| Self::Spellcheck(value)))
-            .or(LiteralParser::new("\"style\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Style(value)))
-            .or(LiteralParser::new("\"tabindex\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Tabindex(value)))
-            .or(LiteralParser::new("\"title\"=")
-                .ignore_output_then(String::new_parser())
-                .map_output(|value| Self::Title(value)))
-            .or(LiteralParser::new("\"translate\"=")
-                .ignore_output_then(crate::YValues::new_parser())
-                .map_output(|value| Self::Translate(value)))
+        MetaAttributesName::new_parser()
+            .then_lazy(|name| match name {
+                MetaAttributesName::Accesskey => {
+                    String::new_parser().map_output(Self::Accesskey).boxed()
+                }
+                MetaAttributesName::AriaActivedescendant => String::new_parser()
+                    .map_output(Self::AriaActivedescendant)
+                    .boxed(),
+                MetaAttributesName::AriaAtomic => crate::BValues::new_parser()
+                    .map_output(Self::AriaAtomic)
+                    .boxed(),
+                MetaAttributesName::AriaAutocomplete => crate::AutocompleteValues::new_parser()
+                    .map_output(Self::AriaAutocomplete)
+                    .boxed(),
+                MetaAttributesName::AriaBusy => crate::BValues::new_parser()
+                    .map_output(Self::AriaBusy)
+                    .boxed(),
+                MetaAttributesName::AriaChecked => crate::TristateValues::new_parser()
+                    .map_output(Self::AriaChecked)
+                    .boxed(),
+                MetaAttributesName::AriaColcount => {
+                    String::new_parser().map_output(Self::AriaColcount).boxed()
+                }
+                MetaAttributesName::AriaColindex => {
+                    String::new_parser().map_output(Self::AriaColindex).boxed()
+                }
+                MetaAttributesName::AriaColspan => {
+                    String::new_parser().map_output(Self::AriaColspan).boxed()
+                }
+                MetaAttributesName::AriaControls => {
+                    String::new_parser().map_output(Self::AriaControls).boxed()
+                }
+                MetaAttributesName::AriaCurrent => crate::CurrentValues::new_parser()
+                    .map_output(Self::AriaCurrent)
+                    .boxed(),
+                MetaAttributesName::AriaDescribedby => String::new_parser()
+                    .map_output(Self::AriaDescribedby)
+                    .boxed(),
+                MetaAttributesName::AriaDetails => {
+                    String::new_parser().map_output(Self::AriaDetails).boxed()
+                }
+                MetaAttributesName::AriaDisabled => crate::BValues::new_parser()
+                    .map_output(Self::AriaDisabled)
+                    .boxed(),
+                MetaAttributesName::AriaDropeffect => crate::DropeffectValues::new_parser()
+                    .map_output(Self::AriaDropeffect)
+                    .boxed(),
+                MetaAttributesName::AriaErrormessage => String::new_parser()
+                    .map_output(Self::AriaErrormessage)
+                    .boxed(),
+                MetaAttributesName::AriaExpanded => crate::UValues::new_parser()
+                    .map_output(Self::AriaExpanded)
+                    .boxed(),
+                MetaAttributesName::AriaFlowto => {
+                    String::new_parser().map_output(Self::AriaFlowto).boxed()
+                }
+                MetaAttributesName::AriaGrabbed => crate::UValues::new_parser()
+                    .map_output(Self::AriaGrabbed)
+                    .boxed(),
+                MetaAttributesName::AriaHaspopup => crate::HaspopupValues::new_parser()
+                    .map_output(Self::AriaHaspopup)
+                    .boxed(),
+                MetaAttributesName::AriaHidden => crate::BValues::new_parser()
+                    .map_output(Self::AriaHidden)
+                    .boxed(),
+                MetaAttributesName::AriaInvalid => crate::InvalidValues::new_parser()
+                    .map_output(Self::AriaInvalid)
+                    .boxed(),
+                MetaAttributesName::AriaKeyshortcuts => String::new_parser()
+                    .map_output(Self::AriaKeyshortcuts)
+                    .boxed(),
+                MetaAttributesName::AriaLabel => {
+                    String::new_parser().map_output(Self::AriaLabel).boxed()
+                }
+                MetaAttributesName::AriaLabelledby => String::new_parser()
+                    .map_output(Self::AriaLabelledby)
+                    .boxed(),
+                MetaAttributesName::AriaLevel => {
+                    String::new_parser().map_output(Self::AriaLevel).boxed()
+                }
+                MetaAttributesName::AriaLive => crate::LiveValues::new_parser()
+                    .map_output(Self::AriaLive)
+                    .boxed(),
+                MetaAttributesName::AriaModal => crate::BValues::new_parser()
+                    .map_output(Self::AriaModal)
+                    .boxed(),
+                MetaAttributesName::AriaMultiline => crate::BValues::new_parser()
+                    .map_output(Self::AriaMultiline)
+                    .boxed(),
+                MetaAttributesName::AriaMultiselectable => crate::BValues::new_parser()
+                    .map_output(Self::AriaMultiselectable)
+                    .boxed(),
+                MetaAttributesName::AriaOrientation => crate::OrientationValues::new_parser()
+                    .map_output(Self::AriaOrientation)
+                    .boxed(),
+                MetaAttributesName::AriaOwns => {
+                    String::new_parser().map_output(Self::AriaOwns).boxed()
+                }
+                MetaAttributesName::AriaPlaceholder => String::new_parser()
+                    .map_output(Self::AriaPlaceholder)
+                    .boxed(),
+                MetaAttributesName::AriaPosinset => {
+                    String::new_parser().map_output(Self::AriaPosinset).boxed()
+                }
+                MetaAttributesName::AriaPressed => crate::TristateValues::new_parser()
+                    .map_output(Self::AriaPressed)
+                    .boxed(),
+                MetaAttributesName::AriaReadonly => crate::BValues::new_parser()
+                    .map_output(Self::AriaReadonly)
+                    .boxed(),
+                MetaAttributesName::AriaRelevant => crate::RelevantValues::new_parser()
+                    .map_output(Self::AriaRelevant)
+                    .boxed(),
+                MetaAttributesName::AriaRequired => crate::BValues::new_parser()
+                    .map_output(Self::AriaRequired)
+                    .boxed(),
+                MetaAttributesName::AriaRoledescription => String::new_parser()
+                    .map_output(Self::AriaRoledescription)
+                    .boxed(),
+                MetaAttributesName::AriaRowcount => {
+                    String::new_parser().map_output(Self::AriaRowcount).boxed()
+                }
+                MetaAttributesName::AriaRowindex => {
+                    String::new_parser().map_output(Self::AriaRowindex).boxed()
+                }
+                MetaAttributesName::AriaRowspan => {
+                    String::new_parser().map_output(Self::AriaRowspan).boxed()
+                }
+                MetaAttributesName::AriaSelected => crate::UValues::new_parser()
+                    .map_output(Self::AriaSelected)
+                    .boxed(),
+                MetaAttributesName::AriaSetsize => {
+                    String::new_parser().map_output(Self::AriaSetsize).boxed()
+                }
+                MetaAttributesName::AriaSort => crate::SortValues::new_parser()
+                    .map_output(Self::AriaSort)
+                    .boxed(),
+                MetaAttributesName::AriaValuemax => {
+                    String::new_parser().map_output(Self::AriaValuemax).boxed()
+                }
+                MetaAttributesName::AriaValuemin => {
+                    String::new_parser().map_output(Self::AriaValuemin).boxed()
+                }
+                MetaAttributesName::AriaValuenow => {
+                    String::new_parser().map_output(Self::AriaValuenow).boxed()
+                }
+                MetaAttributesName::AriaValuetext => {
+                    String::new_parser().map_output(Self::AriaValuetext).boxed()
+                }
+                MetaAttributesName::Autocapitalize => String::new_parser()
+                    .map_output(Self::Autocapitalize)
+                    .boxed(),
+                MetaAttributesName::Charset => {
+                    String::new_parser().map_output(Self::Charset).boxed()
+                }
+                MetaAttributesName::Class => String::new_parser().map_output(Self::Class).boxed(),
+                MetaAttributesName::Content => {
+                    String::new_parser().map_output(Self::Content).boxed()
+                }
+                MetaAttributesName::Contenteditable => String::new_parser()
+                    .map_output(Self::Contenteditable)
+                    .boxed(),
+                MetaAttributesName::Contextmenu => {
+                    String::new_parser().map_output(Self::Contextmenu).boxed()
+                }
+                MetaAttributesName::Dir => {
+                    crate::DValues::new_parser().map_output(Self::Dir).boxed()
+                }
+                MetaAttributesName::Draggable => crate::BValues::new_parser()
+                    .map_output(Self::Draggable)
+                    .boxed(),
+                MetaAttributesName::Dropzone => {
+                    String::new_parser().map_output(Self::Dropzone).boxed()
+                }
+                MetaAttributesName::Exportparts => {
+                    String::new_parser().map_output(Self::Exportparts).boxed()
+                }
+                MetaAttributesName::Hidden => String::new_parser().map_output(Self::Hidden).boxed(),
+                MetaAttributesName::HttpEquiv => {
+                    String::new_parser().map_output(Self::HttpEquiv).boxed()
+                }
+                MetaAttributesName::Id => String::new_parser().map_output(Self::Id).boxed(),
+                MetaAttributesName::Inputmode => {
+                    String::new_parser().map_output(Self::Inputmode).boxed()
+                }
+                MetaAttributesName::Is => String::new_parser().map_output(Self::Is).boxed(),
+                MetaAttributesName::Itemid => String::new_parser().map_output(Self::Itemid).boxed(),
+                MetaAttributesName::Itemprop => {
+                    String::new_parser().map_output(Self::Itemprop).boxed()
+                }
+                MetaAttributesName::Itemref => {
+                    String::new_parser().map_output(Self::Itemref).boxed()
+                }
+                MetaAttributesName::Itemscope => {
+                    String::new_parser().map_output(Self::Itemscope).boxed()
+                }
+                MetaAttributesName::Itemtype => {
+                    String::new_parser().map_output(Self::Itemtype).boxed()
+                }
+                MetaAttributesName::Lang => String::new_parser().map_output(Self::Lang).boxed(),
+                MetaAttributesName::Name => String::new_parser().map_output(Self::Name).boxed(),
+                MetaAttributesName::Onabort => {
+                    String::new_parser().map_output(Self::Onabort).boxed()
+                }
+                MetaAttributesName::Onblur => String::new_parser().map_output(Self::Onblur).boxed(),
+                MetaAttributesName::Oncanplay => {
+                    String::new_parser().map_output(Self::Oncanplay).boxed()
+                }
+                MetaAttributesName::Oncanplaythrough => String::new_parser()
+                    .map_output(Self::Oncanplaythrough)
+                    .boxed(),
+                MetaAttributesName::Onchange => {
+                    String::new_parser().map_output(Self::Onchange).boxed()
+                }
+                MetaAttributesName::Onclick => {
+                    String::new_parser().map_output(Self::Onclick).boxed()
+                }
+                MetaAttributesName::Oncontextmenu => {
+                    String::new_parser().map_output(Self::Oncontextmenu).boxed()
+                }
+                MetaAttributesName::Ondblclick => {
+                    String::new_parser().map_output(Self::Ondblclick).boxed()
+                }
+                MetaAttributesName::Ondrag => String::new_parser().map_output(Self::Ondrag).boxed(),
+                MetaAttributesName::Ondragend => {
+                    String::new_parser().map_output(Self::Ondragend).boxed()
+                }
+                MetaAttributesName::Ondragenter => {
+                    String::new_parser().map_output(Self::Ondragenter).boxed()
+                }
+                MetaAttributesName::Ondragleave => {
+                    String::new_parser().map_output(Self::Ondragleave).boxed()
+                }
+                MetaAttributesName::Ondragover => {
+                    String::new_parser().map_output(Self::Ondragover).boxed()
+                }
+                MetaAttributesName::Ondragstart => {
+                    String::new_parser().map_output(Self::Ondragstart).boxed()
+                }
+                MetaAttributesName::Ondrop => String::new_parser().map_output(Self::Ondrop).boxed(),
+                MetaAttributesName::Ondurationchange => String::new_parser()
+                    .map_output(Self::Ondurationchange)
+                    .boxed(),
+                MetaAttributesName::Onemptied => {
+                    String::new_parser().map_output(Self::Onemptied).boxed()
+                }
+                MetaAttributesName::Onended => {
+                    String::new_parser().map_output(Self::Onended).boxed()
+                }
+                MetaAttributesName::Onerror => {
+                    String::new_parser().map_output(Self::Onerror).boxed()
+                }
+                MetaAttributesName::Onfocus => {
+                    String::new_parser().map_output(Self::Onfocus).boxed()
+                }
+                MetaAttributesName::Onformchange => {
+                    String::new_parser().map_output(Self::Onformchange).boxed()
+                }
+                MetaAttributesName::Onforminput => {
+                    String::new_parser().map_output(Self::Onforminput).boxed()
+                }
+                MetaAttributesName::Oninput => {
+                    String::new_parser().map_output(Self::Oninput).boxed()
+                }
+                MetaAttributesName::Oninvalid => {
+                    String::new_parser().map_output(Self::Oninvalid).boxed()
+                }
+                MetaAttributesName::Onkeydown => {
+                    String::new_parser().map_output(Self::Onkeydown).boxed()
+                }
+                MetaAttributesName::Onkeypress => {
+                    String::new_parser().map_output(Self::Onkeypress).boxed()
+                }
+                MetaAttributesName::Onkeyup => {
+                    String::new_parser().map_output(Self::Onkeyup).boxed()
+                }
+                MetaAttributesName::Onload => String::new_parser().map_output(Self::Onload).boxed(),
+                MetaAttributesName::Onloadeddata => {
+                    String::new_parser().map_output(Self::Onloadeddata).boxed()
+                }
+                MetaAttributesName::Onloadedmetadata => String::new_parser()
+                    .map_output(Self::Onloadedmetadata)
+                    .boxed(),
+                MetaAttributesName::Onloadstart => {
+                    String::new_parser().map_output(Self::Onloadstart).boxed()
+                }
+                MetaAttributesName::Onmousedown => {
+                    String::new_parser().map_output(Self::Onmousedown).boxed()
+                }
+                MetaAttributesName::Onmouseenter => {
+                    String::new_parser().map_output(Self::Onmouseenter).boxed()
+                }
+                MetaAttributesName::Onmouseleave => {
+                    String::new_parser().map_output(Self::Onmouseleave).boxed()
+                }
+                MetaAttributesName::Onmousemove => {
+                    String::new_parser().map_output(Self::Onmousemove).boxed()
+                }
+                MetaAttributesName::Onmouseout => {
+                    String::new_parser().map_output(Self::Onmouseout).boxed()
+                }
+                MetaAttributesName::Onmouseover => {
+                    String::new_parser().map_output(Self::Onmouseover).boxed()
+                }
+                MetaAttributesName::Onmouseup => {
+                    String::new_parser().map_output(Self::Onmouseup).boxed()
+                }
+                MetaAttributesName::Onmousewheel => {
+                    String::new_parser().map_output(Self::Onmousewheel).boxed()
+                }
+                MetaAttributesName::Onpause => {
+                    String::new_parser().map_output(Self::Onpause).boxed()
+                }
+                MetaAttributesName::Onplay => String::new_parser().map_output(Self::Onplay).boxed(),
+                MetaAttributesName::Onplaying => {
+                    String::new_parser().map_output(Self::Onplaying).boxed()
+                }
+                MetaAttributesName::Onpointercancel => String::new_parser()
+                    .map_output(Self::Onpointercancel)
+                    .boxed(),
+                MetaAttributesName::Onpointerdown => {
+                    String::new_parser().map_output(Self::Onpointerdown).boxed()
+                }
+                MetaAttributesName::Onpointerenter => String::new_parser()
+                    .map_output(Self::Onpointerenter)
+                    .boxed(),
+                MetaAttributesName::Onpointerleave => String::new_parser()
+                    .map_output(Self::Onpointerleave)
+                    .boxed(),
+                MetaAttributesName::Onpointerlockchange => String::new_parser()
+                    .map_output(Self::Onpointerlockchange)
+                    .boxed(),
+                MetaAttributesName::Onpointerlockerror => String::new_parser()
+                    .map_output(Self::Onpointerlockerror)
+                    .boxed(),
+                MetaAttributesName::Onpointermove => {
+                    String::new_parser().map_output(Self::Onpointermove).boxed()
+                }
+                MetaAttributesName::Onpointerout => {
+                    String::new_parser().map_output(Self::Onpointerout).boxed()
+                }
+                MetaAttributesName::Onpointerover => {
+                    String::new_parser().map_output(Self::Onpointerover).boxed()
+                }
+                MetaAttributesName::Onpointerup => {
+                    String::new_parser().map_output(Self::Onpointerup).boxed()
+                }
+                MetaAttributesName::Onprogress => {
+                    String::new_parser().map_output(Self::Onprogress).boxed()
+                }
+                MetaAttributesName::Onratechange => {
+                    String::new_parser().map_output(Self::Onratechange).boxed()
+                }
+                MetaAttributesName::Onreadystatechange => String::new_parser()
+                    .map_output(Self::Onreadystatechange)
+                    .boxed(),
+                MetaAttributesName::Onreset => {
+                    String::new_parser().map_output(Self::Onreset).boxed()
+                }
+                MetaAttributesName::Onresize => {
+                    String::new_parser().map_output(Self::Onresize).boxed()
+                }
+                MetaAttributesName::Onscroll => {
+                    String::new_parser().map_output(Self::Onscroll).boxed()
+                }
+                MetaAttributesName::Onseeked => {
+                    String::new_parser().map_output(Self::Onseeked).boxed()
+                }
+                MetaAttributesName::Onseeking => {
+                    String::new_parser().map_output(Self::Onseeking).boxed()
+                }
+                MetaAttributesName::Onselect => {
+                    String::new_parser().map_output(Self::Onselect).boxed()
+                }
+                MetaAttributesName::Onshow => String::new_parser().map_output(Self::Onshow).boxed(),
+                MetaAttributesName::Onstalled => {
+                    String::new_parser().map_output(Self::Onstalled).boxed()
+                }
+                MetaAttributesName::Onsubmit => {
+                    String::new_parser().map_output(Self::Onsubmit).boxed()
+                }
+                MetaAttributesName::Onsuspend => {
+                    String::new_parser().map_output(Self::Onsuspend).boxed()
+                }
+                MetaAttributesName::Ontimeupdate => {
+                    String::new_parser().map_output(Self::Ontimeupdate).boxed()
+                }
+                MetaAttributesName::Onvolumechange => String::new_parser()
+                    .map_output(Self::Onvolumechange)
+                    .boxed(),
+                MetaAttributesName::Onwaiting => {
+                    String::new_parser().map_output(Self::Onwaiting).boxed()
+                }
+                MetaAttributesName::Part => String::new_parser().map_output(Self::Part).boxed(),
+                MetaAttributesName::Role => crate::RolesValues::new_parser()
+                    .map_output(Self::Role)
+                    .boxed(),
+                MetaAttributesName::Scheme => String::new_parser().map_output(Self::Scheme).boxed(),
+                MetaAttributesName::Slot => String::new_parser().map_output(Self::Slot).boxed(),
+                MetaAttributesName::Spellcheck => crate::BValues::new_parser()
+                    .map_output(Self::Spellcheck)
+                    .boxed(),
+                MetaAttributesName::Style => String::new_parser().map_output(Self::Style).boxed(),
+                MetaAttributesName::Tabindex => {
+                    String::new_parser().map_output(Self::Tabindex).boxed()
+                }
+                MetaAttributesName::Title => String::new_parser().map_output(Self::Title).boxed(),
+                MetaAttributesName::Translate => crate::YValues::new_parser()
+                    .map_output(Self::Translate)
+                    .boxed(),
+            })
+            .map_output(|(_, attribute)| attribute)
     }
 }
 #[derive(Debug, Clone)]
@@ -607,14 +875,13 @@ pub struct Meta {
 impl kalosm_sample::Parse for Meta {
     fn new_parser() -> impl kalosm_sample::SendCreateParserState<Output = Self> {
         use kalosm_sample::*;
-        LiteralParser::new("<meta")
-            .ignore_output_then(
-                LiteralParser::new(" ")
-                    .ignore_output_then(MetaAttributes::new_parser())
+        MetaAttributes::new_parser()
+            .repeat(0..=10000)
+            .then_literal(">")
+            .then(
+                kalosm_sample::LazyParser::new(|| crate::Element::new_parser().boxed())
                     .repeat(0..=10000),
             )
-            .then_literal(">")
-            .then(crate::Element::new_parser().boxed().repeat(0..=10000))
             .then_literal("</meta>")
             .map_output(|(attributes, body)| Meta { attributes, body })
     }

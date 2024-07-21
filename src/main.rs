@@ -6,20 +6,34 @@ use html::*;
 mod html;
 
 fn main() {
-    let parser = Div::new_parser();
+    let parser = Element::new_parser();
     println!("size of enum: {}", std::mem::size_of_val(&parser));
     let state = parser.create_parser_state();
     println!("size of state: {}", std::mem::size_of_val(&state));
-    let result = parser.parse(&state, b"<div width=\"100\"></div>123");
-    match result {
-        Ok(ParseStatus::Finished { result, remaining }) => {
-            println!("result: {:?}", result);
+    loop {
+        // read line
+        let mut line = String::new();
+        std::io::stdin().read_line(&mut line).unwrap();
+        if line.trim() == "quit" {
+            break;
         }
-        Ok(ParseStatus::Incomplete { .. }) => {
-            println!("incomplete");
-        }
-        Err(error) => {
-            println!("error: {:?}", error);
+        let line = line.trim();
+        println!("parsing: {}", line);
+        let result = parser.parse(&state, line.as_bytes());
+        match result {
+            Ok(ParseStatus::Finished { result, remaining }) => {
+                println!("result: {:?}", result);
+            }
+            Ok(ParseStatus::Incomplete { new_state, .. }) => {
+                println!(
+                    "size of partial state: {}",
+                    std::mem::size_of_val(&new_state)
+                );
+                println!("incomplete");
+            }
+            Err(error) => {
+                println!("error: {:?}", error);
+            }
         }
     }
 }
