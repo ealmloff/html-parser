@@ -3,7 +3,7 @@ use kalosm_sample::*;
 use html::*;
 mod html;
 
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 struct ElementBody<Attribute> {
     attributes: Vec<Attribute>,
     children: Vec<html::Element>,
@@ -17,7 +17,7 @@ fn main() {
     let result = parser.parse(&state, b"\"transaction-currency\"123");
     match result {
         Ok(ParseStatus::Finished { result, remaining }) => {
-            assert_eq!(result, InputautocompleteValues::TransactionCurrency);
+            assert!(matches!(result, InputautocompleteValues::TransactionCurrency));
             assert_eq!(remaining, b"123");
             println!("result: {:?}", result);
         }

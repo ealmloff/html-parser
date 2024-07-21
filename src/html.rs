@@ -1,14 +1,14 @@
 #![allow(clippy::enum_variant_names)]
 #![allow(dead_code)]
 use kalosm_sample::*;
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum BValues {
     #[parse(rename = "false")]
     False,
     #[parse(rename = "true")]
     True,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum UValues {
     #[parse(rename = "false")]
     False,
@@ -17,28 +17,28 @@ pub enum UValues {
     #[parse(rename = "undefined")]
     Undefined,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum OValues {
     #[parse(rename = "off")]
     Off,
     #[parse(rename = "on")]
     On,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum YValues {
     #[parse(rename = "no")]
     No,
     #[parse(rename = "yes")]
     Yes,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum WValues {
     #[parse(rename = "hard")]
     Hard,
     #[parse(rename = "soft")]
     Soft,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum DValues {
     #[parse(rename = "auto")]
     Auto,
@@ -47,7 +47,7 @@ pub enum DValues {
     #[parse(rename = "rtl")]
     Rtl,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum MValues {
     #[parse(rename = "dialog")]
     Dialog,
@@ -56,14 +56,14 @@ pub enum MValues {
     #[parse(rename = "post")]
     Post,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum FmValues {
     #[parse(rename = "get")]
     Get,
     #[parse(rename = "post")]
     Post,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum SValues {
     #[parse(rename = "col")]
     Col,
@@ -74,7 +74,7 @@ pub enum SValues {
     #[parse(rename = "rowgroup")]
     Rowgroup,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum TValues {
     #[parse(rename = "button")]
     Button,
@@ -123,7 +123,7 @@ pub enum TValues {
     #[parse(rename = "week")]
     Week,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum ImValues {
     #[parse(rename = "email")]
     Email,
@@ -150,7 +150,7 @@ pub enum ImValues {
     #[parse(rename = "verbatim")]
     Verbatim,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum BtValues {
     #[parse(rename = "button")]
     Button,
@@ -161,7 +161,7 @@ pub enum BtValues {
     #[parse(rename = "submit")]
     Submit,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum LtValues {
     #[parse(rename = "1")]
     Value1,
@@ -174,14 +174,14 @@ pub enum LtValues {
     #[parse(rename = "i")]
     I2,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum MtValues {
     #[parse(rename = "context")]
     Context,
     #[parse(rename = "toolbar")]
     Toolbar,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum MitValues {
     #[parse(rename = "checkbox")]
     Checkbox,
@@ -190,7 +190,7 @@ pub enum MitValues {
     #[parse(rename = "radio")]
     Radio,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum EtValues {
     #[parse(rename = "application/x-www-form-urlencoded")]
     ApplicationxWwwFormUrlencoded,
@@ -199,7 +199,7 @@ pub enum EtValues {
     #[parse(rename = "text/plain")]
     Textplain,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum TkValues {
     #[parse(rename = "captions")]
     Captions,
@@ -212,7 +212,7 @@ pub enum TkValues {
     #[parse(rename = "subtitles")]
     Subtitles,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum PlValues {
     #[parse(rename = "auto")]
     Auto,
@@ -221,7 +221,7 @@ pub enum PlValues {
     #[parse(rename = "none")]
     None,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum ShValues {
     #[parse(rename = "circle")]
     Circle,
@@ -232,14 +232,14 @@ pub enum ShValues {
     #[parse(rename = "rect")]
     Rect,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum XoValues {
     #[parse(rename = "anonymous")]
     Anonymous,
     #[parse(rename = "use-credentials")]
     UseCredentials,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum TargetValues {
     #[parse(rename = "_blank")]
     Blank,
@@ -250,7 +250,7 @@ pub enum TargetValues {
     #[parse(rename = "_top")]
     Top,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum SbValues {
     #[parse(rename = "allow-forms")]
     AllowForms,
@@ -269,7 +269,7 @@ pub enum SbValues {
     #[parse(rename = "allow-top-navigation")]
     AllowTopNavigation,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum TristateValues {
     #[parse(rename = "false")]
     False,
@@ -280,7 +280,7 @@ pub enum TristateValues {
     #[parse(rename = "undefined")]
     Undefined,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum InputautocompleteValues {
     #[parse(rename = "additional-name")]
     AdditionalName,
@@ -407,7 +407,7 @@ pub enum InputautocompleteValues {
     #[parse(rename = "work")]
     Work,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum AutocompleteValues {
     #[parse(rename = "both")]
     Both,
@@ -418,7 +418,7 @@ pub enum AutocompleteValues {
     #[parse(rename = "none")]
     None,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum CurrentValues {
     #[parse(rename = "date")]
     Date,
@@ -435,7 +435,7 @@ pub enum CurrentValues {
     #[parse(rename = "true")]
     True,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum DropeffectValues {
     #[parse(rename = "copy")]
     Copy,
@@ -450,7 +450,7 @@ pub enum DropeffectValues {
     #[parse(rename = "popup")]
     Popup,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum InvalidValues {
     #[parse(rename = "false")]
     False,
@@ -461,7 +461,7 @@ pub enum InvalidValues {
     #[parse(rename = "true")]
     True,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum LiveValues {
     #[parse(rename = "assertive")]
     Assertive,
@@ -470,7 +470,7 @@ pub enum LiveValues {
     #[parse(rename = "polite")]
     Polite,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum OrientationValues {
     #[parse(rename = "horizontal")]
     Horizontal,
@@ -479,7 +479,7 @@ pub enum OrientationValues {
     #[parse(rename = "vertical")]
     Vertical,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum RelevantValues {
     #[parse(rename = "additions")]
     Additions,
@@ -492,7 +492,7 @@ pub enum RelevantValues {
     #[parse(rename = "text")]
     Text,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum SortValues {
     #[parse(rename = "ascending")]
     Ascending,
@@ -503,7 +503,7 @@ pub enum SortValues {
     #[parse(rename = "other")]
     Other,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum RolesValues {
     #[parse(rename = "alert")]
     Alert,
@@ -724,7 +724,7 @@ pub enum RolesValues {
     #[parse(rename = "treeitem")]
     Treeitem,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum MetanamesValues {
     #[parse(rename = "application-name")]
     ApplicationName,
@@ -749,7 +749,7 @@ pub enum MetanamesValues {
     #[parse(rename = "viewport")]
     Viewport,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum HaspopupValues {
     #[parse(rename = "dialog")]
     Dialog,
@@ -766,7 +766,7 @@ pub enum HaspopupValues {
     #[parse(rename = "true")]
     True,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum DecodingValues {
     #[parse(rename = "async")]
     Async,
@@ -775,14 +775,14 @@ pub enum DecodingValues {
     #[parse(rename = "sync")]
     Sync,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum LoadingValues {
     #[parse(rename = "eager")]
     Eager,
     #[parse(rename = "lazy")]
     Lazy,
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]
+#[derive(Debug, Clone, Copy, Parse)]
 pub enum ReferrerpolicyValues {
     #[parse(rename = "no-referrer")]
     NoReferrer,
@@ -801,7 +801,7 @@ pub enum ReferrerpolicyValues {
     #[parse(rename = "unsafe-url")]
     UnsafeUrl,
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum AAttributes {
     Download(String),
     Href(String),
@@ -957,7 +957,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum AbbrAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -1105,7 +1105,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum AddressAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -1253,7 +1253,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum AreaAttributes {
     Accesskey(String),
     Alt(String),
@@ -1411,7 +1411,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum ArticleAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -1559,7 +1559,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum AsideAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -1707,7 +1707,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum AudioAttributes {
     Autoplay(// Could not find value set
 String),
@@ -1867,7 +1867,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum BAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -2015,7 +2015,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum BaseAttributes {
     Href(String),
     Target(TargetValues),
@@ -2165,7 +2165,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum BdiAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -2313,7 +2313,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum BdoAttributes {
     Dir(String),
     Accesskey(String),
@@ -2461,7 +2461,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum BlockquoteAttributes {
     Cite(String),
     Accesskey(String),
@@ -2610,7 +2610,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum BodyAttributes {
     Alink(String),
     Background(String),
@@ -2783,7 +2783,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum BrAttributes {
     Clear(String),
     Accesskey(String),
@@ -2932,7 +2932,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum ButtonAttributes {
     Autocomplete(String),
     Autofocus(// Could not find value set
@@ -3095,7 +3095,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum CanvasAttributes {
     Height(String),
     MozOpaque(String),
@@ -3246,7 +3246,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum CaptionAttributes {
     Align(String),
     Accesskey(String),
@@ -3395,7 +3395,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum CiteAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -3543,7 +3543,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum CodeAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -3691,7 +3691,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum ColAttributes {
     Align(String),
     Span(String),
@@ -3841,7 +3841,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum ColgroupAttributes {
     Align(String),
     Span(String),
@@ -3991,7 +3991,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum DataAttributes {
     Value(String),
     Accesskey(String),
@@ -4140,7 +4140,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum DatalistAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -4288,7 +4288,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum DdAttributes {
     Nowrap(String),
     Accesskey(String),
@@ -4437,7 +4437,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum DelAttributes {
     Cite(String),
     Datetime(String),
@@ -4587,7 +4587,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum DetailsAttributes {
     Open(// Could not find value set
 String),
@@ -4737,7 +4737,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum DfnAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -4885,7 +4885,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum DialogAttributes {
     Open(String),
     Accesskey(String),
@@ -5034,7 +5034,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum DivAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -5182,7 +5182,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum DlAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -5330,7 +5330,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum DtAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -5478,7 +5478,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum EmAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -5626,7 +5626,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum EmbedAttributes {
     Height(String),
     Src(String),
@@ -5778,7 +5778,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum FieldsetAttributes {
     Disabled(// Could not find value set
 String),
@@ -5930,7 +5930,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum FigcaptionAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -6078,7 +6078,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum FigureAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -6226,7 +6226,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum FooterAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -6374,7 +6374,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum FormAttributes {
     Accept(String),
     AcceptCharset(String),
@@ -6532,7 +6532,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum H1Attributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -6680,7 +6680,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum H2Attributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -6828,7 +6828,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum H3Attributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -6976,7 +6976,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum H4Attributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -7124,7 +7124,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum H5Attributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -7272,7 +7272,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum H6Attributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -7420,7 +7420,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum HeadAttributes {
     Profile(String),
     Accesskey(String),
@@ -7569,7 +7569,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum HeaderAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -7717,7 +7717,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum HgroupAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -7865,7 +7865,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum HrAttributes {
     Align(String),
     Color(String),
@@ -8018,7 +8018,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum HtmlAttributes {
     Manifest(String),
     Version(String),
@@ -8169,7 +8169,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum IAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -8317,7 +8317,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum IframeAttributes {
     Allow(String),
     Allowfullscreen(// Could not find value set
@@ -8480,7 +8480,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum ImgAttributes {
     Alt(String),
     Crossorigin(XoValues),
@@ -8643,7 +8643,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum InputAttributes {
     Accept(String),
     Alt(String),
@@ -8829,7 +8829,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum InsAttributes {
     Cite(String),
     Datetime(String),
@@ -8979,7 +8979,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum KbdAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -9127,7 +9127,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum LabelAttributes {
     For(String),
     Form(String),
@@ -9277,7 +9277,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum LegendAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -9425,7 +9425,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum LiAttributes {
     Type(String),
     Value(String),
@@ -9575,7 +9575,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum LinkAttributes {
     As(String),
     Crossorigin(XoValues),
@@ -9734,7 +9734,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum MainAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -9882,7 +9882,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum MapAttributes {
     Name(String),
     Accesskey(String),
@@ -10031,7 +10031,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum MarkAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -10179,7 +10179,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum MenuAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -10327,7 +10327,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum MetaAttributes {
     Charset(String),
     Content(String),
@@ -10480,7 +10480,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum MeterAttributes {
     Form(String),
     High(String),
@@ -10635,7 +10635,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum NavAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -10783,7 +10783,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum NoscriptAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -10931,7 +10931,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum ObjectAttributes {
     Archive(String),
     Border(String),
@@ -11095,7 +11095,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum OlAttributes {
     Compact(String),
     Reversed(// Could not find value set
@@ -11248,7 +11248,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum OptgroupAttributes {
     Disabled(// Could not find value set
 String),
@@ -11399,7 +11399,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum OptionAttributes {
     Disabled(// Could not find value set
 String),
@@ -11553,7 +11553,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum OutputAttributes {
     For(String),
     Form(String),
@@ -11704,7 +11704,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum PAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -11852,7 +11852,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum ParamAttributes {
     Name(String),
     Type(String),
@@ -12004,7 +12004,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum PictureAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -12152,7 +12152,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum PreAttributes {
     Cols(String),
     Width(String),
@@ -12303,7 +12303,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum ProgressAttributes {
     Max(String),
     Value(String),
@@ -12453,7 +12453,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum QAttributes {
     Cite(String),
     Accesskey(String),
@@ -12602,7 +12602,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum RbAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -12750,7 +12750,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum RpAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -12898,7 +12898,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum RtAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -13046,7 +13046,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum RubyAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -13194,7 +13194,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum SAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -13342,7 +13342,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum SampAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -13490,7 +13490,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum ScriptAttributes {
     Async(// Could not find value set
 String),
@@ -13651,7 +13651,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum SectionAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -13799,7 +13799,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum SelectAttributes {
     Autocomplete(InputautocompleteValues),
     Autofocus(// Could not find value set
@@ -13959,7 +13959,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum SlotAttributes {
     Name(String),
     Accesskey(String),
@@ -14108,7 +14108,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum SmallAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -14256,7 +14256,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum SourceAttributes {
     Media(String),
     Sizes(String),
@@ -14409,7 +14409,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum SpanAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -14557,7 +14557,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum StrongAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -14705,7 +14705,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum StyleAttributes {
     Media(String),
     Nonce(String),
@@ -14858,7 +14858,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum SubAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -15006,7 +15006,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum SummaryAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -15154,7 +15154,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum SupAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -15302,7 +15302,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum TableAttributes {
     Align(String),
     Border(String),
@@ -15452,7 +15452,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum TbodyAttributes {
     Align(String),
     Accesskey(String),
@@ -15601,7 +15601,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum TdAttributes {
     Abbr(String),
     Align(String),
@@ -15756,7 +15756,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum TemplateAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -15904,7 +15904,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum TextareaAttributes {
     Autocapitalize(String),
     Autocomplete(InputautocompleteValues),
@@ -16070,7 +16070,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum TfootAttributes {
     Align(String),
     Accesskey(String),
@@ -16219,7 +16219,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum ThAttributes {
     Abbr(String),
     Align(String),
@@ -16376,7 +16376,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum TheadAttributes {
     Align(String),
     Accesskey(String),
@@ -16525,7 +16525,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum TimeAttributes {
     Datetime(String),
     Accesskey(String),
@@ -16674,7 +16674,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum TitleAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -16822,7 +16822,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum TrAttributes {
     Align(String),
     Accesskey(String),
@@ -16971,7 +16971,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum TrackAttributes {
     Default(// Could not find value set
 String),
@@ -17125,7 +17125,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum UAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -17273,7 +17273,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum UlAttributes {
     Compact(String),
     Accesskey(String),
@@ -17422,7 +17422,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum VarAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -17570,7 +17570,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum VideoAttributes {
     Autoplay(// Could not find value set
 String),
@@ -17733,7 +17733,7 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum WbrAttributes {
     Accesskey(String),
     Autocapitalize(String),
@@ -17881,233 +17881,233 @@ String),
     AriaDetails(String),
     AriaKeyshortcuts(String),
 }
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct A(crate::ElementBody<AAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Abbr(crate::ElementBody<AbbrAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Address(crate::ElementBody<AddressAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Area(crate::ElementBody<AreaAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Article(crate::ElementBody<ArticleAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Aside(crate::ElementBody<AsideAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Audio(crate::ElementBody<AudioAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct B(crate::ElementBody<BAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Base(crate::ElementBody<BaseAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Bdi(crate::ElementBody<BdiAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Bdo(crate::ElementBody<BdoAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Blockquote(crate::ElementBody<BlockquoteAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Body(crate::ElementBody<BodyAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Br(crate::ElementBody<BrAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Button(crate::ElementBody<ButtonAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Canvas(crate::ElementBody<CanvasAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Caption(crate::ElementBody<CaptionAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Cite(crate::ElementBody<CiteAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Code(crate::ElementBody<CodeAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Col(crate::ElementBody<ColAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Colgroup(crate::ElementBody<ColgroupAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Data(crate::ElementBody<DataAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Datalist(crate::ElementBody<DatalistAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Dd(crate::ElementBody<DdAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Del(crate::ElementBody<DelAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Details(crate::ElementBody<DetailsAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Dfn(crate::ElementBody<DfnAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Dialog(crate::ElementBody<DialogAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Div(crate::ElementBody<DivAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Dl(crate::ElementBody<DlAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Dt(crate::ElementBody<DtAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Em(crate::ElementBody<EmAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Embed(crate::ElementBody<EmbedAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Fieldset(crate::ElementBody<FieldsetAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Figcaption(crate::ElementBody<FigcaptionAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Figure(crate::ElementBody<FigureAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Footer(crate::ElementBody<FooterAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Form(crate::ElementBody<FormAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct H1(crate::ElementBody<H1Attributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct H2(crate::ElementBody<H2Attributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct H3(crate::ElementBody<H3Attributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct H4(crate::ElementBody<H4Attributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct H5(crate::ElementBody<H5Attributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct H6(crate::ElementBody<H6Attributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Head(crate::ElementBody<HeadAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Header(crate::ElementBody<HeaderAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Hgroup(crate::ElementBody<HgroupAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Hr(crate::ElementBody<HrAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Html(crate::ElementBody<HtmlAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct I(crate::ElementBody<IAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Iframe(crate::ElementBody<IframeAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Img(crate::ElementBody<ImgAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Input(crate::ElementBody<InputAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Ins(crate::ElementBody<InsAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Kbd(crate::ElementBody<KbdAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Label(crate::ElementBody<LabelAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Legend(crate::ElementBody<LegendAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Li(crate::ElementBody<LiAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Link(crate::ElementBody<LinkAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Main(crate::ElementBody<MainAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Map(crate::ElementBody<MapAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Mark(crate::ElementBody<MarkAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Menu(crate::ElementBody<MenuAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Meta(crate::ElementBody<MetaAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Meter(crate::ElementBody<MeterAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Nav(crate::ElementBody<NavAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Noscript(crate::ElementBody<NoscriptAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Object(crate::ElementBody<ObjectAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Ol(crate::ElementBody<OlAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Optgroup(crate::ElementBody<OptgroupAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Option(crate::ElementBody<OptionAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Output(crate::ElementBody<OutputAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct P(crate::ElementBody<PAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Param(crate::ElementBody<ParamAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Picture(crate::ElementBody<PictureAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Pre(crate::ElementBody<PreAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Progress(crate::ElementBody<ProgressAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Q(crate::ElementBody<QAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Rb(crate::ElementBody<RbAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Rp(crate::ElementBody<RpAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Rt(crate::ElementBody<RtAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Ruby(crate::ElementBody<RubyAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct S(crate::ElementBody<SAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Samp(crate::ElementBody<SampAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Script(crate::ElementBody<ScriptAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Section(crate::ElementBody<SectionAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Select(crate::ElementBody<SelectAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Slot(crate::ElementBody<SlotAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Small(crate::ElementBody<SmallAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Source(crate::ElementBody<SourceAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Span(crate::ElementBody<SpanAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Strong(crate::ElementBody<StrongAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Style(crate::ElementBody<StyleAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Sub(crate::ElementBody<SubAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Summary(crate::ElementBody<SummaryAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Sup(crate::ElementBody<SupAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Table(crate::ElementBody<TableAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Tbody(crate::ElementBody<TbodyAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Td(crate::ElementBody<TdAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Template(crate::ElementBody<TemplateAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Textarea(crate::ElementBody<TextareaAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Tfoot(crate::ElementBody<TfootAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Th(crate::ElementBody<ThAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Thead(crate::ElementBody<TheadAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Time(crate::ElementBody<TimeAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Title(crate::ElementBody<TitleAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Tr(crate::ElementBody<TrAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Track(crate::ElementBody<TrackAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct U(crate::ElementBody<UAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Ul(crate::ElementBody<UlAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Var(crate::ElementBody<VarAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Video(crate::ElementBody<VideoAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub struct Wbr(crate::ElementBody<WbrAttributes>);
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone)]
 pub enum Element {
     A(A),
     Abbr(Abbr),

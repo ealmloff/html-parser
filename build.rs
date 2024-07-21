@@ -85,7 +85,7 @@ impl Response {
         for element in &self.tags {
             let element_rust_name = to_upper_camel_case(&element.name);
             let mut attributes = HashSet::new();
-            writeln!(out, "#[derive(Debug, Clone, PartialEq, Eq, Hash)]")?;
+            writeln!(out, "#[derive(Debug, Clone)]")?;
             writeln!(out, "pub enum {}Attributes {{", element_rust_name)?;
             for attribute in &element.attributes {
                 attributes.insert(attribute.name.clone());
@@ -108,12 +108,12 @@ impl Response {
         // Write a struct for each element
         for element in &self.tags {
             let element_rust_name = to_upper_camel_case(&element.name);
-            writeln!(out, "#[derive(Debug, Clone, PartialEq, Eq, Hash)]")?;
+            writeln!(out, "#[derive(Debug, Clone)]")?;
             writeln!(out, "pub struct {element_rust_name}(crate::ElementBody<{element_rust_name}Attributes>);")?;
         }
 
         // Write the Element enum
-        writeln!(out, "#[derive(Debug, Clone, PartialEq, Eq, Hash)]")?;
+        writeln!(out, "#[derive(Debug, Clone)]")?;
         writeln!(out, "pub enum Element {{")?;
         for element in &self.tags {
             let element_rust_name = to_upper_camel_case(&element.name);
@@ -197,7 +197,7 @@ impl ValueSet {
         self.rust_name.clone_from(&enum_rust_name);
         writeln!(
             out,
-            "#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Parse)]"
+            "#[derive(Debug, Clone, Copy, Parse)]"
         )?;
         writeln!(out, "pub enum {} {{", enum_rust_name)?;
         let mut variants = HashSet::new();
