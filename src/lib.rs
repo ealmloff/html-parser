@@ -45,6 +45,9 @@ impl Parser for TextNodeParser {
             match c {
                 // < and > need to be escaped
                 b'<' | b'>' => {
+                    if state.is_empty() {
+                        bail!("text node cannot be empty");
+                    }
                     return Ok(ParseStatus::Finished {
                         result: TextNode(String::from_utf8_lossy(&state).to_string()),
                         remaining: &input[i..],
