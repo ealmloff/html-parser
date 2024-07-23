@@ -71,7 +71,7 @@ impl Parser for TextNodeParser {
 const COMMENT_START: &[u8] = b"<!--";
 const COMMENT_END: &[u8] = b"-->";
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CommentNode(pub String);
 
 #[derive(Debug, Clone)]
@@ -101,7 +101,7 @@ impl Parser for CommentNodeParser {
             if state.ends_with(COMMENT_END) {
                 return Ok(ParseStatus::Finished {
                     result: CommentNode(String::from_utf8_lossy(&state).to_string()),
-                    remaining: &input[i..],
+                    remaining: &input[i + 1..],
                 });
             }
         }
@@ -112,3 +112,16 @@ impl Parser for CommentNodeParser {
         })
     }
 }
+
+#[test]
+fn parse_comment() {
+    let parser = CommentNodeParser;
+    let state = parser.create_parser_state();
+    assert_eq!(
+        parser.parse(&state, b"<!--comment-->").unwrap(),
+        ParseStatus::Finished {
+            result: CommentNode(String::from("<!--comment-->")),
+            remaining: &[]
+        }
+    );
+}   
