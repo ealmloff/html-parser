@@ -1,9 +1,10 @@
 use kalosm_sample::*;
+
 type CodeAttributes = crate::GlobalAttribute;
 #[derive(Debug, Clone)]
 pub struct Code {
     attributes: Vec<CodeAttributes>,
-    body: Vec<crate::Node>,
+    body: crate::TextNode
 }
 
 impl kalosm_sample::Parse for Code {
@@ -13,8 +14,7 @@ impl kalosm_sample::Parse for Code {
             .repeat(0..=10000)
             .then_literal(">")
             .then(
-                kalosm_sample::LazyParser::new(|| crate::Node::new_parser().boxed())
-                    .repeat(0..=10000),
+                crate::AnyTextNodeParser
             )
             .then_literal("</code>")
             .map_output(|(attributes, body)| Code { attributes, body })
