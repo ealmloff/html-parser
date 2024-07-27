@@ -288,7 +288,7 @@ impl Parse for StringAttributeValue {
 }
 
 fn filter_attribute_value_characters(c: char) -> bool {
-    c.is_ascii() && c != '<' && c != '>'
+    c.is_ascii() && c != '\t' && c != '\n' && c != '<' && c != '>'
 }
 
 struct StringAttributeValueParser(StringParser);
