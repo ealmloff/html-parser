@@ -104,9 +104,9 @@ impl Parser for CommentNodeParser {
                 state.push(c);
                 continue;
             } else {
-                let start = COMMENT_START.len().max(state.len() - COMMENT_END.len());
+                let start = COMMENT_START.len().max(state.len() - 2);
                 match state[start..] {
-                    [_, b'-', b'-'] => {
+                    [b'-', b'-'] => {
                         if c == b'>' {
                             return Ok(ParseStatus::Finished {
                                 result: CommentNode(
@@ -121,7 +121,7 @@ impl Parser for CommentNodeParser {
                         }
                         bail!("comment node must end with -->");
                     }
-                    [_, _, b'-'] => {
+                    [b'-'] | [_, b'-'] => {
                         if c != b'-' {
                             bail!("comment node must end with -->");
                         }
@@ -159,6 +159,18 @@ fn parse_comment() {
         parser.parse(&state, b"<!--1-->").unwrap(),
         ParseStatus::Finished {
             result: CommentNode(String::from("1")),
+            remaining: &[]
+        }
+    );
+    let parser = CommentNodeParser;
+    let state = parser.create_parser_state();
+    assert!(parser.parse(&state, b"<!---1-->").is_err(),);
+    let parser = CommentNodeParser;
+    let state = parser.create_parser_state();
+    assert_eq!(
+        parser.parse(&state, b"<!---->").unwrap(),
+        ParseStatus::Finished {
+            result: CommentNode(String::from("")),
             remaining: &[]
         }
     );
