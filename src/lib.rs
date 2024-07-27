@@ -46,7 +46,7 @@ impl Parser for TextNodeParser {
         for (i, c) in input.iter().enumerate() {
             match c {
                 // < and > need to be escaped
-                b'<' | b'>' => {
+                b'<' => {
                     if state.is_empty() {
                         bail!("text node cannot be empty");
                     }
@@ -54,6 +54,9 @@ impl Parser for TextNodeParser {
                         result: TextNode(String::from_utf8_lossy(&state).to_string()),
                         remaining: &input[i..],
                     });
+                }
+                b'>' => {
+                    bail!("> must be escaped");
                 }
                 _ => {
                     state.push(*c);
@@ -94,16 +97,42 @@ impl Parser for CommentNodeParser {
     ) -> ParseResult<ParseStatus<'a, Self::PartialState, Self::Output>> {
         let mut state = state.clone();
         for (i, &c) in input.iter().enumerate() {
-            if state.len() < COMMENT_START.len() && c != COMMENT_START[state.len()] {
-                bail!("comment node must start with <!--");
+            if state.len() < COMMENT_START.len() {
+                if c != COMMENT_START[state.len()] {
+                    bail!("comment node must start with <!--");
+                }
+                state.push(c);
+                continue;
+            } else {
+                let start = COMMENT_START.len().max(state.len() - COMMENT_END.len());
+                match state[start..] {
+                    [_, b'-', b'-'] => {
+                        if c == b'>' {
+                            return Ok(ParseStatus::Finished {
+                                result: CommentNode(
+                                    String::from_utf8_lossy(
+                                        &state[COMMENT_START.len()
+                                            ..state.len() - (COMMENT_END.len() - 1)],
+                                    )
+                                    .to_string(),
+                                ),
+                                remaining: &input[i + 1..],
+                            });
+                        }
+                        bail!("comment node must end with -->");
+                    }
+                    [_, _, b'-'] => {
+                        if c != b'-' {
+                            bail!("comment node must end with -->");
+                        }
+                    }
+                    _ => {}
+                }
+            }
+            if !matches!(c, b'a'..=b'z' | b'A'..=b'Z' | b'0'..=b'9' | b' ' | b'-') {
+                bail!("comment node must be plain text");
             }
             state.push(c);
-            if state.ends_with(COMMENT_END) {
-                return Ok(ParseStatus::Finished {
-                    result: CommentNode(String::from_utf8_lossy(&state).to_string()),
-                    remaining: &input[i + 1..],
-                });
-            }
         }
 
         Ok(ParseStatus::Incomplete {
@@ -120,8 +149,17 @@ fn parse_comment() {
     assert_eq!(
         parser.parse(&state, b"<!--comment-->").unwrap(),
         ParseStatus::Finished {
-            result: CommentNode(String::from("<!--comment-->")),
+            result: CommentNode(String::from("comment")),
             remaining: &[]
         }
     );
-}   
+    let parser = CommentNodeParser;
+    let state = parser.create_parser_state();
+    assert_eq!(
+        parser.parse(&state, b"<!--1-->").unwrap(),
+        ParseStatus::Finished {
+            result: CommentNode(String::from("1")),
+            remaining: &[]
+        }
+    );
+}
