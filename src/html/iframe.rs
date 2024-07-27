@@ -31,19 +31,19 @@ pub enum IframeAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum IframeAttributes {
-    Allow(String),
-    Allowfullscreen(String),
-    Allowpaymentrequest(String),
-    Csp(String),
-    Height(String),
-    Importance(String),
-    Name(String),
-    Referrerpolicy(String),
+    Allow(crate::StringAttributeValue),
+    Allowfullscreen(crate::StringAttributeValue),
+    Allowpaymentrequest(crate::StringAttributeValue),
+    Csp(crate::StringAttributeValue),
+    Height(crate::StringAttributeValue),
+    Importance(crate::StringAttributeValue),
+    Name(crate::StringAttributeValue),
+    Referrerpolicy(crate::StringAttributeValue),
     Sandbox(crate::SbValues),
-    Seamless(String),
-    Src(String),
-    Srcdoc(String),
-    Width(String),
+    Seamless(crate::StringAttributeValue),
+    Src(crate::StringAttributeValue),
+    Srcdoc(crate::StringAttributeValue),
+    Width(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for IframeAttributes {
@@ -53,41 +53,51 @@ impl kalosm_sample::Parse for IframeAttributes {
             .boxed()
             .or(IframeAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    IframeAttributesName::Allow => {
-                        String::new_parser().map_output(Self::Allow).boxed()
-                    }
-                    IframeAttributesName::Allowfullscreen => String::new_parser()
-                        .map_output(Self::Allowfullscreen)
+                    IframeAttributesName::Allow => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Allow)
                         .boxed(),
-                    IframeAttributesName::Allowpaymentrequest => String::new_parser()
-                        .map_output(Self::Allowpaymentrequest)
+                    IframeAttributesName::Allowfullscreen => {
+                        crate::StringAttributeValue::new_parser()
+                            .map_output(Self::Allowfullscreen)
+                            .boxed()
+                    }
+                    IframeAttributesName::Allowpaymentrequest => {
+                        crate::StringAttributeValue::new_parser()
+                            .map_output(Self::Allowpaymentrequest)
+                            .boxed()
+                    }
+                    IframeAttributesName::Csp => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Csp)
                         .boxed(),
-                    IframeAttributesName::Csp => String::new_parser().map_output(Self::Csp).boxed(),
-                    IframeAttributesName::Height => {
-                        String::new_parser().map_output(Self::Height).boxed()
-                    }
-                    IframeAttributesName::Importance => {
-                        String::new_parser().map_output(Self::Importance).boxed()
-                    }
-                    IframeAttributesName::Name => {
-                        String::new_parser().map_output(Self::Name).boxed()
-                    }
-                    IframeAttributesName::Referrerpolicy => String::new_parser()
-                        .map_output(Self::Referrerpolicy)
+                    IframeAttributesName::Height => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Height)
                         .boxed(),
+                    IframeAttributesName::Importance => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Importance)
+                        .boxed(),
+                    IframeAttributesName::Name => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Name)
+                        .boxed(),
+                    IframeAttributesName::Referrerpolicy => {
+                        crate::StringAttributeValue::new_parser()
+                            .map_output(Self::Referrerpolicy)
+                            .boxed()
+                    }
                     IframeAttributesName::Sandbox => crate::SbValues::new_parser()
                         .map_output(Self::Sandbox)
                         .boxed(),
-                    IframeAttributesName::Seamless => {
-                        String::new_parser().map_output(Self::Seamless).boxed()
-                    }
-                    IframeAttributesName::Src => String::new_parser().map_output(Self::Src).boxed(),
-                    IframeAttributesName::Srcdoc => {
-                        String::new_parser().map_output(Self::Srcdoc).boxed()
-                    }
-                    IframeAttributesName::Width => {
-                        String::new_parser().map_output(Self::Width).boxed()
-                    }
+                    IframeAttributesName::Seamless => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Seamless)
+                        .boxed(),
+                    IframeAttributesName::Src => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Src)
+                        .boxed(),
+                    IframeAttributesName::Srcdoc => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Srcdoc)
+                        .boxed(),
+                    IframeAttributesName::Width => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Width)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

@@ -9,8 +9,8 @@ pub enum LiAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum LiAttributes {
-    Type(String),
-    Value(String),
+    Type(crate::StringAttributeValue),
+    Value(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for LiAttributes {
@@ -20,8 +20,12 @@ impl kalosm_sample::Parse for LiAttributes {
             .boxed()
             .or(LiAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    LiAttributesName::Type => String::new_parser().map_output(Self::Type).boxed(),
-                    LiAttributesName::Value => String::new_parser().map_output(Self::Value).boxed(),
+                    LiAttributesName::Type => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Type)
+                        .boxed(),
+                    LiAttributesName::Value => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Value)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

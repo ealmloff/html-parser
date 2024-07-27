@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-kalosm-sample = { git = "https://github.com/floneum/floneum", version = "0.2.1" }
+kalosm-sample = { path = "/Users/evanalmloff/Desktop/Github/floneum/interfaces/kalosm-sample", version = "0.2.1" }
 
 [build-dependencies]
 reqwest = { version = "0.12.5", features = ["blocking", "json"] }

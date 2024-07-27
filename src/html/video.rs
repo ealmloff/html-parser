@@ -27,17 +27,17 @@ pub enum VideoAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum VideoAttributes {
-    Autoplay(String),
-    Controls(String),
+    Autoplay(crate::StringAttributeValue),
+    Controls(crate::StringAttributeValue),
     Crossorigin(crate::XoValues),
-    Height(String),
-    Loop(String),
-    Mediagroup(String),
-    Muted(String),
-    Poster(String),
+    Height(crate::StringAttributeValue),
+    Loop(crate::StringAttributeValue),
+    Mediagroup(crate::StringAttributeValue),
+    Muted(crate::StringAttributeValue),
+    Poster(crate::StringAttributeValue),
     Preload(crate::PlValues),
-    Src(String),
-    Width(String),
+    Src(crate::StringAttributeValue),
+    Width(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for VideoAttributes {
@@ -47,37 +47,39 @@ impl kalosm_sample::Parse for VideoAttributes {
             .boxed()
             .or(VideoAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    VideoAttributesName::Autoplay => {
-                        String::new_parser().map_output(Self::Autoplay).boxed()
-                    }
-                    VideoAttributesName::Controls => {
-                        String::new_parser().map_output(Self::Controls).boxed()
-                    }
+                    VideoAttributesName::Autoplay => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Autoplay)
+                        .boxed(),
+                    VideoAttributesName::Controls => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Controls)
+                        .boxed(),
                     VideoAttributesName::Crossorigin => crate::XoValues::new_parser()
                         .map_output(Self::Crossorigin)
                         .boxed(),
-                    VideoAttributesName::Height => {
-                        String::new_parser().map_output(Self::Height).boxed()
-                    }
-                    VideoAttributesName::Loop => {
-                        String::new_parser().map_output(Self::Loop).boxed()
-                    }
-                    VideoAttributesName::Mediagroup => {
-                        String::new_parser().map_output(Self::Mediagroup).boxed()
-                    }
-                    VideoAttributesName::Muted => {
-                        String::new_parser().map_output(Self::Muted).boxed()
-                    }
-                    VideoAttributesName::Poster => {
-                        String::new_parser().map_output(Self::Poster).boxed()
-                    }
+                    VideoAttributesName::Height => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Height)
+                        .boxed(),
+                    VideoAttributesName::Loop => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Loop)
+                        .boxed(),
+                    VideoAttributesName::Mediagroup => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Mediagroup)
+                        .boxed(),
+                    VideoAttributesName::Muted => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Muted)
+                        .boxed(),
+                    VideoAttributesName::Poster => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Poster)
+                        .boxed(),
                     VideoAttributesName::Preload => crate::PlValues::new_parser()
                         .map_output(Self::Preload)
                         .boxed(),
-                    VideoAttributesName::Src => String::new_parser().map_output(Self::Src).boxed(),
-                    VideoAttributesName::Width => {
-                        String::new_parser().map_output(Self::Width).boxed()
-                    }
+                    VideoAttributesName::Src => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Src)
+                        .boxed(),
+                    VideoAttributesName::Width => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Width)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

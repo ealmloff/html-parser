@@ -9,8 +9,8 @@ pub enum TableAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum TableAttributes {
-    Align(String),
-    Border(String),
+    Align(crate::StringAttributeValue),
+    Border(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for TableAttributes {
@@ -20,12 +20,12 @@ impl kalosm_sample::Parse for TableAttributes {
             .boxed()
             .or(TableAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    TableAttributesName::Align => {
-                        String::new_parser().map_output(Self::Align).boxed()
-                    }
-                    TableAttributesName::Border => {
-                        String::new_parser().map_output(Self::Border).boxed()
-                    }
+                    TableAttributesName::Align => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Align)
+                        .boxed(),
+                    TableAttributesName::Border => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Border)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

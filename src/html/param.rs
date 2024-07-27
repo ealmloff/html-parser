@@ -13,10 +13,10 @@ pub enum ParamAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum ParamAttributes {
-    Name(String),
-    Type(String),
-    Value(String),
-    Valuetype(String),
+    Name(crate::StringAttributeValue),
+    Type(crate::StringAttributeValue),
+    Value(crate::StringAttributeValue),
+    Valuetype(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for ParamAttributes {
@@ -26,18 +26,18 @@ impl kalosm_sample::Parse for ParamAttributes {
             .boxed()
             .or(ParamAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    ParamAttributesName::Name => {
-                        String::new_parser().map_output(Self::Name).boxed()
-                    }
-                    ParamAttributesName::Type => {
-                        String::new_parser().map_output(Self::Type).boxed()
-                    }
-                    ParamAttributesName::Value => {
-                        String::new_parser().map_output(Self::Value).boxed()
-                    }
-                    ParamAttributesName::Valuetype => {
-                        String::new_parser().map_output(Self::Valuetype).boxed()
-                    }
+                    ParamAttributesName::Name => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Name)
+                        .boxed(),
+                    ParamAttributesName::Type => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Type)
+                        .boxed(),
+                    ParamAttributesName::Value => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Value)
+                        .boxed(),
+                    ParamAttributesName::Valuetype => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Valuetype)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

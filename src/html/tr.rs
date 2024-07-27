@@ -7,7 +7,7 @@ pub enum TrAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum TrAttributes {
-    Align(String),
+    Align(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for TrAttributes {
@@ -17,7 +17,9 @@ impl kalosm_sample::Parse for TrAttributes {
             .boxed()
             .or(TrAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    TrAttributesName::Align => String::new_parser().map_output(Self::Align).boxed(),
+                    TrAttributesName::Align => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Align)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

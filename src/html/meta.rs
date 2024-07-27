@@ -15,11 +15,11 @@ pub enum MetaAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum MetaAttributes {
-    Charset(String),
-    Content(String),
-    HttpEquiv(String),
-    Name(String),
-    Scheme(String),
+    Charset(crate::StringAttributeValue),
+    Content(crate::StringAttributeValue),
+    HttpEquiv(crate::StringAttributeValue),
+    Name(crate::StringAttributeValue),
+    Scheme(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for MetaAttributes {
@@ -29,19 +29,21 @@ impl kalosm_sample::Parse for MetaAttributes {
             .boxed()
             .or(MetaAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    MetaAttributesName::Charset => {
-                        String::new_parser().map_output(Self::Charset).boxed()
-                    }
-                    MetaAttributesName::Content => {
-                        String::new_parser().map_output(Self::Content).boxed()
-                    }
-                    MetaAttributesName::HttpEquiv => {
-                        String::new_parser().map_output(Self::HttpEquiv).boxed()
-                    }
-                    MetaAttributesName::Name => String::new_parser().map_output(Self::Name).boxed(),
-                    MetaAttributesName::Scheme => {
-                        String::new_parser().map_output(Self::Scheme).boxed()
-                    }
+                    MetaAttributesName::Charset => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Charset)
+                        .boxed(),
+                    MetaAttributesName::Content => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Content)
+                        .boxed(),
+                    MetaAttributesName::HttpEquiv => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::HttpEquiv)
+                        .boxed(),
+                    MetaAttributesName::Name => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Name)
+                        .boxed(),
+                    MetaAttributesName::Scheme => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Scheme)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

@@ -1,9 +1,27 @@
 #![recursion_limit = "512"]
 
+use std::ops::Deref;
+
 pub use html::*;
 mod html;
 
 use kalosm_sample::*;
+
+#[derive(Debug, Clone)]
+pub struct Document {
+    pub root: Html,
+}
+
+impl Parse for Document {
+    fn new_parser() -> impl SendCreateParserState<Output = Self> {
+        LiteralParser::new(
+            "```html
+<!DOCTYPE html>
+<html",
+        )
+        .ignore_output_then(Html::new_parser().map_output(|root| Document { root }))
+    }
+}
 
 #[derive(Debug, Clone)]
 pub enum Node {
@@ -44,6 +62,76 @@ impl Parser for TextNodeParser {
     ) -> ParseResult<ParseStatus<'a, Self::PartialState, Self::Output>> {
         let mut state = state.clone();
         for (i, c) in input.iter().enumerate() {
+            if state.len() > 10000 {
+                return Ok(ParseStatus::Finished {
+                    result: TextNode(String::from_utf8_lossy(&state).to_string()),
+                    remaining: &input[i..],
+                });
+            }
+            match c {
+                // < and > need to be escaped
+                b'<' => {
+                    if state.is_empty() {
+                        bail!("text node cannot be empty");
+                    }
+                    return Ok(ParseStatus::Finished {
+                        result: TextNode(String::from_utf8_lossy(&state).to_string()),
+                        remaining: &input[i..],
+                    });
+                }
+                b'a'..=b'z'
+                | b'A'..=b'Z'
+                | b'0'..=b'9'
+                | b'.'
+                | b','
+                | b' '
+                | b'\n'
+                | b'\t'
+                | b'-'
+                | b'/'
+                | b'&'
+                | b';' => {
+                    state.push(*c);
+                }
+                _ => {
+                    bail!("text node must be plain text");
+                }
+            }
+        }
+
+        Ok(ParseStatus::Incomplete {
+            new_state: state,
+            required_next: std::borrow::Cow::Borrowed(""),
+        })
+    }
+}
+
+#[derive(Debug, Clone)]
+pub(crate) struct AnyTextNodeParser;
+
+impl CreateParserState for AnyTextNodeParser {
+    fn create_parser_state(&self) -> Self::PartialState {
+        Vec::new()
+    }
+}
+
+impl Parser for AnyTextNodeParser {
+    type Output = TextNode;
+    type PartialState = Vec<u8>;
+
+    fn parse<'a>(
+        &self,
+        state: &Self::PartialState,
+        input: &'a [u8],
+    ) -> ParseResult<ParseStatus<'a, Self::PartialState, Self::Output>> {
+        let mut state = state.clone();
+        for (i, c) in input.iter().enumerate() {
+            if state.len() > 10000 {
+                return Ok(ParseStatus::Finished {
+                    result: TextNode(String::from_utf8_lossy(&state).to_string()),
+                    remaining: &input[i..],
+                });
+            }
             match c {
                 // < and > need to be escaped
                 b'<' => {
@@ -174,4 +262,62 @@ fn parse_comment() {
             remaining: &[]
         }
     );
+}
+
+#[derive(Debug, Clone)]
+pub struct StringAttributeValue(pub String);
+
+impl From<StringAttributeValue> for String {
+    fn from(val: StringAttributeValue) -> Self {
+        val.0
+    }
+}
+
+impl Deref for StringAttributeValue {
+    type Target = String;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl Parse for StringAttributeValue {
+    fn new_parser() -> impl SendCreateParserState<Output = Self> {
+        StringAttributeValueParser::new()
+    }
+}
+
+fn filter_attribute_value_characters(c: char) -> bool {
+    c.is_ascii() && c != '<' && c != '>'
+}
+
+struct StringAttributeValueParser(StringParser);
+
+impl StringAttributeValueParser {
+    fn new() -> Self {
+        let parser = StringParser::new(1..=100)
+            .with_allowed_characters(filter_attribute_value_characters as fn(_) -> _);
+        Self(parser)
+    }
+}
+
+impl CreateParserState for StringAttributeValueParser {
+    fn create_parser_state(&self) -> Self::PartialState {
+        self.0.create_parser_state()
+    }
+}
+
+impl Parser for StringAttributeValueParser {
+    type Output = StringAttributeValue;
+    type PartialState = StringParserState;
+
+    fn parse<'a>(
+        &self,
+        state: &Self::PartialState,
+        input: &'a [u8],
+    ) -> ParseResult<ParseStatus<'a, Self::PartialState, Self::Output>> {
+        self.0
+            .parse(state, input)
+            .map(|status| status.map(StringAttributeValue))
+    }
 }

@@ -29,18 +29,18 @@ pub enum ButtonAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum ButtonAttributes {
-    Autocomplete(String),
-    Autofocus(String),
-    Disabled(String),
-    Form(String),
-    Formaction(String),
+    Autocomplete(crate::StringAttributeValue),
+    Autofocus(crate::StringAttributeValue),
+    Disabled(crate::StringAttributeValue),
+    Form(crate::StringAttributeValue),
+    Formaction(crate::StringAttributeValue),
     Formenctype(crate::EtValues),
     Formmethod(crate::FmValues),
-    Formnovalidate(String),
-    Formtarget(String),
-    Name(String),
+    Formnovalidate(crate::StringAttributeValue),
+    Formtarget(crate::StringAttributeValue),
+    Name(crate::StringAttributeValue),
     Type(crate::BtValues),
-    Value(String),
+    Value(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for ButtonAttributes {
@@ -50,42 +50,44 @@ impl kalosm_sample::Parse for ButtonAttributes {
             .boxed()
             .or(ButtonAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    ButtonAttributesName::Autocomplete => {
-                        String::new_parser().map_output(Self::Autocomplete).boxed()
-                    }
-                    ButtonAttributesName::Autofocus => {
-                        String::new_parser().map_output(Self::Autofocus).boxed()
-                    }
-                    ButtonAttributesName::Disabled => {
-                        String::new_parser().map_output(Self::Disabled).boxed()
-                    }
-                    ButtonAttributesName::Form => {
-                        String::new_parser().map_output(Self::Form).boxed()
-                    }
-                    ButtonAttributesName::Formaction => {
-                        String::new_parser().map_output(Self::Formaction).boxed()
-                    }
+                    ButtonAttributesName::Autocomplete => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Autocomplete)
+                        .boxed(),
+                    ButtonAttributesName::Autofocus => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Autofocus)
+                        .boxed(),
+                    ButtonAttributesName::Disabled => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Disabled)
+                        .boxed(),
+                    ButtonAttributesName::Form => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Form)
+                        .boxed(),
+                    ButtonAttributesName::Formaction => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Formaction)
+                        .boxed(),
                     ButtonAttributesName::Formenctype => crate::EtValues::new_parser()
                         .map_output(Self::Formenctype)
                         .boxed(),
                     ButtonAttributesName::Formmethod => crate::FmValues::new_parser()
                         .map_output(Self::Formmethod)
                         .boxed(),
-                    ButtonAttributesName::Formnovalidate => String::new_parser()
-                        .map_output(Self::Formnovalidate)
+                    ButtonAttributesName::Formnovalidate => {
+                        crate::StringAttributeValue::new_parser()
+                            .map_output(Self::Formnovalidate)
+                            .boxed()
+                    }
+                    ButtonAttributesName::Formtarget => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Formtarget)
                         .boxed(),
-                    ButtonAttributesName::Formtarget => {
-                        String::new_parser().map_output(Self::Formtarget).boxed()
-                    }
-                    ButtonAttributesName::Name => {
-                        String::new_parser().map_output(Self::Name).boxed()
-                    }
+                    ButtonAttributesName::Name => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Name)
+                        .boxed(),
                     ButtonAttributesName::Type => {
                         crate::BtValues::new_parser().map_output(Self::Type).boxed()
                     }
-                    ButtonAttributesName::Value => {
-                        String::new_parser().map_output(Self::Value).boxed()
-                    }
+                    ButtonAttributesName::Value => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Value)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

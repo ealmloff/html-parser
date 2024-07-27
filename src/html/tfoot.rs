@@ -7,7 +7,7 @@ pub enum TfootAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum TfootAttributes {
-    Align(String),
+    Align(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for TfootAttributes {
@@ -17,9 +17,9 @@ impl kalosm_sample::Parse for TfootAttributes {
             .boxed()
             .or(TfootAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    TfootAttributesName::Align => {
-                        String::new_parser().map_output(Self::Align).boxed()
-                    }
+                    TfootAttributesName::Align => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Align)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

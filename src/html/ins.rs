@@ -9,8 +9,8 @@ pub enum InsAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum InsAttributes {
-    Cite(String),
-    Datetime(String),
+    Cite(crate::StringAttributeValue),
+    Datetime(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for InsAttributes {
@@ -20,10 +20,12 @@ impl kalosm_sample::Parse for InsAttributes {
             .boxed()
             .or(InsAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    InsAttributesName::Cite => String::new_parser().map_output(Self::Cite).boxed(),
-                    InsAttributesName::Datetime => {
-                        String::new_parser().map_output(Self::Datetime).boxed()
-                    }
+                    InsAttributesName::Cite => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Cite)
+                        .boxed(),
+                    InsAttributesName::Datetime => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Datetime)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

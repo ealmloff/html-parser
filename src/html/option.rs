@@ -13,10 +13,10 @@ pub enum OptionAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum OptionAttributes {
-    Disabled(String),
-    Label(String),
-    Selected(String),
-    Value(String),
+    Disabled(crate::StringAttributeValue),
+    Label(crate::StringAttributeValue),
+    Selected(crate::StringAttributeValue),
+    Value(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for OptionAttributes {
@@ -26,18 +26,18 @@ impl kalosm_sample::Parse for OptionAttributes {
             .boxed()
             .or(OptionAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    OptionAttributesName::Disabled => {
-                        String::new_parser().map_output(Self::Disabled).boxed()
-                    }
-                    OptionAttributesName::Label => {
-                        String::new_parser().map_output(Self::Label).boxed()
-                    }
-                    OptionAttributesName::Selected => {
-                        String::new_parser().map_output(Self::Selected).boxed()
-                    }
-                    OptionAttributesName::Value => {
-                        String::new_parser().map_output(Self::Value).boxed()
-                    }
+                    OptionAttributesName::Disabled => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Disabled)
+                        .boxed(),
+                    OptionAttributesName::Label => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Label)
+                        .boxed(),
+                    OptionAttributesName::Selected => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Selected)
+                        .boxed(),
+                    OptionAttributesName::Value => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Value)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

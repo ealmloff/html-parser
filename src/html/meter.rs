@@ -19,13 +19,13 @@ pub enum MeterAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum MeterAttributes {
-    Form(String),
-    High(String),
-    Low(String),
-    Max(String),
-    Min(String),
-    Optimum(String),
-    Value(String),
+    Form(crate::StringAttributeValue),
+    High(crate::StringAttributeValue),
+    Low(crate::StringAttributeValue),
+    Max(crate::StringAttributeValue),
+    Min(crate::StringAttributeValue),
+    Optimum(crate::StringAttributeValue),
+    Value(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for MeterAttributes {
@@ -35,21 +35,27 @@ impl kalosm_sample::Parse for MeterAttributes {
             .boxed()
             .or(MeterAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    MeterAttributesName::Form => {
-                        String::new_parser().map_output(Self::Form).boxed()
-                    }
-                    MeterAttributesName::High => {
-                        String::new_parser().map_output(Self::High).boxed()
-                    }
-                    MeterAttributesName::Low => String::new_parser().map_output(Self::Low).boxed(),
-                    MeterAttributesName::Max => String::new_parser().map_output(Self::Max).boxed(),
-                    MeterAttributesName::Min => String::new_parser().map_output(Self::Min).boxed(),
-                    MeterAttributesName::Optimum => {
-                        String::new_parser().map_output(Self::Optimum).boxed()
-                    }
-                    MeterAttributesName::Value => {
-                        String::new_parser().map_output(Self::Value).boxed()
-                    }
+                    MeterAttributesName::Form => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Form)
+                        .boxed(),
+                    MeterAttributesName::High => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::High)
+                        .boxed(),
+                    MeterAttributesName::Low => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Low)
+                        .boxed(),
+                    MeterAttributesName::Max => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Max)
+                        .boxed(),
+                    MeterAttributesName::Min => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Min)
+                        .boxed(),
+                    MeterAttributesName::Optimum => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Optimum)
+                        .boxed(),
+                    MeterAttributesName::Value => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Value)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

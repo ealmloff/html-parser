@@ -9,8 +9,8 @@ pub enum OptgroupAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum OptgroupAttributes {
-    Disabled(String),
-    Label(String),
+    Disabled(crate::StringAttributeValue),
+    Label(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for OptgroupAttributes {
@@ -20,12 +20,12 @@ impl kalosm_sample::Parse for OptgroupAttributes {
             .boxed()
             .or(OptgroupAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    OptgroupAttributesName::Disabled => {
-                        String::new_parser().map_output(Self::Disabled).boxed()
-                    }
-                    OptgroupAttributesName::Label => {
-                        String::new_parser().map_output(Self::Label).boxed()
-                    }
+                    OptgroupAttributesName::Disabled => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Disabled)
+                        .boxed(),
+                    OptgroupAttributesName::Label => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Label)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

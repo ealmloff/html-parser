@@ -23,15 +23,15 @@ pub enum ThAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum ThAttributes {
-    Abbr(String),
-    Align(String),
-    Axis(String),
-    Bgcolor(String),
-    Colspan(String),
-    Headers(String),
-    Rowspan(String),
+    Abbr(crate::StringAttributeValue),
+    Align(crate::StringAttributeValue),
+    Axis(crate::StringAttributeValue),
+    Bgcolor(crate::StringAttributeValue),
+    Colspan(crate::StringAttributeValue),
+    Headers(crate::StringAttributeValue),
+    Rowspan(crate::StringAttributeValue),
     Scope(crate::SValues),
-    Sorted(String),
+    Sorted(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for ThAttributes {
@@ -41,27 +41,33 @@ impl kalosm_sample::Parse for ThAttributes {
             .boxed()
             .or(ThAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    ThAttributesName::Abbr => String::new_parser().map_output(Self::Abbr).boxed(),
-                    ThAttributesName::Align => String::new_parser().map_output(Self::Align).boxed(),
-                    ThAttributesName::Axis => String::new_parser().map_output(Self::Axis).boxed(),
-                    ThAttributesName::Bgcolor => {
-                        String::new_parser().map_output(Self::Bgcolor).boxed()
-                    }
-                    ThAttributesName::Colspan => {
-                        String::new_parser().map_output(Self::Colspan).boxed()
-                    }
-                    ThAttributesName::Headers => {
-                        String::new_parser().map_output(Self::Headers).boxed()
-                    }
-                    ThAttributesName::Rowspan => {
-                        String::new_parser().map_output(Self::Rowspan).boxed()
-                    }
+                    ThAttributesName::Abbr => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Abbr)
+                        .boxed(),
+                    ThAttributesName::Align => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Align)
+                        .boxed(),
+                    ThAttributesName::Axis => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Axis)
+                        .boxed(),
+                    ThAttributesName::Bgcolor => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Bgcolor)
+                        .boxed(),
+                    ThAttributesName::Colspan => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Colspan)
+                        .boxed(),
+                    ThAttributesName::Headers => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Headers)
+                        .boxed(),
+                    ThAttributesName::Rowspan => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Rowspan)
+                        .boxed(),
                     ThAttributesName::Scope => {
                         crate::SValues::new_parser().map_output(Self::Scope).boxed()
                     }
-                    ThAttributesName::Sorted => {
-                        String::new_parser().map_output(Self::Sorted).boxed()
-                    }
+                    ThAttributesName::Sorted => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Sorted)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

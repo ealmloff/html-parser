@@ -27,17 +27,17 @@ pub enum ScriptAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum ScriptAttributes {
-    Async(String),
-    Charset(String),
+    Async(crate::StringAttributeValue),
+    Charset(crate::StringAttributeValue),
     Crossorigin(crate::XoValues),
-    Defer(String),
-    Integrity(String),
-    Nomodule(String),
-    Nonce(String),
-    Referrerpolicy(String),
-    Src(String),
-    Text(String),
-    Type(String),
+    Defer(crate::StringAttributeValue),
+    Integrity(crate::StringAttributeValue),
+    Nomodule(crate::StringAttributeValue),
+    Nonce(crate::StringAttributeValue),
+    Referrerpolicy(crate::StringAttributeValue),
+    Src(crate::StringAttributeValue),
+    Text(crate::StringAttributeValue),
+    Type(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for ScriptAttributes {
@@ -47,37 +47,41 @@ impl kalosm_sample::Parse for ScriptAttributes {
             .boxed()
             .or(ScriptAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    ScriptAttributesName::Async => {
-                        String::new_parser().map_output(Self::Async).boxed()
-                    }
-                    ScriptAttributesName::Charset => {
-                        String::new_parser().map_output(Self::Charset).boxed()
-                    }
+                    ScriptAttributesName::Async => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Async)
+                        .boxed(),
+                    ScriptAttributesName::Charset => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Charset)
+                        .boxed(),
                     ScriptAttributesName::Crossorigin => crate::XoValues::new_parser()
                         .map_output(Self::Crossorigin)
                         .boxed(),
-                    ScriptAttributesName::Defer => {
-                        String::new_parser().map_output(Self::Defer).boxed()
-                    }
-                    ScriptAttributesName::Integrity => {
-                        String::new_parser().map_output(Self::Integrity).boxed()
-                    }
-                    ScriptAttributesName::Nomodule => {
-                        String::new_parser().map_output(Self::Nomodule).boxed()
-                    }
-                    ScriptAttributesName::Nonce => {
-                        String::new_parser().map_output(Self::Nonce).boxed()
-                    }
-                    ScriptAttributesName::Referrerpolicy => String::new_parser()
-                        .map_output(Self::Referrerpolicy)
+                    ScriptAttributesName::Defer => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Defer)
                         .boxed(),
-                    ScriptAttributesName::Src => String::new_parser().map_output(Self::Src).boxed(),
-                    ScriptAttributesName::Text => {
-                        String::new_parser().map_output(Self::Text).boxed()
+                    ScriptAttributesName::Integrity => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Integrity)
+                        .boxed(),
+                    ScriptAttributesName::Nomodule => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Nomodule)
+                        .boxed(),
+                    ScriptAttributesName::Nonce => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Nonce)
+                        .boxed(),
+                    ScriptAttributesName::Referrerpolicy => {
+                        crate::StringAttributeValue::new_parser()
+                            .map_output(Self::Referrerpolicy)
+                            .boxed()
                     }
-                    ScriptAttributesName::Type => {
-                        String::new_parser().map_output(Self::Type).boxed()
-                    }
+                    ScriptAttributesName::Src => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Src)
+                        .boxed(),
+                    ScriptAttributesName::Text => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Text)
+                        .boxed(),
+                    ScriptAttributesName::Type => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Type)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())
@@ -86,7 +90,7 @@ impl kalosm_sample::Parse for ScriptAttributes {
 #[derive(Debug, Clone)]
 pub struct Script {
     attributes: Vec<ScriptAttributes>,
-    body: Vec<crate::Node>,
+    body: crate::TextNode,
 }
 
 impl kalosm_sample::Parse for Script {
@@ -95,10 +99,7 @@ impl kalosm_sample::Parse for Script {
         ScriptAttributes::new_parser()
             .repeat(0..=10000)
             .then_literal(">")
-            .then(
-                kalosm_sample::LazyParser::new(|| crate::Node::new_parser().boxed())
-                    .repeat(0..=10000),
-            )
+            .then(crate::AnyTextNodeParser)
             .then_literal("</script>")
             .map_output(|(attributes, body)| Script { attributes, body })
     }

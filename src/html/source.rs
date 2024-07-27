@@ -15,11 +15,11 @@ pub enum SourceAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum SourceAttributes {
-    Media(String),
-    Sizes(String),
-    Src(String),
-    Srcset(String),
-    Type(String),
+    Media(crate::StringAttributeValue),
+    Sizes(crate::StringAttributeValue),
+    Src(crate::StringAttributeValue),
+    Srcset(crate::StringAttributeValue),
+    Type(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for SourceAttributes {
@@ -29,19 +29,21 @@ impl kalosm_sample::Parse for SourceAttributes {
             .boxed()
             .or(SourceAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    SourceAttributesName::Media => {
-                        String::new_parser().map_output(Self::Media).boxed()
-                    }
-                    SourceAttributesName::Sizes => {
-                        String::new_parser().map_output(Self::Sizes).boxed()
-                    }
-                    SourceAttributesName::Src => String::new_parser().map_output(Self::Src).boxed(),
-                    SourceAttributesName::Srcset => {
-                        String::new_parser().map_output(Self::Srcset).boxed()
-                    }
-                    SourceAttributesName::Type => {
-                        String::new_parser().map_output(Self::Type).boxed()
-                    }
+                    SourceAttributesName::Media => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Media)
+                        .boxed(),
+                    SourceAttributesName::Sizes => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Sizes)
+                        .boxed(),
+                    SourceAttributesName::Src => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Src)
+                        .boxed(),
+                    SourceAttributesName::Srcset => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Srcset)
+                        .boxed(),
+                    SourceAttributesName::Type => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Type)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

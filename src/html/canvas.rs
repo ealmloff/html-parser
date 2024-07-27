@@ -11,9 +11,9 @@ pub enum CanvasAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum CanvasAttributes {
-    Height(String),
-    MozOpaque(String),
-    Width(String),
+    Height(crate::StringAttributeValue),
+    MozOpaque(crate::StringAttributeValue),
+    Width(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for CanvasAttributes {
@@ -23,15 +23,15 @@ impl kalosm_sample::Parse for CanvasAttributes {
             .boxed()
             .or(CanvasAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    CanvasAttributesName::Height => {
-                        String::new_parser().map_output(Self::Height).boxed()
-                    }
-                    CanvasAttributesName::MozOpaque => {
-                        String::new_parser().map_output(Self::MozOpaque).boxed()
-                    }
-                    CanvasAttributesName::Width => {
-                        String::new_parser().map_output(Self::Width).boxed()
-                    }
+                    CanvasAttributesName::Height => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Height)
+                        .boxed(),
+                    CanvasAttributesName::MozOpaque => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::MozOpaque)
+                        .boxed(),
+                    CanvasAttributesName::Width => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Width)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

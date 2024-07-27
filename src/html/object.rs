@@ -37,22 +37,22 @@ pub enum ObjectAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum ObjectAttributes {
-    Archive(String),
-    Border(String),
-    Classid(String),
-    Codebase(String),
-    Codetype(String),
-    Data(String),
-    Declare(String),
-    Form(String),
-    Height(String),
-    Name(String),
-    Standby(String),
-    Tabindex(String),
-    Type(String),
-    Typemustmatch(String),
-    Usemap(String),
-    Width(String),
+    Archive(crate::StringAttributeValue),
+    Border(crate::StringAttributeValue),
+    Classid(crate::StringAttributeValue),
+    Codebase(crate::StringAttributeValue),
+    Codetype(crate::StringAttributeValue),
+    Data(crate::StringAttributeValue),
+    Declare(crate::StringAttributeValue),
+    Form(crate::StringAttributeValue),
+    Height(crate::StringAttributeValue),
+    Name(crate::StringAttributeValue),
+    Standby(crate::StringAttributeValue),
+    Tabindex(crate::StringAttributeValue),
+    Type(crate::StringAttributeValue),
+    Typemustmatch(crate::StringAttributeValue),
+    Usemap(crate::StringAttributeValue),
+    Width(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for ObjectAttributes {
@@ -62,54 +62,56 @@ impl kalosm_sample::Parse for ObjectAttributes {
             .boxed()
             .or(ObjectAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    ObjectAttributesName::Archive => {
-                        String::new_parser().map_output(Self::Archive).boxed()
-                    }
-                    ObjectAttributesName::Border => {
-                        String::new_parser().map_output(Self::Border).boxed()
-                    }
-                    ObjectAttributesName::Classid => {
-                        String::new_parser().map_output(Self::Classid).boxed()
-                    }
-                    ObjectAttributesName::Codebase => {
-                        String::new_parser().map_output(Self::Codebase).boxed()
-                    }
-                    ObjectAttributesName::Codetype => {
-                        String::new_parser().map_output(Self::Codetype).boxed()
-                    }
-                    ObjectAttributesName::Data => {
-                        String::new_parser().map_output(Self::Data).boxed()
-                    }
-                    ObjectAttributesName::Declare => {
-                        String::new_parser().map_output(Self::Declare).boxed()
-                    }
-                    ObjectAttributesName::Form => {
-                        String::new_parser().map_output(Self::Form).boxed()
-                    }
-                    ObjectAttributesName::Height => {
-                        String::new_parser().map_output(Self::Height).boxed()
-                    }
-                    ObjectAttributesName::Name => {
-                        String::new_parser().map_output(Self::Name).boxed()
-                    }
-                    ObjectAttributesName::Standby => {
-                        String::new_parser().map_output(Self::Standby).boxed()
-                    }
-                    ObjectAttributesName::Tabindex => {
-                        String::new_parser().map_output(Self::Tabindex).boxed()
-                    }
-                    ObjectAttributesName::Type => {
-                        String::new_parser().map_output(Self::Type).boxed()
-                    }
+                    ObjectAttributesName::Archive => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Archive)
+                        .boxed(),
+                    ObjectAttributesName::Border => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Border)
+                        .boxed(),
+                    ObjectAttributesName::Classid => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Classid)
+                        .boxed(),
+                    ObjectAttributesName::Codebase => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Codebase)
+                        .boxed(),
+                    ObjectAttributesName::Codetype => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Codetype)
+                        .boxed(),
+                    ObjectAttributesName::Data => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Data)
+                        .boxed(),
+                    ObjectAttributesName::Declare => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Declare)
+                        .boxed(),
+                    ObjectAttributesName::Form => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Form)
+                        .boxed(),
+                    ObjectAttributesName::Height => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Height)
+                        .boxed(),
+                    ObjectAttributesName::Name => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Name)
+                        .boxed(),
+                    ObjectAttributesName::Standby => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Standby)
+                        .boxed(),
+                    ObjectAttributesName::Tabindex => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Tabindex)
+                        .boxed(),
+                    ObjectAttributesName::Type => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Type)
+                        .boxed(),
                     ObjectAttributesName::Typemustmatch => {
-                        String::new_parser().map_output(Self::Typemustmatch).boxed()
+                        crate::StringAttributeValue::new_parser()
+                            .map_output(Self::Typemustmatch)
+                            .boxed()
                     }
-                    ObjectAttributesName::Usemap => {
-                        String::new_parser().map_output(Self::Usemap).boxed()
-                    }
-                    ObjectAttributesName::Width => {
-                        String::new_parser().map_output(Self::Width).boxed()
-                    }
+                    ObjectAttributesName::Usemap => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Usemap)
+                        .boxed(),
+                    ObjectAttributesName::Width => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Width)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

@@ -11,9 +11,9 @@ pub enum OutputAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum OutputAttributes {
-    For(String),
-    Form(String),
-    Name(String),
+    For(crate::StringAttributeValue),
+    Form(crate::StringAttributeValue),
+    Name(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for OutputAttributes {
@@ -23,13 +23,15 @@ impl kalosm_sample::Parse for OutputAttributes {
             .boxed()
             .or(OutputAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    OutputAttributesName::For => String::new_parser().map_output(Self::For).boxed(),
-                    OutputAttributesName::Form => {
-                        String::new_parser().map_output(Self::Form).boxed()
-                    }
-                    OutputAttributesName::Name => {
-                        String::new_parser().map_output(Self::Name).boxed()
-                    }
+                    OutputAttributesName::For => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::For)
+                        .boxed(),
+                    OutputAttributesName::Form => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Form)
+                        .boxed(),
+                    OutputAttributesName::Name => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Name)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

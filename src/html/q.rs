@@ -7,7 +7,7 @@ pub enum QAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum QAttributes {
-    Cite(String),
+    Cite(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for QAttributes {
@@ -17,7 +17,9 @@ impl kalosm_sample::Parse for QAttributes {
             .boxed()
             .or(QAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    QAttributesName::Cite => String::new_parser().map_output(Self::Cite).boxed(),
+                    QAttributesName::Cite => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Cite)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

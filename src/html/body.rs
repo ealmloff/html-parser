@@ -65,36 +65,36 @@ pub enum BodyAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum BodyAttributes {
-    Alink(String),
-    Background(String),
-    Bgcolor(String),
-    Bottommargin(String),
-    Leftmargin(String),
-    Link(String),
-    Onafterprint(String),
-    Onbeforeprint(String),
-    Onbeforeunload(String),
-    Onblur(String),
-    Onerror(String),
-    Onfocus(String),
-    Onhashchange(String),
-    Onlanguagechange(String),
-    Onload(String),
-    Onmessage(String),
-    Onoffline(String),
-    Ononline(String),
-    Onpagehide(String),
-    Onpageshow(String),
-    Onpopstate(String),
-    Onredo(String),
-    Onresize(String),
-    Onstorage(String),
-    Onundo(String),
-    Onunload(String),
-    Rightmargin(String),
-    Text(String),
-    Topmargin(String),
-    Vlink(String),
+    Alink(crate::StringAttributeValue),
+    Background(crate::StringAttributeValue),
+    Bgcolor(crate::StringAttributeValue),
+    Bottommargin(crate::StringAttributeValue),
+    Leftmargin(crate::StringAttributeValue),
+    Link(crate::StringAttributeValue),
+    Onafterprint(crate::StringAttributeValue),
+    Onbeforeprint(crate::StringAttributeValue),
+    Onbeforeunload(crate::StringAttributeValue),
+    Onblur(crate::StringAttributeValue),
+    Onerror(crate::StringAttributeValue),
+    Onfocus(crate::StringAttributeValue),
+    Onhashchange(crate::StringAttributeValue),
+    Onlanguagechange(crate::StringAttributeValue),
+    Onload(crate::StringAttributeValue),
+    Onmessage(crate::StringAttributeValue),
+    Onoffline(crate::StringAttributeValue),
+    Ononline(crate::StringAttributeValue),
+    Onpagehide(crate::StringAttributeValue),
+    Onpageshow(crate::StringAttributeValue),
+    Onpopstate(crate::StringAttributeValue),
+    Onredo(crate::StringAttributeValue),
+    Onresize(crate::StringAttributeValue),
+    Onstorage(crate::StringAttributeValue),
+    Onundo(crate::StringAttributeValue),
+    Onunload(crate::StringAttributeValue),
+    Rightmargin(crate::StringAttributeValue),
+    Text(crate::StringAttributeValue),
+    Topmargin(crate::StringAttributeValue),
+    Vlink(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for BodyAttributes {
@@ -104,92 +104,98 @@ impl kalosm_sample::Parse for BodyAttributes {
             .boxed()
             .or(BodyAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    BodyAttributesName::Alink => {
-                        String::new_parser().map_output(Self::Alink).boxed()
-                    }
-                    BodyAttributesName::Background => {
-                        String::new_parser().map_output(Self::Background).boxed()
-                    }
-                    BodyAttributesName::Bgcolor => {
-                        String::new_parser().map_output(Self::Bgcolor).boxed()
-                    }
-                    BodyAttributesName::Bottommargin => {
-                        String::new_parser().map_output(Self::Bottommargin).boxed()
-                    }
-                    BodyAttributesName::Leftmargin => {
-                        String::new_parser().map_output(Self::Leftmargin).boxed()
-                    }
-                    BodyAttributesName::Link => String::new_parser().map_output(Self::Link).boxed(),
-                    BodyAttributesName::Onafterprint => {
-                        String::new_parser().map_output(Self::Onafterprint).boxed()
-                    }
-                    BodyAttributesName::Onbeforeprint => {
-                        String::new_parser().map_output(Self::Onbeforeprint).boxed()
-                    }
-                    BodyAttributesName::Onbeforeunload => String::new_parser()
+                    BodyAttributesName::Alink => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Alink)
+                        .boxed(),
+                    BodyAttributesName::Background => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Background)
+                        .boxed(),
+                    BodyAttributesName::Bgcolor => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Bgcolor)
+                        .boxed(),
+                    BodyAttributesName::Bottommargin => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Bottommargin)
+                        .boxed(),
+                    BodyAttributesName::Leftmargin => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Leftmargin)
+                        .boxed(),
+                    BodyAttributesName::Link => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Link)
+                        .boxed(),
+                    BodyAttributesName::Onafterprint => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onafterprint)
+                        .boxed(),
+                    BodyAttributesName::Onbeforeprint => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onbeforeprint)
+                        .boxed(),
+                    BodyAttributesName::Onbeforeunload => crate::StringAttributeValue::new_parser()
                         .map_output(Self::Onbeforeunload)
                         .boxed(),
-                    BodyAttributesName::Onblur => {
-                        String::new_parser().map_output(Self::Onblur).boxed()
-                    }
-                    BodyAttributesName::Onerror => {
-                        String::new_parser().map_output(Self::Onerror).boxed()
-                    }
-                    BodyAttributesName::Onfocus => {
-                        String::new_parser().map_output(Self::Onfocus).boxed()
-                    }
-                    BodyAttributesName::Onhashchange => {
-                        String::new_parser().map_output(Self::Onhashchange).boxed()
-                    }
-                    BodyAttributesName::Onlanguagechange => String::new_parser()
-                        .map_output(Self::Onlanguagechange)
+                    BodyAttributesName::Onblur => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onblur)
                         .boxed(),
-                    BodyAttributesName::Onload => {
-                        String::new_parser().map_output(Self::Onload).boxed()
+                    BodyAttributesName::Onerror => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onerror)
+                        .boxed(),
+                    BodyAttributesName::Onfocus => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onfocus)
+                        .boxed(),
+                    BodyAttributesName::Onhashchange => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onhashchange)
+                        .boxed(),
+                    BodyAttributesName::Onlanguagechange => {
+                        crate::StringAttributeValue::new_parser()
+                            .map_output(Self::Onlanguagechange)
+                            .boxed()
                     }
-                    BodyAttributesName::Onmessage => {
-                        String::new_parser().map_output(Self::Onmessage).boxed()
-                    }
-                    BodyAttributesName::Onoffline => {
-                        String::new_parser().map_output(Self::Onoffline).boxed()
-                    }
-                    BodyAttributesName::Ononline => {
-                        String::new_parser().map_output(Self::Ononline).boxed()
-                    }
-                    BodyAttributesName::Onpagehide => {
-                        String::new_parser().map_output(Self::Onpagehide).boxed()
-                    }
-                    BodyAttributesName::Onpageshow => {
-                        String::new_parser().map_output(Self::Onpageshow).boxed()
-                    }
-                    BodyAttributesName::Onpopstate => {
-                        String::new_parser().map_output(Self::Onpopstate).boxed()
-                    }
-                    BodyAttributesName::Onredo => {
-                        String::new_parser().map_output(Self::Onredo).boxed()
-                    }
-                    BodyAttributesName::Onresize => {
-                        String::new_parser().map_output(Self::Onresize).boxed()
-                    }
-                    BodyAttributesName::Onstorage => {
-                        String::new_parser().map_output(Self::Onstorage).boxed()
-                    }
-                    BodyAttributesName::Onundo => {
-                        String::new_parser().map_output(Self::Onundo).boxed()
-                    }
-                    BodyAttributesName::Onunload => {
-                        String::new_parser().map_output(Self::Onunload).boxed()
-                    }
-                    BodyAttributesName::Rightmargin => {
-                        String::new_parser().map_output(Self::Rightmargin).boxed()
-                    }
-                    BodyAttributesName::Text => String::new_parser().map_output(Self::Text).boxed(),
-                    BodyAttributesName::Topmargin => {
-                        String::new_parser().map_output(Self::Topmargin).boxed()
-                    }
-                    BodyAttributesName::Vlink => {
-                        String::new_parser().map_output(Self::Vlink).boxed()
-                    }
+                    BodyAttributesName::Onload => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onload)
+                        .boxed(),
+                    BodyAttributesName::Onmessage => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onmessage)
+                        .boxed(),
+                    BodyAttributesName::Onoffline => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onoffline)
+                        .boxed(),
+                    BodyAttributesName::Ononline => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Ononline)
+                        .boxed(),
+                    BodyAttributesName::Onpagehide => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onpagehide)
+                        .boxed(),
+                    BodyAttributesName::Onpageshow => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onpageshow)
+                        .boxed(),
+                    BodyAttributesName::Onpopstate => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onpopstate)
+                        .boxed(),
+                    BodyAttributesName::Onredo => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onredo)
+                        .boxed(),
+                    BodyAttributesName::Onresize => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onresize)
+                        .boxed(),
+                    BodyAttributesName::Onstorage => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onstorage)
+                        .boxed(),
+                    BodyAttributesName::Onundo => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onundo)
+                        .boxed(),
+                    BodyAttributesName::Onunload => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onunload)
+                        .boxed(),
+                    BodyAttributesName::Rightmargin => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Rightmargin)
+                        .boxed(),
+                    BodyAttributesName::Text => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Text)
+                        .boxed(),
+                    BodyAttributesName::Topmargin => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Topmargin)
+                        .boxed(),
+                    BodyAttributesName::Vlink => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Vlink)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

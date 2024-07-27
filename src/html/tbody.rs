@@ -7,7 +7,7 @@ pub enum TbodyAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum TbodyAttributes {
-    Align(String),
+    Align(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for TbodyAttributes {
@@ -17,9 +17,9 @@ impl kalosm_sample::Parse for TbodyAttributes {
             .boxed()
             .or(TbodyAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    TbodyAttributesName::Align => {
-                        String::new_parser().map_output(Self::Align).boxed()
-                    }
+                    TbodyAttributesName::Align => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Align)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

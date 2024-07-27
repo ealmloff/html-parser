@@ -25,15 +25,15 @@ pub enum FormAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum FormAttributes {
-    Accept(String),
-    AcceptCharset(String),
-    Action(String),
-    Autocapitalize(String),
+    Accept(crate::StringAttributeValue),
+    AcceptCharset(crate::StringAttributeValue),
+    Action(crate::StringAttributeValue),
+    Autocapitalize(crate::StringAttributeValue),
     Autocomplete(crate::OValues),
     Enctype(crate::EtValues),
     Method(crate::MValues),
-    Name(String),
-    Novalidate(String),
+    Name(crate::StringAttributeValue),
+    Novalidate(crate::StringAttributeValue),
     Target(crate::TargetValues),
     GlobalAttribute(crate::GlobalAttribute),
 }
@@ -44,16 +44,16 @@ impl kalosm_sample::Parse for FormAttributes {
             .boxed()
             .or(FormAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    FormAttributesName::Accept => {
-                        String::new_parser().map_output(Self::Accept).boxed()
-                    }
-                    FormAttributesName::AcceptCharset => {
-                        String::new_parser().map_output(Self::AcceptCharset).boxed()
-                    }
-                    FormAttributesName::Action => {
-                        String::new_parser().map_output(Self::Action).boxed()
-                    }
-                    FormAttributesName::Autocapitalize => String::new_parser()
+                    FormAttributesName::Accept => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Accept)
+                        .boxed(),
+                    FormAttributesName::AcceptCharset => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::AcceptCharset)
+                        .boxed(),
+                    FormAttributesName::Action => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Action)
+                        .boxed(),
+                    FormAttributesName::Autocapitalize => crate::StringAttributeValue::new_parser()
                         .map_output(Self::Autocapitalize)
                         .boxed(),
                     FormAttributesName::Autocomplete => crate::OValues::new_parser()
@@ -65,10 +65,12 @@ impl kalosm_sample::Parse for FormAttributes {
                     FormAttributesName::Method => crate::MValues::new_parser()
                         .map_output(Self::Method)
                         .boxed(),
-                    FormAttributesName::Name => String::new_parser().map_output(Self::Name).boxed(),
-                    FormAttributesName::Novalidate => {
-                        String::new_parser().map_output(Self::Novalidate).boxed()
-                    }
+                    FormAttributesName::Name => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Name)
+                        .boxed(),
+                    FormAttributesName::Novalidate => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Novalidate)
+                        .boxed(),
                     FormAttributesName::Target => crate::TargetValues::new_parser()
                         .map_output(Self::Target)
                         .boxed(),

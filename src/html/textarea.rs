@@ -39,22 +39,22 @@ pub enum TextareaAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum TextareaAttributes {
-    Autocapitalize(String),
+    Autocapitalize(crate::StringAttributeValue),
     Autocomplete(crate::InputautocompleteValues),
-    Autofocus(String),
-    Cols(String),
-    Dirname(String),
-    Disabled(String),
-    Form(String),
+    Autofocus(crate::StringAttributeValue),
+    Cols(crate::StringAttributeValue),
+    Dirname(crate::StringAttributeValue),
+    Disabled(crate::StringAttributeValue),
+    Form(crate::StringAttributeValue),
     Inputmode(crate::ImValues),
-    Maxlength(String),
-    Minlength(String),
-    Name(String),
-    Placeholder(String),
-    Readonly(String),
-    Required(String),
-    Rows(String),
-    Spellcheck(String),
+    Maxlength(crate::StringAttributeValue),
+    Minlength(crate::StringAttributeValue),
+    Name(crate::StringAttributeValue),
+    Placeholder(crate::StringAttributeValue),
+    Readonly(crate::StringAttributeValue),
+    Required(crate::StringAttributeValue),
+    Rows(crate::StringAttributeValue),
+    Spellcheck(crate::StringAttributeValue),
     Wrap(crate::WValues),
     GlobalAttribute(crate::GlobalAttribute),
 }
@@ -65,56 +65,60 @@ impl kalosm_sample::Parse for TextareaAttributes {
             .boxed()
             .or(TextareaAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    TextareaAttributesName::Autocapitalize => String::new_parser()
-                        .map_output(Self::Autocapitalize)
-                        .boxed(),
+                    TextareaAttributesName::Autocapitalize => {
+                        crate::StringAttributeValue::new_parser()
+                            .map_output(Self::Autocapitalize)
+                            .boxed()
+                    }
                     TextareaAttributesName::Autocomplete => {
                         crate::InputautocompleteValues::new_parser()
                             .map_output(Self::Autocomplete)
                             .boxed()
                     }
-                    TextareaAttributesName::Autofocus => {
-                        String::new_parser().map_output(Self::Autofocus).boxed()
-                    }
-                    TextareaAttributesName::Cols => {
-                        String::new_parser().map_output(Self::Cols).boxed()
-                    }
-                    TextareaAttributesName::Dirname => {
-                        String::new_parser().map_output(Self::Dirname).boxed()
-                    }
-                    TextareaAttributesName::Disabled => {
-                        String::new_parser().map_output(Self::Disabled).boxed()
-                    }
-                    TextareaAttributesName::Form => {
-                        String::new_parser().map_output(Self::Form).boxed()
-                    }
+                    TextareaAttributesName::Autofocus => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Autofocus)
+                        .boxed(),
+                    TextareaAttributesName::Cols => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Cols)
+                        .boxed(),
+                    TextareaAttributesName::Dirname => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Dirname)
+                        .boxed(),
+                    TextareaAttributesName::Disabled => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Disabled)
+                        .boxed(),
+                    TextareaAttributesName::Form => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Form)
+                        .boxed(),
                     TextareaAttributesName::Inputmode => crate::ImValues::new_parser()
                         .map_output(Self::Inputmode)
                         .boxed(),
-                    TextareaAttributesName::Maxlength => {
-                        String::new_parser().map_output(Self::Maxlength).boxed()
-                    }
-                    TextareaAttributesName::Minlength => {
-                        String::new_parser().map_output(Self::Minlength).boxed()
-                    }
-                    TextareaAttributesName::Name => {
-                        String::new_parser().map_output(Self::Name).boxed()
-                    }
+                    TextareaAttributesName::Maxlength => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Maxlength)
+                        .boxed(),
+                    TextareaAttributesName::Minlength => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Minlength)
+                        .boxed(),
+                    TextareaAttributesName::Name => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Name)
+                        .boxed(),
                     TextareaAttributesName::Placeholder => {
-                        String::new_parser().map_output(Self::Placeholder).boxed()
+                        crate::StringAttributeValue::new_parser()
+                            .map_output(Self::Placeholder)
+                            .boxed()
                     }
-                    TextareaAttributesName::Readonly => {
-                        String::new_parser().map_output(Self::Readonly).boxed()
-                    }
-                    TextareaAttributesName::Required => {
-                        String::new_parser().map_output(Self::Required).boxed()
-                    }
-                    TextareaAttributesName::Rows => {
-                        String::new_parser().map_output(Self::Rows).boxed()
-                    }
-                    TextareaAttributesName::Spellcheck => {
-                        String::new_parser().map_output(Self::Spellcheck).boxed()
-                    }
+                    TextareaAttributesName::Readonly => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Readonly)
+                        .boxed(),
+                    TextareaAttributesName::Required => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Required)
+                        .boxed(),
+                    TextareaAttributesName::Rows => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Rows)
+                        .boxed(),
+                    TextareaAttributesName::Spellcheck => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Spellcheck)
+                        .boxed(),
                     TextareaAttributesName::Wrap => {
                         crate::WValues::new_parser().map_output(Self::Wrap).boxed()
                     }

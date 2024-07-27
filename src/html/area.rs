@@ -27,17 +27,17 @@ pub enum AreaAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum AreaAttributes {
-    Accesskey(String),
-    Alt(String),
-    Coords(String),
-    Download(String),
-    Href(String),
-    Hreflang(String),
-    Ping(String),
-    Rel(String),
+    Accesskey(crate::StringAttributeValue),
+    Alt(crate::StringAttributeValue),
+    Coords(crate::StringAttributeValue),
+    Download(crate::StringAttributeValue),
+    Href(crate::StringAttributeValue),
+    Hreflang(crate::StringAttributeValue),
+    Ping(crate::StringAttributeValue),
+    Rel(crate::StringAttributeValue),
     Shape(crate::ShValues),
     Target(crate::TargetValues),
-    Type(String),
+    Type(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for AreaAttributes {
@@ -47,29 +47,39 @@ impl kalosm_sample::Parse for AreaAttributes {
             .boxed()
             .or(AreaAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    AreaAttributesName::Accesskey => {
-                        String::new_parser().map_output(Self::Accesskey).boxed()
-                    }
-                    AreaAttributesName::Alt => String::new_parser().map_output(Self::Alt).boxed(),
-                    AreaAttributesName::Coords => {
-                        String::new_parser().map_output(Self::Coords).boxed()
-                    }
-                    AreaAttributesName::Download => {
-                        String::new_parser().map_output(Self::Download).boxed()
-                    }
-                    AreaAttributesName::Href => String::new_parser().map_output(Self::Href).boxed(),
-                    AreaAttributesName::Hreflang => {
-                        String::new_parser().map_output(Self::Hreflang).boxed()
-                    }
-                    AreaAttributesName::Ping => String::new_parser().map_output(Self::Ping).boxed(),
-                    AreaAttributesName::Rel => String::new_parser().map_output(Self::Rel).boxed(),
+                    AreaAttributesName::Accesskey => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Accesskey)
+                        .boxed(),
+                    AreaAttributesName::Alt => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Alt)
+                        .boxed(),
+                    AreaAttributesName::Coords => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Coords)
+                        .boxed(),
+                    AreaAttributesName::Download => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Download)
+                        .boxed(),
+                    AreaAttributesName::Href => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Href)
+                        .boxed(),
+                    AreaAttributesName::Hreflang => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Hreflang)
+                        .boxed(),
+                    AreaAttributesName::Ping => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Ping)
+                        .boxed(),
+                    AreaAttributesName::Rel => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Rel)
+                        .boxed(),
                     AreaAttributesName::Shape => crate::ShValues::new_parser()
                         .map_output(Self::Shape)
                         .boxed(),
                     AreaAttributesName::Target => crate::TargetValues::new_parser()
                         .map_output(Self::Target)
                         .boxed(),
-                    AreaAttributesName::Type => String::new_parser().map_output(Self::Type).boxed(),
+                    AreaAttributesName::Type => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Type)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

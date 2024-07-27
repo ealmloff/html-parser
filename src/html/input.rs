@@ -69,38 +69,38 @@ pub enum InputAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum InputAttributes {
-    Accept(String),
-    Alt(String),
+    Accept(crate::StringAttributeValue),
+    Alt(crate::StringAttributeValue),
     Autocomplete(crate::InputautocompleteValues),
-    Autofocus(String),
-    Checked(String),
-    Dirname(String),
-    Disabled(String),
-    Form(String),
-    Formaction(String),
+    Autofocus(crate::StringAttributeValue),
+    Checked(crate::StringAttributeValue),
+    Dirname(crate::StringAttributeValue),
+    Disabled(crate::StringAttributeValue),
+    Form(crate::StringAttributeValue),
+    Formaction(crate::StringAttributeValue),
     Formenctype(crate::EtValues),
     Formmethod(crate::FmValues),
-    Formnovalidate(String),
-    Formtarget(String),
-    Height(String),
+    Formnovalidate(crate::StringAttributeValue),
+    Formtarget(crate::StringAttributeValue),
+    Height(crate::StringAttributeValue),
     Inputmode(crate::ImValues),
-    List(String),
-    Max(String),
-    Maxlength(String),
-    Min(String),
-    Minlength(String),
-    Multiple(String),
-    Name(String),
-    Pattern(String),
-    Placeholder(String),
-    Readonly(String),
-    Required(String),
-    Size(String),
-    Src(String),
-    Step(String),
+    List(crate::StringAttributeValue),
+    Max(crate::StringAttributeValue),
+    Maxlength(crate::StringAttributeValue),
+    Min(crate::StringAttributeValue),
+    Minlength(crate::StringAttributeValue),
+    Multiple(crate::StringAttributeValue),
+    Name(crate::StringAttributeValue),
+    Pattern(crate::StringAttributeValue),
+    Placeholder(crate::StringAttributeValue),
+    Readonly(crate::StringAttributeValue),
+    Required(crate::StringAttributeValue),
+    Size(crate::StringAttributeValue),
+    Src(crate::StringAttributeValue),
+    Step(crate::StringAttributeValue),
     Type(crate::TValues),
-    Value(String),
-    Width(String),
+    Value(crate::StringAttributeValue),
+    Width(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for InputAttributes {
@@ -110,96 +110,106 @@ impl kalosm_sample::Parse for InputAttributes {
             .boxed()
             .or(InputAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    InputAttributesName::Accept => {
-                        String::new_parser().map_output(Self::Accept).boxed()
-                    }
-                    InputAttributesName::Alt => String::new_parser().map_output(Self::Alt).boxed(),
+                    InputAttributesName::Accept => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Accept)
+                        .boxed(),
+                    InputAttributesName::Alt => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Alt)
+                        .boxed(),
                     InputAttributesName::Autocomplete => {
                         crate::InputautocompleteValues::new_parser()
                             .map_output(Self::Autocomplete)
                             .boxed()
                     }
-                    InputAttributesName::Autofocus => {
-                        String::new_parser().map_output(Self::Autofocus).boxed()
-                    }
-                    InputAttributesName::Checked => {
-                        String::new_parser().map_output(Self::Checked).boxed()
-                    }
-                    InputAttributesName::Dirname => {
-                        String::new_parser().map_output(Self::Dirname).boxed()
-                    }
-                    InputAttributesName::Disabled => {
-                        String::new_parser().map_output(Self::Disabled).boxed()
-                    }
-                    InputAttributesName::Form => {
-                        String::new_parser().map_output(Self::Form).boxed()
-                    }
-                    InputAttributesName::Formaction => {
-                        String::new_parser().map_output(Self::Formaction).boxed()
-                    }
+                    InputAttributesName::Autofocus => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Autofocus)
+                        .boxed(),
+                    InputAttributesName::Checked => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Checked)
+                        .boxed(),
+                    InputAttributesName::Dirname => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Dirname)
+                        .boxed(),
+                    InputAttributesName::Disabled => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Disabled)
+                        .boxed(),
+                    InputAttributesName::Form => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Form)
+                        .boxed(),
+                    InputAttributesName::Formaction => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Formaction)
+                        .boxed(),
                     InputAttributesName::Formenctype => crate::EtValues::new_parser()
                         .map_output(Self::Formenctype)
                         .boxed(),
                     InputAttributesName::Formmethod => crate::FmValues::new_parser()
                         .map_output(Self::Formmethod)
                         .boxed(),
-                    InputAttributesName::Formnovalidate => String::new_parser()
-                        .map_output(Self::Formnovalidate)
+                    InputAttributesName::Formnovalidate => {
+                        crate::StringAttributeValue::new_parser()
+                            .map_output(Self::Formnovalidate)
+                            .boxed()
+                    }
+                    InputAttributesName::Formtarget => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Formtarget)
                         .boxed(),
-                    InputAttributesName::Formtarget => {
-                        String::new_parser().map_output(Self::Formtarget).boxed()
-                    }
-                    InputAttributesName::Height => {
-                        String::new_parser().map_output(Self::Height).boxed()
-                    }
+                    InputAttributesName::Height => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Height)
+                        .boxed(),
                     InputAttributesName::Inputmode => crate::ImValues::new_parser()
                         .map_output(Self::Inputmode)
                         .boxed(),
-                    InputAttributesName::List => {
-                        String::new_parser().map_output(Self::List).boxed()
-                    }
-                    InputAttributesName::Max => String::new_parser().map_output(Self::Max).boxed(),
-                    InputAttributesName::Maxlength => {
-                        String::new_parser().map_output(Self::Maxlength).boxed()
-                    }
-                    InputAttributesName::Min => String::new_parser().map_output(Self::Min).boxed(),
-                    InputAttributesName::Minlength => {
-                        String::new_parser().map_output(Self::Minlength).boxed()
-                    }
-                    InputAttributesName::Multiple => {
-                        String::new_parser().map_output(Self::Multiple).boxed()
-                    }
-                    InputAttributesName::Name => {
-                        String::new_parser().map_output(Self::Name).boxed()
-                    }
-                    InputAttributesName::Pattern => {
-                        String::new_parser().map_output(Self::Pattern).boxed()
-                    }
-                    InputAttributesName::Placeholder => {
-                        String::new_parser().map_output(Self::Placeholder).boxed()
-                    }
-                    InputAttributesName::Readonly => {
-                        String::new_parser().map_output(Self::Readonly).boxed()
-                    }
-                    InputAttributesName::Required => {
-                        String::new_parser().map_output(Self::Required).boxed()
-                    }
-                    InputAttributesName::Size => {
-                        String::new_parser().map_output(Self::Size).boxed()
-                    }
-                    InputAttributesName::Src => String::new_parser().map_output(Self::Src).boxed(),
-                    InputAttributesName::Step => {
-                        String::new_parser().map_output(Self::Step).boxed()
-                    }
+                    InputAttributesName::List => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::List)
+                        .boxed(),
+                    InputAttributesName::Max => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Max)
+                        .boxed(),
+                    InputAttributesName::Maxlength => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Maxlength)
+                        .boxed(),
+                    InputAttributesName::Min => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Min)
+                        .boxed(),
+                    InputAttributesName::Minlength => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Minlength)
+                        .boxed(),
+                    InputAttributesName::Multiple => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Multiple)
+                        .boxed(),
+                    InputAttributesName::Name => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Name)
+                        .boxed(),
+                    InputAttributesName::Pattern => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Pattern)
+                        .boxed(),
+                    InputAttributesName::Placeholder => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Placeholder)
+                        .boxed(),
+                    InputAttributesName::Readonly => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Readonly)
+                        .boxed(),
+                    InputAttributesName::Required => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Required)
+                        .boxed(),
+                    InputAttributesName::Size => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Size)
+                        .boxed(),
+                    InputAttributesName::Src => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Src)
+                        .boxed(),
+                    InputAttributesName::Step => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Step)
+                        .boxed(),
                     InputAttributesName::Type => {
                         crate::TValues::new_parser().map_output(Self::Type).boxed()
                     }
-                    InputAttributesName::Value => {
-                        String::new_parser().map_output(Self::Value).boxed()
-                    }
-                    InputAttributesName::Width => {
-                        String::new_parser().map_output(Self::Width).boxed()
-                    }
+                    InputAttributesName::Value => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Value)
+                        .boxed(),
+                    InputAttributesName::Width => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Width)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

@@ -1,4 +1,6 @@
 use kalosm_sample::*;
+
+use crate::TextNode;
 #[derive(Debug, Clone, Parse)]
 #[parse(unquoted)]
 pub enum StyleAttributesName {
@@ -15,11 +17,11 @@ pub enum StyleAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum StyleAttributes {
-    Media(String),
-    Nonce(String),
-    Scoped(String),
-    Title(String),
-    Type(String),
+    Media(crate::StringAttributeValue),
+    Nonce(crate::StringAttributeValue),
+    Scoped(crate::StringAttributeValue),
+    Title(crate::StringAttributeValue),
+    Type(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for StyleAttributes {
@@ -29,21 +31,21 @@ impl kalosm_sample::Parse for StyleAttributes {
             .boxed()
             .or(StyleAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    StyleAttributesName::Media => {
-                        String::new_parser().map_output(Self::Media).boxed()
-                    }
-                    StyleAttributesName::Nonce => {
-                        String::new_parser().map_output(Self::Nonce).boxed()
-                    }
-                    StyleAttributesName::Scoped => {
-                        String::new_parser().map_output(Self::Scoped).boxed()
-                    }
-                    StyleAttributesName::Title => {
-                        String::new_parser().map_output(Self::Title).boxed()
-                    }
-                    StyleAttributesName::Type => {
-                        String::new_parser().map_output(Self::Type).boxed()
-                    }
+                    StyleAttributesName::Media => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Media)
+                        .boxed(),
+                    StyleAttributesName::Nonce => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Nonce)
+                        .boxed(),
+                    StyleAttributesName::Scoped => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Scoped)
+                        .boxed(),
+                    StyleAttributesName::Title => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Title)
+                        .boxed(),
+                    StyleAttributesName::Type => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Type)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())
@@ -52,7 +54,7 @@ impl kalosm_sample::Parse for StyleAttributes {
 #[derive(Debug, Clone)]
 pub struct Style {
     attributes: Vec<StyleAttributes>,
-    body: Vec<crate::Node>,
+    body: TextNode,
 }
 
 impl kalosm_sample::Parse for Style {
@@ -61,10 +63,7 @@ impl kalosm_sample::Parse for Style {
         StyleAttributes::new_parser()
             .repeat(0..=10000)
             .then_literal(">")
-            .then(
-                kalosm_sample::LazyParser::new(|| crate::Node::new_parser().boxed())
-                    .repeat(0..=10000),
-            )
+            .then(crate::AnyTextNodeParser)
             .then_literal("</style>")
             .map_output(|(attributes, body)| Style { attributes, body })
     }

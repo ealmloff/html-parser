@@ -7,7 +7,7 @@ pub enum HeadAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum HeadAttributes {
-    Profile(String),
+    Profile(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for HeadAttributes {
@@ -17,9 +17,9 @@ impl kalosm_sample::Parse for HeadAttributes {
             .boxed()
             .or(HeadAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    HeadAttributesName::Profile => {
-                        String::new_parser().map_output(Self::Profile).boxed()
-                    }
+                    HeadAttributesName::Profile => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Profile)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

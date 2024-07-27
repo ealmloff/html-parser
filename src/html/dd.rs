@@ -7,7 +7,7 @@ pub enum DdAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum DdAttributes {
-    Nowrap(String),
+    Nowrap(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for DdAttributes {
@@ -17,9 +17,9 @@ impl kalosm_sample::Parse for DdAttributes {
             .boxed()
             .or(DdAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    DdAttributesName::Nowrap => {
-                        String::new_parser().map_output(Self::Nowrap).boxed()
-                    }
+                    DdAttributesName::Nowrap => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Nowrap)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

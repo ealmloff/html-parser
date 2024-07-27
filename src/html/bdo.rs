@@ -7,7 +7,7 @@ pub enum BdoAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum BdoAttributes {
-    Dir(String),
+    Dir(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for BdoAttributes {
@@ -17,7 +17,9 @@ impl kalosm_sample::Parse for BdoAttributes {
             .boxed()
             .or(BdoAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    BdoAttributesName::Dir => String::new_parser().map_output(Self::Dir).boxed(),
+                    BdoAttributesName::Dir => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Dir)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

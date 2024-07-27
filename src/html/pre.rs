@@ -11,9 +11,9 @@ pub enum PreAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum PreAttributes {
-    Cols(String),
-    Width(String),
-    Wrap(String),
+    Cols(crate::StringAttributeValue),
+    Width(crate::StringAttributeValue),
+    Wrap(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for PreAttributes {
@@ -23,11 +23,15 @@ impl kalosm_sample::Parse for PreAttributes {
             .boxed()
             .or(PreAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    PreAttributesName::Cols => String::new_parser().map_output(Self::Cols).boxed(),
-                    PreAttributesName::Width => {
-                        String::new_parser().map_output(Self::Width).boxed()
-                    }
-                    PreAttributesName::Wrap => String::new_parser().map_output(Self::Wrap).boxed(),
+                    PreAttributesName::Cols => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Cols)
+                        .boxed(),
+                    PreAttributesName::Width => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Width)
+                        .boxed(),
+                    PreAttributesName::Wrap => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Wrap)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

@@ -7,7 +7,7 @@ pub enum CaptionAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum CaptionAttributes {
-    Align(String),
+    Align(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for CaptionAttributes {
@@ -17,9 +17,9 @@ impl kalosm_sample::Parse for CaptionAttributes {
             .boxed()
             .or(CaptionAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    CaptionAttributesName::Align => {
-                        String::new_parser().map_output(Self::Align).boxed()
-                    }
+                    CaptionAttributesName::Align => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Align)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

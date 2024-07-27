@@ -9,8 +9,8 @@ pub enum DelAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum DelAttributes {
-    Cite(String),
-    Datetime(String),
+    Cite(crate::StringAttributeValue),
+    Datetime(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for DelAttributes {
@@ -20,10 +20,12 @@ impl kalosm_sample::Parse for DelAttributes {
             .boxed()
             .or(DelAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    DelAttributesName::Cite => String::new_parser().map_output(Self::Cite).boxed(),
-                    DelAttributesName::Datetime => {
-                        String::new_parser().map_output(Self::Datetime).boxed()
-                    }
+                    DelAttributesName::Cite => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Cite)
+                        .boxed(),
+                    DelAttributesName::Datetime => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Datetime)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

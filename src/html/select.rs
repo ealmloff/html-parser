@@ -22,13 +22,13 @@ pub enum SelectAttributesName {
 #[derive(Debug, Clone)]
 pub enum SelectAttributes {
     Autocomplete(crate::InputautocompleteValues),
-    Autofocus(String),
-    Disabled(String),
-    Form(String),
-    Multiple(String),
-    Name(String),
-    Required(String),
-    Size(String),
+    Autofocus(crate::StringAttributeValue),
+    Disabled(crate::StringAttributeValue),
+    Form(crate::StringAttributeValue),
+    Multiple(crate::StringAttributeValue),
+    Name(crate::StringAttributeValue),
+    Required(crate::StringAttributeValue),
+    Size(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for SelectAttributes {
@@ -43,27 +43,27 @@ impl kalosm_sample::Parse for SelectAttributes {
                             .map_output(Self::Autocomplete)
                             .boxed()
                     }
-                    SelectAttributesName::Autofocus => {
-                        String::new_parser().map_output(Self::Autofocus).boxed()
-                    }
-                    SelectAttributesName::Disabled => {
-                        String::new_parser().map_output(Self::Disabled).boxed()
-                    }
-                    SelectAttributesName::Form => {
-                        String::new_parser().map_output(Self::Form).boxed()
-                    }
-                    SelectAttributesName::Multiple => {
-                        String::new_parser().map_output(Self::Multiple).boxed()
-                    }
-                    SelectAttributesName::Name => {
-                        String::new_parser().map_output(Self::Name).boxed()
-                    }
-                    SelectAttributesName::Required => {
-                        String::new_parser().map_output(Self::Required).boxed()
-                    }
-                    SelectAttributesName::Size => {
-                        String::new_parser().map_output(Self::Size).boxed()
-                    }
+                    SelectAttributesName::Autofocus => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Autofocus)
+                        .boxed(),
+                    SelectAttributesName::Disabled => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Disabled)
+                        .boxed(),
+                    SelectAttributesName::Form => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Form)
+                        .boxed(),
+                    SelectAttributesName::Multiple => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Multiple)
+                        .boxed(),
+                    SelectAttributesName::Name => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Name)
+                        .boxed(),
+                    SelectAttributesName::Required => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Required)
+                        .boxed(),
+                    SelectAttributesName::Size => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Size)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

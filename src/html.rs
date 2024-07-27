@@ -1095,149 +1095,149 @@ pub enum GlobalAttributeName {
 }
 #[derive(Debug, Clone)]
 pub enum GlobalAttribute {
-    Accesskey(String),
-    Autocapitalize(String),
-    Class(String),
-    Contenteditable(String),
-    Contextmenu(String),
+    Accesskey(crate::StringAttributeValue),
+    Autocapitalize(crate::StringAttributeValue),
+    Class(crate::StringAttributeValue),
+    Contenteditable(crate::StringAttributeValue),
+    Contextmenu(crate::StringAttributeValue),
     Dir(crate::DValues),
     Draggable(crate::BValues),
-    Dropzone(String),
-    Exportparts(String),
-    Hidden(String),
-    Id(String),
-    Inputmode(String),
-    Is(String),
-    Itemid(String),
-    Itemprop(String),
-    Itemref(String),
-    Itemscope(String),
-    Itemtype(String),
-    Lang(String),
-    Part(String),
+    Dropzone(crate::StringAttributeValue),
+    Exportparts(crate::StringAttributeValue),
+    Hidden(crate::StringAttributeValue),
+    Id(crate::StringAttributeValue),
+    Inputmode(crate::StringAttributeValue),
+    Is(crate::StringAttributeValue),
+    Itemid(crate::StringAttributeValue),
+    Itemprop(crate::StringAttributeValue),
+    Itemref(crate::StringAttributeValue),
+    Itemscope(crate::StringAttributeValue),
+    Itemtype(crate::StringAttributeValue),
+    Lang(crate::StringAttributeValue),
+    Part(crate::StringAttributeValue),
     Role(crate::RolesValues),
-    Slot(String),
+    Slot(crate::StringAttributeValue),
     Spellcheck(crate::BValues),
-    Style(String),
-    Tabindex(String),
-    Title(String),
+    Style(crate::StringAttributeValue),
+    Tabindex(crate::StringAttributeValue),
+    Title(crate::StringAttributeValue),
     Translate(crate::YValues),
-    Onabort(String),
-    Onblur(String),
-    Oncanplay(String),
-    Oncanplaythrough(String),
-    Onchange(String),
-    Onclick(String),
-    Oncontextmenu(String),
-    Ondblclick(String),
-    Ondrag(String),
-    Ondragend(String),
-    Ondragenter(String),
-    Ondragleave(String),
-    Ondragover(String),
-    Ondragstart(String),
-    Ondrop(String),
-    Ondurationchange(String),
-    Onemptied(String),
-    Onended(String),
-    Onerror(String),
-    Onfocus(String),
-    Onformchange(String),
-    Onforminput(String),
-    Oninput(String),
-    Oninvalid(String),
-    Onkeydown(String),
-    Onkeypress(String),
-    Onkeyup(String),
-    Onload(String),
-    Onloadeddata(String),
-    Onloadedmetadata(String),
-    Onloadstart(String),
-    Onmousedown(String),
-    Onmousemove(String),
-    Onmouseout(String),
-    Onmouseover(String),
-    Onmouseup(String),
-    Onmousewheel(String),
-    Onmouseenter(String),
-    Onmouseleave(String),
-    Onpause(String),
-    Onplay(String),
-    Onplaying(String),
-    Onprogress(String),
-    Onratechange(String),
-    Onreset(String),
-    Onresize(String),
-    Onreadystatechange(String),
-    Onscroll(String),
-    Onseeked(String),
-    Onseeking(String),
-    Onselect(String),
-    Onshow(String),
-    Onstalled(String),
-    Onsubmit(String),
-    Onsuspend(String),
-    Ontimeupdate(String),
-    Onvolumechange(String),
-    Onwaiting(String),
-    Onpointercancel(String),
-    Onpointerdown(String),
-    Onpointerenter(String),
-    Onpointerleave(String),
-    Onpointerlockchange(String),
-    Onpointerlockerror(String),
-    Onpointermove(String),
-    Onpointerout(String),
-    Onpointerover(String),
-    Onpointerup(String),
-    AriaActivedescendant(String),
+    Onabort(crate::StringAttributeValue),
+    Onblur(crate::StringAttributeValue),
+    Oncanplay(crate::StringAttributeValue),
+    Oncanplaythrough(crate::StringAttributeValue),
+    Onchange(crate::StringAttributeValue),
+    Onclick(crate::StringAttributeValue),
+    Oncontextmenu(crate::StringAttributeValue),
+    Ondblclick(crate::StringAttributeValue),
+    Ondrag(crate::StringAttributeValue),
+    Ondragend(crate::StringAttributeValue),
+    Ondragenter(crate::StringAttributeValue),
+    Ondragleave(crate::StringAttributeValue),
+    Ondragover(crate::StringAttributeValue),
+    Ondragstart(crate::StringAttributeValue),
+    Ondrop(crate::StringAttributeValue),
+    Ondurationchange(crate::StringAttributeValue),
+    Onemptied(crate::StringAttributeValue),
+    Onended(crate::StringAttributeValue),
+    Onerror(crate::StringAttributeValue),
+    Onfocus(crate::StringAttributeValue),
+    Onformchange(crate::StringAttributeValue),
+    Onforminput(crate::StringAttributeValue),
+    Oninput(crate::StringAttributeValue),
+    Oninvalid(crate::StringAttributeValue),
+    Onkeydown(crate::StringAttributeValue),
+    Onkeypress(crate::StringAttributeValue),
+    Onkeyup(crate::StringAttributeValue),
+    Onload(crate::StringAttributeValue),
+    Onloadeddata(crate::StringAttributeValue),
+    Onloadedmetadata(crate::StringAttributeValue),
+    Onloadstart(crate::StringAttributeValue),
+    Onmousedown(crate::StringAttributeValue),
+    Onmousemove(crate::StringAttributeValue),
+    Onmouseout(crate::StringAttributeValue),
+    Onmouseover(crate::StringAttributeValue),
+    Onmouseup(crate::StringAttributeValue),
+    Onmousewheel(crate::StringAttributeValue),
+    Onmouseenter(crate::StringAttributeValue),
+    Onmouseleave(crate::StringAttributeValue),
+    Onpause(crate::StringAttributeValue),
+    Onplay(crate::StringAttributeValue),
+    Onplaying(crate::StringAttributeValue),
+    Onprogress(crate::StringAttributeValue),
+    Onratechange(crate::StringAttributeValue),
+    Onreset(crate::StringAttributeValue),
+    Onresize(crate::StringAttributeValue),
+    Onreadystatechange(crate::StringAttributeValue),
+    Onscroll(crate::StringAttributeValue),
+    Onseeked(crate::StringAttributeValue),
+    Onseeking(crate::StringAttributeValue),
+    Onselect(crate::StringAttributeValue),
+    Onshow(crate::StringAttributeValue),
+    Onstalled(crate::StringAttributeValue),
+    Onsubmit(crate::StringAttributeValue),
+    Onsuspend(crate::StringAttributeValue),
+    Ontimeupdate(crate::StringAttributeValue),
+    Onvolumechange(crate::StringAttributeValue),
+    Onwaiting(crate::StringAttributeValue),
+    Onpointercancel(crate::StringAttributeValue),
+    Onpointerdown(crate::StringAttributeValue),
+    Onpointerenter(crate::StringAttributeValue),
+    Onpointerleave(crate::StringAttributeValue),
+    Onpointerlockchange(crate::StringAttributeValue),
+    Onpointerlockerror(crate::StringAttributeValue),
+    Onpointermove(crate::StringAttributeValue),
+    Onpointerout(crate::StringAttributeValue),
+    Onpointerover(crate::StringAttributeValue),
+    Onpointerup(crate::StringAttributeValue),
+    AriaActivedescendant(crate::StringAttributeValue),
     AriaAtomic(crate::BValues),
     AriaAutocomplete(crate::AutocompleteValues),
     AriaBusy(crate::BValues),
     AriaChecked(crate::TristateValues),
-    AriaColcount(String),
-    AriaColindex(String),
-    AriaColspan(String),
-    AriaControls(String),
+    AriaColcount(crate::StringAttributeValue),
+    AriaColindex(crate::StringAttributeValue),
+    AriaColspan(crate::StringAttributeValue),
+    AriaControls(crate::StringAttributeValue),
     AriaCurrent(crate::CurrentValues),
-    AriaDescribedby(String),
+    AriaDescribedby(crate::StringAttributeValue),
     AriaDisabled(crate::BValues),
     AriaDropeffect(crate::DropeffectValues),
-    AriaErrormessage(String),
+    AriaErrormessage(crate::StringAttributeValue),
     AriaExpanded(crate::UValues),
-    AriaFlowto(String),
+    AriaFlowto(crate::StringAttributeValue),
     AriaGrabbed(crate::UValues),
     AriaHaspopup(crate::HaspopupValues),
     AriaHidden(crate::BValues),
     AriaInvalid(crate::InvalidValues),
-    AriaLabel(String),
-    AriaLabelledby(String),
-    AriaLevel(String),
+    AriaLabel(crate::StringAttributeValue),
+    AriaLabelledby(crate::StringAttributeValue),
+    AriaLevel(crate::StringAttributeValue),
     AriaLive(crate::LiveValues),
     AriaModal(crate::BValues),
     AriaMultiline(crate::BValues),
     AriaMultiselectable(crate::BValues),
     AriaOrientation(crate::OrientationValues),
-    AriaOwns(String),
-    AriaPlaceholder(String),
-    AriaPosinset(String),
+    AriaOwns(crate::StringAttributeValue),
+    AriaPlaceholder(crate::StringAttributeValue),
+    AriaPosinset(crate::StringAttributeValue),
     AriaPressed(crate::TristateValues),
     AriaReadonly(crate::BValues),
     AriaRelevant(crate::RelevantValues),
     AriaRequired(crate::BValues),
-    AriaRoledescription(String),
-    AriaRowcount(String),
-    AriaRowindex(String),
-    AriaRowspan(String),
+    AriaRoledescription(crate::StringAttributeValue),
+    AriaRowcount(crate::StringAttributeValue),
+    AriaRowindex(crate::StringAttributeValue),
+    AriaRowspan(crate::StringAttributeValue),
     AriaSelected(crate::UValues),
-    AriaSetsize(String),
+    AriaSetsize(crate::StringAttributeValue),
     AriaSort(crate::SortValues),
-    AriaValuemax(String),
-    AriaValuemin(String),
-    AriaValuenow(String),
-    AriaValuetext(String),
-    AriaDetails(String),
-    AriaKeyshortcuts(String),
+    AriaValuemax(crate::StringAttributeValue),
+    AriaValuemin(crate::StringAttributeValue),
+    AriaValuenow(crate::StringAttributeValue),
+    AriaValuetext(crate::StringAttributeValue),
+    AriaDetails(crate::StringAttributeValue),
+    AriaKeyshortcuts(crate::StringAttributeValue),
 }
 
 impl kalosm_sample::Parse for GlobalAttribute {
@@ -1245,278 +1245,302 @@ impl kalosm_sample::Parse for GlobalAttribute {
         use kalosm_sample::*;
         GlobalAttributeName::new_parser()
             .then_lazy(|name| match name {
-                GlobalAttributeName::Accesskey => {
-                    String::new_parser().map_output(Self::Accesskey).boxed()
-                }
-                GlobalAttributeName::Autocapitalize => String::new_parser()
+                GlobalAttributeName::Accesskey => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Accesskey)
+                    .boxed(),
+                GlobalAttributeName::Autocapitalize => crate::StringAttributeValue::new_parser()
                     .map_output(Self::Autocapitalize)
                     .boxed(),
-                GlobalAttributeName::Class => String::new_parser().map_output(Self::Class).boxed(),
-                GlobalAttributeName::Contenteditable => String::new_parser()
+                GlobalAttributeName::Class => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Class)
+                    .boxed(),
+                GlobalAttributeName::Contenteditable => crate::StringAttributeValue::new_parser()
                     .map_output(Self::Contenteditable)
                     .boxed(),
-                GlobalAttributeName::Contextmenu => {
-                    String::new_parser().map_output(Self::Contextmenu).boxed()
-                }
+                GlobalAttributeName::Contextmenu => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Contextmenu)
+                    .boxed(),
                 GlobalAttributeName::Dir => {
                     crate::DValues::new_parser().map_output(Self::Dir).boxed()
                 }
                 GlobalAttributeName::Draggable => crate::BValues::new_parser()
                     .map_output(Self::Draggable)
                     .boxed(),
-                GlobalAttributeName::Dropzone => {
-                    String::new_parser().map_output(Self::Dropzone).boxed()
-                }
-                GlobalAttributeName::Exportparts => {
-                    String::new_parser().map_output(Self::Exportparts).boxed()
-                }
-                GlobalAttributeName::Hidden => {
-                    String::new_parser().map_output(Self::Hidden).boxed()
-                }
-                GlobalAttributeName::Id => String::new_parser().map_output(Self::Id).boxed(),
-                GlobalAttributeName::Inputmode => {
-                    String::new_parser().map_output(Self::Inputmode).boxed()
-                }
-                GlobalAttributeName::Is => String::new_parser().map_output(Self::Is).boxed(),
-                GlobalAttributeName::Itemid => {
-                    String::new_parser().map_output(Self::Itemid).boxed()
-                }
-                GlobalAttributeName::Itemprop => {
-                    String::new_parser().map_output(Self::Itemprop).boxed()
-                }
-                GlobalAttributeName::Itemref => {
-                    String::new_parser().map_output(Self::Itemref).boxed()
-                }
-                GlobalAttributeName::Itemscope => {
-                    String::new_parser().map_output(Self::Itemscope).boxed()
-                }
-                GlobalAttributeName::Itemtype => {
-                    String::new_parser().map_output(Self::Itemtype).boxed()
-                }
-                GlobalAttributeName::Lang => String::new_parser().map_output(Self::Lang).boxed(),
-                GlobalAttributeName::Part => String::new_parser().map_output(Self::Part).boxed(),
+                GlobalAttributeName::Dropzone => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Dropzone)
+                    .boxed(),
+                GlobalAttributeName::Exportparts => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Exportparts)
+                    .boxed(),
+                GlobalAttributeName::Hidden => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Hidden)
+                    .boxed(),
+                GlobalAttributeName::Id => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Id)
+                    .boxed(),
+                GlobalAttributeName::Inputmode => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Inputmode)
+                    .boxed(),
+                GlobalAttributeName::Is => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Is)
+                    .boxed(),
+                GlobalAttributeName::Itemid => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Itemid)
+                    .boxed(),
+                GlobalAttributeName::Itemprop => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Itemprop)
+                    .boxed(),
+                GlobalAttributeName::Itemref => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Itemref)
+                    .boxed(),
+                GlobalAttributeName::Itemscope => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Itemscope)
+                    .boxed(),
+                GlobalAttributeName::Itemtype => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Itemtype)
+                    .boxed(),
+                GlobalAttributeName::Lang => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Lang)
+                    .boxed(),
+                GlobalAttributeName::Part => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Part)
+                    .boxed(),
                 GlobalAttributeName::Role => crate::RolesValues::new_parser()
                     .map_output(Self::Role)
                     .boxed(),
-                GlobalAttributeName::Slot => String::new_parser().map_output(Self::Slot).boxed(),
+                GlobalAttributeName::Slot => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Slot)
+                    .boxed(),
                 GlobalAttributeName::Spellcheck => crate::BValues::new_parser()
                     .map_output(Self::Spellcheck)
                     .boxed(),
-                GlobalAttributeName::Style => String::new_parser().map_output(Self::Style).boxed(),
-                GlobalAttributeName::Tabindex => {
-                    String::new_parser().map_output(Self::Tabindex).boxed()
-                }
-                GlobalAttributeName::Title => String::new_parser().map_output(Self::Title).boxed(),
+                GlobalAttributeName::Style => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Style)
+                    .boxed(),
+                GlobalAttributeName::Tabindex => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Tabindex)
+                    .boxed(),
+                GlobalAttributeName::Title => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Title)
+                    .boxed(),
                 GlobalAttributeName::Translate => crate::YValues::new_parser()
                     .map_output(Self::Translate)
                     .boxed(),
-                GlobalAttributeName::Onabort => {
-                    String::new_parser().map_output(Self::Onabort).boxed()
-                }
-                GlobalAttributeName::Onblur => {
-                    String::new_parser().map_output(Self::Onblur).boxed()
-                }
-                GlobalAttributeName::Oncanplay => {
-                    String::new_parser().map_output(Self::Oncanplay).boxed()
-                }
-                GlobalAttributeName::Oncanplaythrough => String::new_parser()
+                GlobalAttributeName::Onabort => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onabort)
+                    .boxed(),
+                GlobalAttributeName::Onblur => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onblur)
+                    .boxed(),
+                GlobalAttributeName::Oncanplay => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Oncanplay)
+                    .boxed(),
+                GlobalAttributeName::Oncanplaythrough => crate::StringAttributeValue::new_parser()
                     .map_output(Self::Oncanplaythrough)
                     .boxed(),
-                GlobalAttributeName::Onchange => {
-                    String::new_parser().map_output(Self::Onchange).boxed()
-                }
-                GlobalAttributeName::Onclick => {
-                    String::new_parser().map_output(Self::Onclick).boxed()
-                }
-                GlobalAttributeName::Oncontextmenu => {
-                    String::new_parser().map_output(Self::Oncontextmenu).boxed()
-                }
-                GlobalAttributeName::Ondblclick => {
-                    String::new_parser().map_output(Self::Ondblclick).boxed()
-                }
-                GlobalAttributeName::Ondrag => {
-                    String::new_parser().map_output(Self::Ondrag).boxed()
-                }
-                GlobalAttributeName::Ondragend => {
-                    String::new_parser().map_output(Self::Ondragend).boxed()
-                }
-                GlobalAttributeName::Ondragenter => {
-                    String::new_parser().map_output(Self::Ondragenter).boxed()
-                }
-                GlobalAttributeName::Ondragleave => {
-                    String::new_parser().map_output(Self::Ondragleave).boxed()
-                }
-                GlobalAttributeName::Ondragover => {
-                    String::new_parser().map_output(Self::Ondragover).boxed()
-                }
-                GlobalAttributeName::Ondragstart => {
-                    String::new_parser().map_output(Self::Ondragstart).boxed()
-                }
-                GlobalAttributeName::Ondrop => {
-                    String::new_parser().map_output(Self::Ondrop).boxed()
-                }
-                GlobalAttributeName::Ondurationchange => String::new_parser()
+                GlobalAttributeName::Onchange => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onchange)
+                    .boxed(),
+                GlobalAttributeName::Onclick => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onclick)
+                    .boxed(),
+                GlobalAttributeName::Oncontextmenu => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Oncontextmenu)
+                    .boxed(),
+                GlobalAttributeName::Ondblclick => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Ondblclick)
+                    .boxed(),
+                GlobalAttributeName::Ondrag => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Ondrag)
+                    .boxed(),
+                GlobalAttributeName::Ondragend => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Ondragend)
+                    .boxed(),
+                GlobalAttributeName::Ondragenter => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Ondragenter)
+                    .boxed(),
+                GlobalAttributeName::Ondragleave => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Ondragleave)
+                    .boxed(),
+                GlobalAttributeName::Ondragover => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Ondragover)
+                    .boxed(),
+                GlobalAttributeName::Ondragstart => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Ondragstart)
+                    .boxed(),
+                GlobalAttributeName::Ondrop => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Ondrop)
+                    .boxed(),
+                GlobalAttributeName::Ondurationchange => crate::StringAttributeValue::new_parser()
                     .map_output(Self::Ondurationchange)
                     .boxed(),
-                GlobalAttributeName::Onemptied => {
-                    String::new_parser().map_output(Self::Onemptied).boxed()
-                }
-                GlobalAttributeName::Onended => {
-                    String::new_parser().map_output(Self::Onended).boxed()
-                }
-                GlobalAttributeName::Onerror => {
-                    String::new_parser().map_output(Self::Onerror).boxed()
-                }
-                GlobalAttributeName::Onfocus => {
-                    String::new_parser().map_output(Self::Onfocus).boxed()
-                }
-                GlobalAttributeName::Onformchange => {
-                    String::new_parser().map_output(Self::Onformchange).boxed()
-                }
-                GlobalAttributeName::Onforminput => {
-                    String::new_parser().map_output(Self::Onforminput).boxed()
-                }
-                GlobalAttributeName::Oninput => {
-                    String::new_parser().map_output(Self::Oninput).boxed()
-                }
-                GlobalAttributeName::Oninvalid => {
-                    String::new_parser().map_output(Self::Oninvalid).boxed()
-                }
-                GlobalAttributeName::Onkeydown => {
-                    String::new_parser().map_output(Self::Onkeydown).boxed()
-                }
-                GlobalAttributeName::Onkeypress => {
-                    String::new_parser().map_output(Self::Onkeypress).boxed()
-                }
-                GlobalAttributeName::Onkeyup => {
-                    String::new_parser().map_output(Self::Onkeyup).boxed()
-                }
-                GlobalAttributeName::Onload => {
-                    String::new_parser().map_output(Self::Onload).boxed()
-                }
-                GlobalAttributeName::Onloadeddata => {
-                    String::new_parser().map_output(Self::Onloadeddata).boxed()
-                }
-                GlobalAttributeName::Onloadedmetadata => String::new_parser()
+                GlobalAttributeName::Onemptied => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onemptied)
+                    .boxed(),
+                GlobalAttributeName::Onended => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onended)
+                    .boxed(),
+                GlobalAttributeName::Onerror => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onerror)
+                    .boxed(),
+                GlobalAttributeName::Onfocus => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onfocus)
+                    .boxed(),
+                GlobalAttributeName::Onformchange => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onformchange)
+                    .boxed(),
+                GlobalAttributeName::Onforminput => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onforminput)
+                    .boxed(),
+                GlobalAttributeName::Oninput => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Oninput)
+                    .boxed(),
+                GlobalAttributeName::Oninvalid => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Oninvalid)
+                    .boxed(),
+                GlobalAttributeName::Onkeydown => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onkeydown)
+                    .boxed(),
+                GlobalAttributeName::Onkeypress => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onkeypress)
+                    .boxed(),
+                GlobalAttributeName::Onkeyup => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onkeyup)
+                    .boxed(),
+                GlobalAttributeName::Onload => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onload)
+                    .boxed(),
+                GlobalAttributeName::Onloadeddata => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onloadeddata)
+                    .boxed(),
+                GlobalAttributeName::Onloadedmetadata => crate::StringAttributeValue::new_parser()
                     .map_output(Self::Onloadedmetadata)
                     .boxed(),
-                GlobalAttributeName::Onloadstart => {
-                    String::new_parser().map_output(Self::Onloadstart).boxed()
-                }
-                GlobalAttributeName::Onmousedown => {
-                    String::new_parser().map_output(Self::Onmousedown).boxed()
-                }
-                GlobalAttributeName::Onmousemove => {
-                    String::new_parser().map_output(Self::Onmousemove).boxed()
-                }
-                GlobalAttributeName::Onmouseout => {
-                    String::new_parser().map_output(Self::Onmouseout).boxed()
-                }
-                GlobalAttributeName::Onmouseover => {
-                    String::new_parser().map_output(Self::Onmouseover).boxed()
-                }
-                GlobalAttributeName::Onmouseup => {
-                    String::new_parser().map_output(Self::Onmouseup).boxed()
-                }
-                GlobalAttributeName::Onmousewheel => {
-                    String::new_parser().map_output(Self::Onmousewheel).boxed()
-                }
-                GlobalAttributeName::Onmouseenter => {
-                    String::new_parser().map_output(Self::Onmouseenter).boxed()
-                }
-                GlobalAttributeName::Onmouseleave => {
-                    String::new_parser().map_output(Self::Onmouseleave).boxed()
-                }
-                GlobalAttributeName::Onpause => {
-                    String::new_parser().map_output(Self::Onpause).boxed()
-                }
-                GlobalAttributeName::Onplay => {
-                    String::new_parser().map_output(Self::Onplay).boxed()
-                }
-                GlobalAttributeName::Onplaying => {
-                    String::new_parser().map_output(Self::Onplaying).boxed()
-                }
-                GlobalAttributeName::Onprogress => {
-                    String::new_parser().map_output(Self::Onprogress).boxed()
-                }
-                GlobalAttributeName::Onratechange => {
-                    String::new_parser().map_output(Self::Onratechange).boxed()
-                }
-                GlobalAttributeName::Onreset => {
-                    String::new_parser().map_output(Self::Onreset).boxed()
-                }
-                GlobalAttributeName::Onresize => {
-                    String::new_parser().map_output(Self::Onresize).boxed()
-                }
-                GlobalAttributeName::Onreadystatechange => String::new_parser()
-                    .map_output(Self::Onreadystatechange)
+                GlobalAttributeName::Onloadstart => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onloadstart)
                     .boxed(),
-                GlobalAttributeName::Onscroll => {
-                    String::new_parser().map_output(Self::Onscroll).boxed()
+                GlobalAttributeName::Onmousedown => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onmousedown)
+                    .boxed(),
+                GlobalAttributeName::Onmousemove => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onmousemove)
+                    .boxed(),
+                GlobalAttributeName::Onmouseout => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onmouseout)
+                    .boxed(),
+                GlobalAttributeName::Onmouseover => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onmouseover)
+                    .boxed(),
+                GlobalAttributeName::Onmouseup => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onmouseup)
+                    .boxed(),
+                GlobalAttributeName::Onmousewheel => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onmousewheel)
+                    .boxed(),
+                GlobalAttributeName::Onmouseenter => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onmouseenter)
+                    .boxed(),
+                GlobalAttributeName::Onmouseleave => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onmouseleave)
+                    .boxed(),
+                GlobalAttributeName::Onpause => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onpause)
+                    .boxed(),
+                GlobalAttributeName::Onplay => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onplay)
+                    .boxed(),
+                GlobalAttributeName::Onplaying => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onplaying)
+                    .boxed(),
+                GlobalAttributeName::Onprogress => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onprogress)
+                    .boxed(),
+                GlobalAttributeName::Onratechange => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onratechange)
+                    .boxed(),
+                GlobalAttributeName::Onreset => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onreset)
+                    .boxed(),
+                GlobalAttributeName::Onresize => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onresize)
+                    .boxed(),
+                GlobalAttributeName::Onreadystatechange => {
+                    crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onreadystatechange)
+                        .boxed()
                 }
-                GlobalAttributeName::Onseeked => {
-                    String::new_parser().map_output(Self::Onseeked).boxed()
-                }
-                GlobalAttributeName::Onseeking => {
-                    String::new_parser().map_output(Self::Onseeking).boxed()
-                }
-                GlobalAttributeName::Onselect => {
-                    String::new_parser().map_output(Self::Onselect).boxed()
-                }
-                GlobalAttributeName::Onshow => {
-                    String::new_parser().map_output(Self::Onshow).boxed()
-                }
-                GlobalAttributeName::Onstalled => {
-                    String::new_parser().map_output(Self::Onstalled).boxed()
-                }
-                GlobalAttributeName::Onsubmit => {
-                    String::new_parser().map_output(Self::Onsubmit).boxed()
-                }
-                GlobalAttributeName::Onsuspend => {
-                    String::new_parser().map_output(Self::Onsuspend).boxed()
-                }
-                GlobalAttributeName::Ontimeupdate => {
-                    String::new_parser().map_output(Self::Ontimeupdate).boxed()
-                }
-                GlobalAttributeName::Onvolumechange => String::new_parser()
+                GlobalAttributeName::Onscroll => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onscroll)
+                    .boxed(),
+                GlobalAttributeName::Onseeked => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onseeked)
+                    .boxed(),
+                GlobalAttributeName::Onseeking => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onseeking)
+                    .boxed(),
+                GlobalAttributeName::Onselect => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onselect)
+                    .boxed(),
+                GlobalAttributeName::Onshow => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onshow)
+                    .boxed(),
+                GlobalAttributeName::Onstalled => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onstalled)
+                    .boxed(),
+                GlobalAttributeName::Onsubmit => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onsubmit)
+                    .boxed(),
+                GlobalAttributeName::Onsuspend => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onsuspend)
+                    .boxed(),
+                GlobalAttributeName::Ontimeupdate => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Ontimeupdate)
+                    .boxed(),
+                GlobalAttributeName::Onvolumechange => crate::StringAttributeValue::new_parser()
                     .map_output(Self::Onvolumechange)
                     .boxed(),
-                GlobalAttributeName::Onwaiting => {
-                    String::new_parser().map_output(Self::Onwaiting).boxed()
-                }
-                GlobalAttributeName::Onpointercancel => String::new_parser()
+                GlobalAttributeName::Onwaiting => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onwaiting)
+                    .boxed(),
+                GlobalAttributeName::Onpointercancel => crate::StringAttributeValue::new_parser()
                     .map_output(Self::Onpointercancel)
                     .boxed(),
-                GlobalAttributeName::Onpointerdown => {
-                    String::new_parser().map_output(Self::Onpointerdown).boxed()
-                }
-                GlobalAttributeName::Onpointerenter => String::new_parser()
+                GlobalAttributeName::Onpointerdown => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onpointerdown)
+                    .boxed(),
+                GlobalAttributeName::Onpointerenter => crate::StringAttributeValue::new_parser()
                     .map_output(Self::Onpointerenter)
                     .boxed(),
-                GlobalAttributeName::Onpointerleave => String::new_parser()
+                GlobalAttributeName::Onpointerleave => crate::StringAttributeValue::new_parser()
                     .map_output(Self::Onpointerleave)
                     .boxed(),
-                GlobalAttributeName::Onpointerlockchange => String::new_parser()
-                    .map_output(Self::Onpointerlockchange)
+                GlobalAttributeName::Onpointerlockchange => {
+                    crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onpointerlockchange)
+                        .boxed()
+                }
+                GlobalAttributeName::Onpointerlockerror => {
+                    crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Onpointerlockerror)
+                        .boxed()
+                }
+                GlobalAttributeName::Onpointermove => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onpointermove)
                     .boxed(),
-                GlobalAttributeName::Onpointerlockerror => String::new_parser()
-                    .map_output(Self::Onpointerlockerror)
+                GlobalAttributeName::Onpointerout => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onpointerout)
                     .boxed(),
-                GlobalAttributeName::Onpointermove => {
-                    String::new_parser().map_output(Self::Onpointermove).boxed()
-                }
-                GlobalAttributeName::Onpointerout => {
-                    String::new_parser().map_output(Self::Onpointerout).boxed()
-                }
-                GlobalAttributeName::Onpointerover => {
-                    String::new_parser().map_output(Self::Onpointerover).boxed()
-                }
-                GlobalAttributeName::Onpointerup => {
-                    String::new_parser().map_output(Self::Onpointerup).boxed()
-                }
-                GlobalAttributeName::AriaActivedescendant => String::new_parser()
-                    .map_output(Self::AriaActivedescendant)
+                GlobalAttributeName::Onpointerover => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onpointerover)
                     .boxed(),
+                GlobalAttributeName::Onpointerup => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::Onpointerup)
+                    .boxed(),
+                GlobalAttributeName::AriaActivedescendant => {
+                    crate::StringAttributeValue::new_parser()
+                        .map_output(Self::AriaActivedescendant)
+                        .boxed()
+                }
                 GlobalAttributeName::AriaAtomic => crate::BValues::new_parser()
                     .map_output(Self::AriaAtomic)
                     .boxed(),
@@ -1529,22 +1553,22 @@ impl kalosm_sample::Parse for GlobalAttribute {
                 GlobalAttributeName::AriaChecked => crate::TristateValues::new_parser()
                     .map_output(Self::AriaChecked)
                     .boxed(),
-                GlobalAttributeName::AriaColcount => {
-                    String::new_parser().map_output(Self::AriaColcount).boxed()
-                }
-                GlobalAttributeName::AriaColindex => {
-                    String::new_parser().map_output(Self::AriaColindex).boxed()
-                }
-                GlobalAttributeName::AriaColspan => {
-                    String::new_parser().map_output(Self::AriaColspan).boxed()
-                }
-                GlobalAttributeName::AriaControls => {
-                    String::new_parser().map_output(Self::AriaControls).boxed()
-                }
+                GlobalAttributeName::AriaColcount => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaColcount)
+                    .boxed(),
+                GlobalAttributeName::AriaColindex => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaColindex)
+                    .boxed(),
+                GlobalAttributeName::AriaColspan => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaColspan)
+                    .boxed(),
+                GlobalAttributeName::AriaControls => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaControls)
+                    .boxed(),
                 GlobalAttributeName::AriaCurrent => crate::CurrentValues::new_parser()
                     .map_output(Self::AriaCurrent)
                     .boxed(),
-                GlobalAttributeName::AriaDescribedby => String::new_parser()
+                GlobalAttributeName::AriaDescribedby => crate::StringAttributeValue::new_parser()
                     .map_output(Self::AriaDescribedby)
                     .boxed(),
                 GlobalAttributeName::AriaDisabled => crate::BValues::new_parser()
@@ -1553,15 +1577,15 @@ impl kalosm_sample::Parse for GlobalAttribute {
                 GlobalAttributeName::AriaDropeffect => crate::DropeffectValues::new_parser()
                     .map_output(Self::AriaDropeffect)
                     .boxed(),
-                GlobalAttributeName::AriaErrormessage => String::new_parser()
+                GlobalAttributeName::AriaErrormessage => crate::StringAttributeValue::new_parser()
                     .map_output(Self::AriaErrormessage)
                     .boxed(),
                 GlobalAttributeName::AriaExpanded => crate::UValues::new_parser()
                     .map_output(Self::AriaExpanded)
                     .boxed(),
-                GlobalAttributeName::AriaFlowto => {
-                    String::new_parser().map_output(Self::AriaFlowto).boxed()
-                }
+                GlobalAttributeName::AriaFlowto => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaFlowto)
+                    .boxed(),
                 GlobalAttributeName::AriaGrabbed => crate::UValues::new_parser()
                     .map_output(Self::AriaGrabbed)
                     .boxed(),
@@ -1574,15 +1598,15 @@ impl kalosm_sample::Parse for GlobalAttribute {
                 GlobalAttributeName::AriaInvalid => crate::InvalidValues::new_parser()
                     .map_output(Self::AriaInvalid)
                     .boxed(),
-                GlobalAttributeName::AriaLabel => {
-                    String::new_parser().map_output(Self::AriaLabel).boxed()
-                }
-                GlobalAttributeName::AriaLabelledby => String::new_parser()
+                GlobalAttributeName::AriaLabel => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaLabel)
+                    .boxed(),
+                GlobalAttributeName::AriaLabelledby => crate::StringAttributeValue::new_parser()
                     .map_output(Self::AriaLabelledby)
                     .boxed(),
-                GlobalAttributeName::AriaLevel => {
-                    String::new_parser().map_output(Self::AriaLevel).boxed()
-                }
+                GlobalAttributeName::AriaLevel => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaLevel)
+                    .boxed(),
                 GlobalAttributeName::AriaLive => crate::LiveValues::new_parser()
                     .map_output(Self::AriaLive)
                     .boxed(),
@@ -1598,15 +1622,15 @@ impl kalosm_sample::Parse for GlobalAttribute {
                 GlobalAttributeName::AriaOrientation => crate::OrientationValues::new_parser()
                     .map_output(Self::AriaOrientation)
                     .boxed(),
-                GlobalAttributeName::AriaOwns => {
-                    String::new_parser().map_output(Self::AriaOwns).boxed()
-                }
-                GlobalAttributeName::AriaPlaceholder => String::new_parser()
+                GlobalAttributeName::AriaOwns => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaOwns)
+                    .boxed(),
+                GlobalAttributeName::AriaPlaceholder => crate::StringAttributeValue::new_parser()
                     .map_output(Self::AriaPlaceholder)
                     .boxed(),
-                GlobalAttributeName::AriaPosinset => {
-                    String::new_parser().map_output(Self::AriaPosinset).boxed()
-                }
+                GlobalAttributeName::AriaPosinset => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaPosinset)
+                    .boxed(),
                 GlobalAttributeName::AriaPressed => crate::TristateValues::new_parser()
                     .map_output(Self::AriaPressed)
                     .boxed(),
@@ -1619,43 +1643,45 @@ impl kalosm_sample::Parse for GlobalAttribute {
                 GlobalAttributeName::AriaRequired => crate::BValues::new_parser()
                     .map_output(Self::AriaRequired)
                     .boxed(),
-                GlobalAttributeName::AriaRoledescription => String::new_parser()
-                    .map_output(Self::AriaRoledescription)
+                GlobalAttributeName::AriaRoledescription => {
+                    crate::StringAttributeValue::new_parser()
+                        .map_output(Self::AriaRoledescription)
+                        .boxed()
+                }
+                GlobalAttributeName::AriaRowcount => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaRowcount)
                     .boxed(),
-                GlobalAttributeName::AriaRowcount => {
-                    String::new_parser().map_output(Self::AriaRowcount).boxed()
-                }
-                GlobalAttributeName::AriaRowindex => {
-                    String::new_parser().map_output(Self::AriaRowindex).boxed()
-                }
-                GlobalAttributeName::AriaRowspan => {
-                    String::new_parser().map_output(Self::AriaRowspan).boxed()
-                }
+                GlobalAttributeName::AriaRowindex => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaRowindex)
+                    .boxed(),
+                GlobalAttributeName::AriaRowspan => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaRowspan)
+                    .boxed(),
                 GlobalAttributeName::AriaSelected => crate::UValues::new_parser()
                     .map_output(Self::AriaSelected)
                     .boxed(),
-                GlobalAttributeName::AriaSetsize => {
-                    String::new_parser().map_output(Self::AriaSetsize).boxed()
-                }
+                GlobalAttributeName::AriaSetsize => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaSetsize)
+                    .boxed(),
                 GlobalAttributeName::AriaSort => crate::SortValues::new_parser()
                     .map_output(Self::AriaSort)
                     .boxed(),
-                GlobalAttributeName::AriaValuemax => {
-                    String::new_parser().map_output(Self::AriaValuemax).boxed()
-                }
-                GlobalAttributeName::AriaValuemin => {
-                    String::new_parser().map_output(Self::AriaValuemin).boxed()
-                }
-                GlobalAttributeName::AriaValuenow => {
-                    String::new_parser().map_output(Self::AriaValuenow).boxed()
-                }
-                GlobalAttributeName::AriaValuetext => {
-                    String::new_parser().map_output(Self::AriaValuetext).boxed()
-                }
-                GlobalAttributeName::AriaDetails => {
-                    String::new_parser().map_output(Self::AriaDetails).boxed()
-                }
-                GlobalAttributeName::AriaKeyshortcuts => String::new_parser()
+                GlobalAttributeName::AriaValuemax => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaValuemax)
+                    .boxed(),
+                GlobalAttributeName::AriaValuemin => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaValuemin)
+                    .boxed(),
+                GlobalAttributeName::AriaValuenow => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaValuenow)
+                    .boxed(),
+                GlobalAttributeName::AriaValuetext => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaValuetext)
+                    .boxed(),
+                GlobalAttributeName::AriaDetails => crate::StringAttributeValue::new_parser()
+                    .map_output(Self::AriaDetails)
+                    .boxed(),
+                GlobalAttributeName::AriaKeyshortcuts => crate::StringAttributeValue::new_parser()
                     .map_output(Self::AriaKeyshortcuts)
                     .boxed(),
             })

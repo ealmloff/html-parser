@@ -9,8 +9,8 @@ pub enum ColAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum ColAttributes {
-    Align(String),
-    Span(String),
+    Align(crate::StringAttributeValue),
+    Span(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for ColAttributes {
@@ -20,10 +20,12 @@ impl kalosm_sample::Parse for ColAttributes {
             .boxed()
             .or(ColAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    ColAttributesName::Align => {
-                        String::new_parser().map_output(Self::Align).boxed()
-                    }
-                    ColAttributesName::Span => String::new_parser().map_output(Self::Span).boxed(),
+                    ColAttributesName::Align => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Align)
+                        .boxed(),
+                    ColAttributesName::Span => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Span)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

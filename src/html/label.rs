@@ -9,8 +9,8 @@ pub enum LabelAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum LabelAttributes {
-    For(String),
-    Form(String),
+    For(crate::StringAttributeValue),
+    Form(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for LabelAttributes {
@@ -20,10 +20,12 @@ impl kalosm_sample::Parse for LabelAttributes {
             .boxed()
             .or(LabelAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    LabelAttributesName::For => String::new_parser().map_output(Self::For).boxed(),
-                    LabelAttributesName::Form => {
-                        String::new_parser().map_output(Self::Form).boxed()
-                    }
+                    LabelAttributesName::For => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::For)
+                        .boxed(),
+                    LabelAttributesName::Form => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Form)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

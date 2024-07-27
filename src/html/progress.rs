@@ -9,8 +9,8 @@ pub enum ProgressAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum ProgressAttributes {
-    Max(String),
-    Value(String),
+    Max(crate::StringAttributeValue),
+    Value(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for ProgressAttributes {
@@ -20,12 +20,12 @@ impl kalosm_sample::Parse for ProgressAttributes {
             .boxed()
             .or(ProgressAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    ProgressAttributesName::Max => {
-                        String::new_parser().map_output(Self::Max).boxed()
-                    }
-                    ProgressAttributesName::Value => {
-                        String::new_parser().map_output(Self::Value).boxed()
-                    }
+                    ProgressAttributesName::Max => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Max)
+                        .boxed(),
+                    ProgressAttributesName::Value => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Value)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

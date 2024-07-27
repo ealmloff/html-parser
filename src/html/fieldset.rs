@@ -11,9 +11,9 @@ pub enum FieldsetAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum FieldsetAttributes {
-    Disabled(String),
-    Form(String),
-    Name(String),
+    Disabled(crate::StringAttributeValue),
+    Form(crate::StringAttributeValue),
+    Name(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for FieldsetAttributes {
@@ -23,15 +23,15 @@ impl kalosm_sample::Parse for FieldsetAttributes {
             .boxed()
             .or(FieldsetAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    FieldsetAttributesName::Disabled => {
-                        String::new_parser().map_output(Self::Disabled).boxed()
-                    }
-                    FieldsetAttributesName::Form => {
-                        String::new_parser().map_output(Self::Form).boxed()
-                    }
-                    FieldsetAttributesName::Name => {
-                        String::new_parser().map_output(Self::Name).boxed()
-                    }
+                    FieldsetAttributesName::Disabled => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Disabled)
+                        .boxed(),
+                    FieldsetAttributesName::Form => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Form)
+                        .boxed(),
+                    FieldsetAttributesName::Name => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Name)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

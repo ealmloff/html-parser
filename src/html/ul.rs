@@ -7,7 +7,7 @@ pub enum UlAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum UlAttributes {
-    Compact(String),
+    Compact(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for UlAttributes {
@@ -17,9 +17,9 @@ impl kalosm_sample::Parse for UlAttributes {
             .boxed()
             .or(UlAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    UlAttributesName::Compact => {
-                        String::new_parser().map_output(Self::Compact).boxed()
-                    }
+                    UlAttributesName::Compact => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Compact)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

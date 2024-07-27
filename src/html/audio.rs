@@ -21,14 +21,14 @@ pub enum AudioAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum AudioAttributes {
-    Autoplay(String),
-    Controls(String),
+    Autoplay(crate::StringAttributeValue),
+    Controls(crate::StringAttributeValue),
     Crossorigin(crate::XoValues),
-    Loop(String),
-    Mediagroup(String),
-    Muted(String),
+    Loop(crate::StringAttributeValue),
+    Mediagroup(crate::StringAttributeValue),
+    Muted(crate::StringAttributeValue),
     Preload(crate::PlValues),
-    Src(String),
+    Src(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for AudioAttributes {
@@ -38,28 +38,30 @@ impl kalosm_sample::Parse for AudioAttributes {
             .boxed()
             .or(AudioAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    AudioAttributesName::Autoplay => {
-                        String::new_parser().map_output(Self::Autoplay).boxed()
-                    }
-                    AudioAttributesName::Controls => {
-                        String::new_parser().map_output(Self::Controls).boxed()
-                    }
+                    AudioAttributesName::Autoplay => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Autoplay)
+                        .boxed(),
+                    AudioAttributesName::Controls => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Controls)
+                        .boxed(),
                     AudioAttributesName::Crossorigin => crate::XoValues::new_parser()
                         .map_output(Self::Crossorigin)
                         .boxed(),
-                    AudioAttributesName::Loop => {
-                        String::new_parser().map_output(Self::Loop).boxed()
-                    }
-                    AudioAttributesName::Mediagroup => {
-                        String::new_parser().map_output(Self::Mediagroup).boxed()
-                    }
-                    AudioAttributesName::Muted => {
-                        String::new_parser().map_output(Self::Muted).boxed()
-                    }
+                    AudioAttributesName::Loop => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Loop)
+                        .boxed(),
+                    AudioAttributesName::Mediagroup => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Mediagroup)
+                        .boxed(),
+                    AudioAttributesName::Muted => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Muted)
+                        .boxed(),
                     AudioAttributesName::Preload => crate::PlValues::new_parser()
                         .map_output(Self::Preload)
                         .boxed(),
-                    AudioAttributesName::Src => String::new_parser().map_output(Self::Src).boxed(),
+                    AudioAttributesName::Src => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Src)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

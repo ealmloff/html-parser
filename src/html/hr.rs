@@ -15,11 +15,11 @@ pub enum HrAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum HrAttributes {
-    Align(String),
-    Color(String),
-    Noshade(String),
-    Size(String),
-    Width(String),
+    Align(crate::StringAttributeValue),
+    Color(crate::StringAttributeValue),
+    Noshade(crate::StringAttributeValue),
+    Size(crate::StringAttributeValue),
+    Width(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for HrAttributes {
@@ -29,13 +29,21 @@ impl kalosm_sample::Parse for HrAttributes {
             .boxed()
             .or(HrAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    HrAttributesName::Align => String::new_parser().map_output(Self::Align).boxed(),
-                    HrAttributesName::Color => String::new_parser().map_output(Self::Color).boxed(),
-                    HrAttributesName::Noshade => {
-                        String::new_parser().map_output(Self::Noshade).boxed()
-                    }
-                    HrAttributesName::Size => String::new_parser().map_output(Self::Size).boxed(),
-                    HrAttributesName::Width => String::new_parser().map_output(Self::Width).boxed(),
+                    HrAttributesName::Align => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Align)
+                        .boxed(),
+                    HrAttributesName::Color => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Color)
+                        .boxed(),
+                    HrAttributesName::Noshade => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Noshade)
+                        .boxed(),
+                    HrAttributesName::Size => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Size)
+                        .boxed(),
+                    HrAttributesName::Width => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Width)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

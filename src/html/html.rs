@@ -11,9 +11,9 @@ pub enum HtmlAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum HtmlAttributes {
-    Manifest(String),
-    Version(String),
-    Xmlns(String),
+    Manifest(crate::StringAttributeValue),
+    Version(crate::StringAttributeValue),
+    Xmlns(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for HtmlAttributes {
@@ -23,15 +23,15 @@ impl kalosm_sample::Parse for HtmlAttributes {
             .boxed()
             .or(HtmlAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    HtmlAttributesName::Manifest => {
-                        String::new_parser().map_output(Self::Manifest).boxed()
-                    }
-                    HtmlAttributesName::Version => {
-                        String::new_parser().map_output(Self::Version).boxed()
-                    }
-                    HtmlAttributesName::Xmlns => {
-                        String::new_parser().map_output(Self::Xmlns).boxed()
-                    }
+                    HtmlAttributesName::Manifest => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Manifest)
+                        .boxed(),
+                    HtmlAttributesName::Version => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Version)
+                        .boxed(),
+                    HtmlAttributesName::Xmlns => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Xmlns)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

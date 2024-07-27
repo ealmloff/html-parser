@@ -15,11 +15,11 @@ pub enum TrackAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum TrackAttributes {
-    Default(String),
+    Default(crate::StringAttributeValue),
     Kind(crate::TkValues),
-    Label(String),
-    Src(String),
-    Srclang(String),
+    Label(crate::StringAttributeValue),
+    Src(crate::StringAttributeValue),
+    Srclang(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for TrackAttributes {
@@ -29,19 +29,21 @@ impl kalosm_sample::Parse for TrackAttributes {
             .boxed()
             .or(TrackAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    TrackAttributesName::Default => {
-                        String::new_parser().map_output(Self::Default).boxed()
-                    }
+                    TrackAttributesName::Default => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Default)
+                        .boxed(),
                     TrackAttributesName::Kind => {
                         crate::TkValues::new_parser().map_output(Self::Kind).boxed()
                     }
-                    TrackAttributesName::Label => {
-                        String::new_parser().map_output(Self::Label).boxed()
-                    }
-                    TrackAttributesName::Src => String::new_parser().map_output(Self::Src).boxed(),
-                    TrackAttributesName::Srclang => {
-                        String::new_parser().map_output(Self::Srclang).boxed()
-                    }
+                    TrackAttributesName::Label => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Label)
+                        .boxed(),
+                    TrackAttributesName::Src => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Src)
+                        .boxed(),
+                    TrackAttributesName::Srclang => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Srclang)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

@@ -9,7 +9,7 @@ pub enum BaseAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum BaseAttributes {
-    Href(String),
+    Href(crate::StringAttributeValue),
     Target(crate::TargetValues),
     GlobalAttribute(crate::GlobalAttribute),
 }
@@ -20,7 +20,9 @@ impl kalosm_sample::Parse for BaseAttributes {
             .boxed()
             .or(BaseAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    BaseAttributesName::Href => String::new_parser().map_output(Self::Href).boxed(),
+                    BaseAttributesName::Href => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Href)
+                        .boxed(),
                     BaseAttributesName::Target => crate::TargetValues::new_parser()
                         .map_output(Self::Target)
                         .boxed(),

@@ -13,9 +13,9 @@ pub enum OlAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum OlAttributes {
-    Compact(String),
-    Reversed(String),
-    Start(String),
+    Compact(crate::StringAttributeValue),
+    Reversed(crate::StringAttributeValue),
+    Start(crate::StringAttributeValue),
     Type(crate::LtValues),
     GlobalAttribute(crate::GlobalAttribute),
 }
@@ -26,13 +26,15 @@ impl kalosm_sample::Parse for OlAttributes {
             .boxed()
             .or(OlAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    OlAttributesName::Compact => {
-                        String::new_parser().map_output(Self::Compact).boxed()
-                    }
-                    OlAttributesName::Reversed => {
-                        String::new_parser().map_output(Self::Reversed).boxed()
-                    }
-                    OlAttributesName::Start => String::new_parser().map_output(Self::Start).boxed(),
+                    OlAttributesName::Compact => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Compact)
+                        .boxed(),
+                    OlAttributesName::Reversed => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Reversed)
+                        .boxed(),
+                    OlAttributesName::Start => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Start)
+                        .boxed(),
                     OlAttributesName::Type => {
                         crate::LtValues::new_parser().map_output(Self::Type).boxed()
                     }

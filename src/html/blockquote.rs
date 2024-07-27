@@ -7,7 +7,7 @@ pub enum BlockquoteAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum BlockquoteAttributes {
-    Cite(String),
+    Cite(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for BlockquoteAttributes {
@@ -17,9 +17,9 @@ impl kalosm_sample::Parse for BlockquoteAttributes {
             .boxed()
             .or(BlockquoteAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    BlockquoteAttributesName::Cite => {
-                        String::new_parser().map_output(Self::Cite).boxed()
-                    }
+                    BlockquoteAttributesName::Cite => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Cite)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

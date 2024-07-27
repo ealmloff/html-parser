@@ -21,14 +21,14 @@ pub enum AAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum AAttributes {
-    Download(String),
-    Href(String),
-    Hreflang(String),
-    Ping(String),
-    Referrerpolicy(String),
-    Rel(String),
+    Download(crate::StringAttributeValue),
+    Href(crate::StringAttributeValue),
+    Hreflang(crate::StringAttributeValue),
+    Ping(crate::StringAttributeValue),
+    Referrerpolicy(crate::StringAttributeValue),
+    Rel(crate::StringAttributeValue),
     Target(crate::TargetValues),
-    Type(String),
+    Type(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for AAttributes {
@@ -38,22 +38,30 @@ impl kalosm_sample::Parse for AAttributes {
             .boxed()
             .or(AAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    AAttributesName::Download => {
-                        String::new_parser().map_output(Self::Download).boxed()
-                    }
-                    AAttributesName::Href => String::new_parser().map_output(Self::Href).boxed(),
-                    AAttributesName::Hreflang => {
-                        String::new_parser().map_output(Self::Hreflang).boxed()
-                    }
-                    AAttributesName::Ping => String::new_parser().map_output(Self::Ping).boxed(),
-                    AAttributesName::Referrerpolicy => String::new_parser()
+                    AAttributesName::Download => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Download)
+                        .boxed(),
+                    AAttributesName::Href => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Href)
+                        .boxed(),
+                    AAttributesName::Hreflang => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Hreflang)
+                        .boxed(),
+                    AAttributesName::Ping => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Ping)
+                        .boxed(),
+                    AAttributesName::Referrerpolicy => crate::StringAttributeValue::new_parser()
                         .map_output(Self::Referrerpolicy)
                         .boxed(),
-                    AAttributesName::Rel => String::new_parser().map_output(Self::Rel).boxed(),
+                    AAttributesName::Rel => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Rel)
+                        .boxed(),
                     AAttributesName::Target => crate::TargetValues::new_parser()
                         .map_output(Self::Target)
                         .boxed(),
-                    AAttributesName::Type => String::new_parser().map_output(Self::Type).boxed(),
+                    AAttributesName::Type => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Type)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

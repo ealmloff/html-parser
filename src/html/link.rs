@@ -29,18 +29,18 @@ pub enum LinkAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum LinkAttributes {
-    As(String),
+    As(crate::StringAttributeValue),
     Crossorigin(crate::XoValues),
-    Href(String),
-    Hreflang(String),
-    Importance(String),
-    Integrity(String),
-    Media(String),
-    Referrerpolicy(String),
-    Rel(String),
-    Sizes(String),
-    Title(String),
-    Type(String),
+    Href(crate::StringAttributeValue),
+    Hreflang(crate::StringAttributeValue),
+    Importance(crate::StringAttributeValue),
+    Integrity(crate::StringAttributeValue),
+    Media(crate::StringAttributeValue),
+    Referrerpolicy(crate::StringAttributeValue),
+    Rel(crate::StringAttributeValue),
+    Sizes(crate::StringAttributeValue),
+    Title(crate::StringAttributeValue),
+    Type(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for LinkAttributes {
@@ -50,34 +50,42 @@ impl kalosm_sample::Parse for LinkAttributes {
             .boxed()
             .or(LinkAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    LinkAttributesName::As => String::new_parser().map_output(Self::As).boxed(),
+                    LinkAttributesName::As => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::As)
+                        .boxed(),
                     LinkAttributesName::Crossorigin => crate::XoValues::new_parser()
                         .map_output(Self::Crossorigin)
                         .boxed(),
-                    LinkAttributesName::Href => String::new_parser().map_output(Self::Href).boxed(),
-                    LinkAttributesName::Hreflang => {
-                        String::new_parser().map_output(Self::Hreflang).boxed()
-                    }
-                    LinkAttributesName::Importance => {
-                        String::new_parser().map_output(Self::Importance).boxed()
-                    }
-                    LinkAttributesName::Integrity => {
-                        String::new_parser().map_output(Self::Integrity).boxed()
-                    }
-                    LinkAttributesName::Media => {
-                        String::new_parser().map_output(Self::Media).boxed()
-                    }
-                    LinkAttributesName::Referrerpolicy => String::new_parser()
+                    LinkAttributesName::Href => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Href)
+                        .boxed(),
+                    LinkAttributesName::Hreflang => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Hreflang)
+                        .boxed(),
+                    LinkAttributesName::Importance => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Importance)
+                        .boxed(),
+                    LinkAttributesName::Integrity => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Integrity)
+                        .boxed(),
+                    LinkAttributesName::Media => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Media)
+                        .boxed(),
+                    LinkAttributesName::Referrerpolicy => crate::StringAttributeValue::new_parser()
                         .map_output(Self::Referrerpolicy)
                         .boxed(),
-                    LinkAttributesName::Rel => String::new_parser().map_output(Self::Rel).boxed(),
-                    LinkAttributesName::Sizes => {
-                        String::new_parser().map_output(Self::Sizes).boxed()
-                    }
-                    LinkAttributesName::Title => {
-                        String::new_parser().map_output(Self::Title).boxed()
-                    }
-                    LinkAttributesName::Type => String::new_parser().map_output(Self::Type).boxed(),
+                    LinkAttributesName::Rel => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Rel)
+                        .boxed(),
+                    LinkAttributesName::Sizes => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Sizes)
+                        .boxed(),
+                    LinkAttributesName::Title => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Title)
+                        .boxed(),
+                    LinkAttributesName::Type => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Type)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

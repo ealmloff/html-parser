@@ -7,7 +7,7 @@ pub enum DialogAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum DialogAttributes {
-    Open(String),
+    Open(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for DialogAttributes {
@@ -17,9 +17,9 @@ impl kalosm_sample::Parse for DialogAttributes {
             .boxed()
             .or(DialogAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    DialogAttributesName::Open => {
-                        String::new_parser().map_output(Self::Open).boxed()
-                    }
+                    DialogAttributesName::Open => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Open)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

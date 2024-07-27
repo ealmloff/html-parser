@@ -33,20 +33,20 @@ pub enum ImgAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum ImgAttributes {
-    Alt(String),
+    Alt(crate::StringAttributeValue),
     Crossorigin(crate::XoValues),
     Decoding(crate::DecodingValues),
-    Height(String),
-    Importance(String),
-    Intrinsicsize(String),
-    Ismap(String),
+    Height(crate::StringAttributeValue),
+    Importance(crate::StringAttributeValue),
+    Intrinsicsize(crate::StringAttributeValue),
+    Ismap(crate::StringAttributeValue),
     Loading(crate::LoadingValues),
     Referrerpolicy(crate::ReferrerpolicyValues),
-    Sizes(String),
-    Src(String),
-    Srcset(String),
-    Usemap(String),
-    Width(String),
+    Sizes(crate::StringAttributeValue),
+    Src(crate::StringAttributeValue),
+    Srcset(crate::StringAttributeValue),
+    Usemap(crate::StringAttributeValue),
+    Width(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for ImgAttributes {
@@ -56,44 +56,48 @@ impl kalosm_sample::Parse for ImgAttributes {
             .boxed()
             .or(ImgAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    ImgAttributesName::Alt => String::new_parser().map_output(Self::Alt).boxed(),
+                    ImgAttributesName::Alt => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Alt)
+                        .boxed(),
                     ImgAttributesName::Crossorigin => crate::XoValues::new_parser()
                         .map_output(Self::Crossorigin)
                         .boxed(),
                     ImgAttributesName::Decoding => crate::DecodingValues::new_parser()
                         .map_output(Self::Decoding)
                         .boxed(),
-                    ImgAttributesName::Height => {
-                        String::new_parser().map_output(Self::Height).boxed()
-                    }
-                    ImgAttributesName::Importance => {
-                        String::new_parser().map_output(Self::Importance).boxed()
-                    }
-                    ImgAttributesName::Intrinsicsize => {
-                        String::new_parser().map_output(Self::Intrinsicsize).boxed()
-                    }
-                    ImgAttributesName::Ismap => {
-                        String::new_parser().map_output(Self::Ismap).boxed()
-                    }
+                    ImgAttributesName::Height => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Height)
+                        .boxed(),
+                    ImgAttributesName::Importance => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Importance)
+                        .boxed(),
+                    ImgAttributesName::Intrinsicsize => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Intrinsicsize)
+                        .boxed(),
+                    ImgAttributesName::Ismap => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Ismap)
+                        .boxed(),
                     ImgAttributesName::Loading => crate::LoadingValues::new_parser()
                         .map_output(Self::Loading)
                         .boxed(),
                     ImgAttributesName::Referrerpolicy => crate::ReferrerpolicyValues::new_parser()
                         .map_output(Self::Referrerpolicy)
                         .boxed(),
-                    ImgAttributesName::Sizes => {
-                        String::new_parser().map_output(Self::Sizes).boxed()
-                    }
-                    ImgAttributesName::Src => String::new_parser().map_output(Self::Src).boxed(),
-                    ImgAttributesName::Srcset => {
-                        String::new_parser().map_output(Self::Srcset).boxed()
-                    }
-                    ImgAttributesName::Usemap => {
-                        String::new_parser().map_output(Self::Usemap).boxed()
-                    }
-                    ImgAttributesName::Width => {
-                        String::new_parser().map_output(Self::Width).boxed()
-                    }
+                    ImgAttributesName::Sizes => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Sizes)
+                        .boxed(),
+                    ImgAttributesName::Src => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Src)
+                        .boxed(),
+                    ImgAttributesName::Srcset => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Srcset)
+                        .boxed(),
+                    ImgAttributesName::Usemap => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Usemap)
+                        .boxed(),
+                    ImgAttributesName::Width => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Width)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

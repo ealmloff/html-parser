@@ -56,20 +56,17 @@ impl Response {
     }
 
     fn get_value(&self, value_set: &Option<String>) -> String {
-        let value = if let Some(value) = &value_set {
+        if let Some(value) = &value_set {
             if let Some(value) = self
                 .value_sets
                 .iter()
                 .find(|value_set| value_set.name == *value)
             {
-                value.rust_name.clone()
-            } else {
-                "String".to_string()
+                return value.rust_name.clone();
             }
-        } else {
-            "String".to_string()
-        };
-        value
+        }
+
+        "StringAttributeValue".to_string()
     }
 
     fn write_global_attributes(
@@ -102,9 +99,7 @@ impl Response {
             let name = &attribute.name;
             let attribute_rust_name = to_upper_camel_case(name);
             let mut value = self.get_value(&attribute.value_set);
-            if value != "String" {
-                value = format!("crate::{value}");
-            }
+            value = format!("crate::{value}");
             writeln!(
                 out,
                 "        GlobalAttributeName::{attribute_rust_name} => {{"
@@ -166,9 +161,7 @@ impl Response {
                 for attribute in &attributes {
                     let attribute_rust_name = to_upper_camel_case(&attribute.name);
                     let mut value = self.get_value(&attribute.value_set);
-                    if value != "String" {
-                        value = format!("crate::{value}");
-                    }
+                    value = format!("crate::{value}");
                     writeln!(element_out, "    {attribute_rust_name}({value}),")?;
                 }
                 writeln!(element_out, "    GlobalAttribute(crate::GlobalAttribute),")?;
@@ -192,9 +185,7 @@ impl Response {
                     let name = &attribute.name;
                     let attribute_rust_name = to_upper_camel_case(name);
                     let mut value = self.get_value(&attribute.value_set);
-                    if value != "String" {
-                        value = format!("crate::{value}");
-                    }
+                    value = format!("crate::{value}");
                     writeln!(
                         element_out,
                         "        {element_rust_name}AttributesName::{attribute_rust_name} => {{"

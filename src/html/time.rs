@@ -7,7 +7,7 @@ pub enum TimeAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum TimeAttributes {
-    Datetime(String),
+    Datetime(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for TimeAttributes {
@@ -17,9 +17,9 @@ impl kalosm_sample::Parse for TimeAttributes {
             .boxed()
             .or(TimeAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    TimeAttributesName::Datetime => {
-                        String::new_parser().map_output(Self::Datetime).boxed()
-                    }
+                    TimeAttributesName::Datetime => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Datetime)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

@@ -13,10 +13,10 @@ pub enum EmbedAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum EmbedAttributes {
-    Height(String),
-    Src(String),
-    Type(String),
-    Width(String),
+    Height(crate::StringAttributeValue),
+    Src(crate::StringAttributeValue),
+    Type(crate::StringAttributeValue),
+    Width(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for EmbedAttributes {
@@ -26,16 +26,18 @@ impl kalosm_sample::Parse for EmbedAttributes {
             .boxed()
             .or(EmbedAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    EmbedAttributesName::Height => {
-                        String::new_parser().map_output(Self::Height).boxed()
-                    }
-                    EmbedAttributesName::Src => String::new_parser().map_output(Self::Src).boxed(),
-                    EmbedAttributesName::Type => {
-                        String::new_parser().map_output(Self::Type).boxed()
-                    }
-                    EmbedAttributesName::Width => {
-                        String::new_parser().map_output(Self::Width).boxed()
-                    }
+                    EmbedAttributesName::Height => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Height)
+                        .boxed(),
+                    EmbedAttributesName::Src => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Src)
+                        .boxed(),
+                    EmbedAttributesName::Type => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Type)
+                        .boxed(),
+                    EmbedAttributesName::Width => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Width)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

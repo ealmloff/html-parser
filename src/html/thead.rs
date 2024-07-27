@@ -7,7 +7,7 @@ pub enum TheadAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum TheadAttributes {
-    Align(String),
+    Align(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for TheadAttributes {
@@ -17,9 +17,9 @@ impl kalosm_sample::Parse for TheadAttributes {
             .boxed()
             .or(TheadAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    TheadAttributesName::Align => {
-                        String::new_parser().map_output(Self::Align).boxed()
-                    }
+                    TheadAttributesName::Align => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Align)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())

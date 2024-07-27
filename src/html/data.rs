@@ -7,7 +7,7 @@ pub enum DataAttributesName {
 }
 #[derive(Debug, Clone)]
 pub enum DataAttributes {
-    Value(String),
+    Value(crate::StringAttributeValue),
     GlobalAttribute(crate::GlobalAttribute),
 }
 impl kalosm_sample::Parse for DataAttributes {
@@ -17,9 +17,9 @@ impl kalosm_sample::Parse for DataAttributes {
             .boxed()
             .or(DataAttributesName::new_parser()
                 .then_lazy(|name| match name {
-                    DataAttributesName::Value => {
-                        String::new_parser().map_output(Self::Value).boxed()
-                    }
+                    DataAttributesName::Value => crate::StringAttributeValue::new_parser()
+                        .map_output(Self::Value)
+                        .boxed(),
                 })
                 .map_output(|(_, attribute)| attribute)
                 .boxed())
