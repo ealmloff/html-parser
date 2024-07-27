@@ -4,7 +4,7 @@ type CodeAttributes = crate::GlobalAttribute;
 #[derive(Debug, Clone)]
 pub struct Code {
     attributes: Vec<CodeAttributes>,
-    body: crate::TextNode
+    body: crate::TextNode,
 }
 
 impl kalosm_sample::Parse for Code {
@@ -13,9 +13,7 @@ impl kalosm_sample::Parse for Code {
         CodeAttributes::new_parser()
             .repeat(0..=10000)
             .then_literal(">")
-            .then(
-                crate::AnyTextNodeParser
-            )
+            .then(crate::AnyTextNodeParser)
             .then_literal("</code>")
             .map_output(|(attributes, body)| Code { attributes, body })
     }
