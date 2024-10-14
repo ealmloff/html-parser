@@ -445,8 +445,8 @@ dependencies = [
 
 [[package]]
 name = "kalosm-parse-macro"
-version = "0.2.1"
-source = "git+https://github.com/floneum/floneum#0c166713d4d8d53232fe58f66a6b64088612f237"
+version = "0.3.2"
+source = "git+https://github.com/floneum/floneum#ce31f7c10f385ad5a0a21c64ebad591fa71daacc"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -455,8 +455,8 @@ dependencies = [
 
 [[package]]
 name = "kalosm-sample"
-version = "0.2.1"
-source = "git+https://github.com/floneum/floneum#0c166713d4d8d53232fe58f66a6b64088612f237"
+version = "0.3.2"
+source = "git+https://github.com/floneum/floneum#ce31f7c10f385ad5a0a21c64ebad591fa71daacc"
 dependencies = [
  "anyhow",
  "kalosm-parse-macro",
